@@ -92,3 +92,9 @@ def test_pop_default_pops_last():
     ll = SinglyLinkedList([1, 2, 3])
     value = ll.pop()
     assert value == 3
+
+
+def test_repr():
+    ll = SinglyLinkedList([1, 2, 3])
+    assert repr(ll) == "SinglyLinkedList([1, 2, 3])"
+

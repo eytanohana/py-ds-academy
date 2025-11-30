@@ -43,6 +43,15 @@ class SinglyLinkedList(Generic[T]):
 
         Time complexity: O(n).
         """
+        new_node = _Node(value=value)
+        if self._head is None:
+            self._head = new_node
+        else:
+            curr = self._head
+            while curr.next:
+                curr = curr.next
+            curr.next = new_node
+        self._length += 1
 
     def prepend(self, value: T) -> None:
         """
@@ -50,17 +59,36 @@ class SinglyLinkedList(Generic[T]):
 
         Time complexity: O(1).
         """
+        new_node = _Node(value=value)
+        if self._head is None:
+            self._head = new_node
+        else:
+            new_node.next = self._head
+            self._head = new_node
+        self._length += 1
 
     def insert(self, index: int, value: T) -> None:
         """
         Insert a value at a specific index.
 
-        Args:
-            index: 0-based index. If index >= len(list), behaves like append().
-
         Raises:
             IndexError: if index is out of bounds.
         """
+        if index < 0 or index > self._length:
+            raise IndexError('index out of bounds on list')
+        if index == 0:
+            self.prepend(value)
+        elif index == self._length:
+            self.append(value)
+        else:
+            prev, curr, idx = None, self._head, 0
+            for _ in range(index):
+                prev = curr
+                curr = curr.next
+            new_node = _Node(value=value)
+            new_node.next = curr
+            prev.next = new_node
+            self._length += 1
 
     def remove(self, value: T) -> None:
         """
@@ -69,6 +97,18 @@ class SinglyLinkedList(Generic[T]):
         Raises:
             ValueError: if the value is not found.
         """
+        prev, curr = None, self._head
+        while curr and curr.value != value:
+            prev = curr
+            curr = curr.next
+        if curr and curr.value == value:
+            if prev:
+                prev.next = curr.next
+            else:
+                self._head = self._head.next
+            self._length -= 1
+        else:
+            raise ValueError('value not found')
 
     def pop(self, index: int = -1) -> T:
         """
@@ -79,6 +119,19 @@ class SinglyLinkedList(Generic[T]):
         Raises:
             IndexError: if the list is empty or index invalid.
         """
+        prev, curr = None, self._head
+        idx = self._length + index if index < 0 else index
+        if idx < 0 or idx >= self._length or self._length == 0:
+            raise IndexError('invalid index')
+        for i in range(idx):
+            prev = curr
+            curr = curr.next
+        if prev:
+            prev.next = curr.next
+        else:
+            self._head = None
+        self._length -= 1
+        return curr.value
 
     def find(self, value: T) -> int:
         """
@@ -90,9 +143,15 @@ class SinglyLinkedList(Generic[T]):
         Raises:
             ValueError: if value is not found.
         """
+        for i, node_value in enumerate(self):
+            if value == node_value:
+                return i
+        raise ValueError('value not found')
 
     def clear(self) -> None:
         """Remove all elements."""
+        self._head = None
+        self._length = 0
 
     # ---------------------------------------------------
     # Access helpers
@@ -100,12 +159,20 @@ class SinglyLinkedList(Generic[T]):
 
     def head(self) -> Optional[T]:
         """Return the first value, or None if list is empty."""
+        return self._head.value if self._head else None
 
     def tail(self) -> Optional[T]:
         """Return the last value, or None if empty."""
+        if not self._head:
+            return None
+        curr = self._head
+        while curr and curr.next:
+            curr = curr.next
+        return curr.value
 
     def to_list(self) -> list[T]:
         """Return Python list of all values in order."""
+        return list(self)
 
     # ---------------------------------------------------
     # Python protocol methods
@@ -113,12 +180,18 @@ class SinglyLinkedList(Generic[T]):
 
     def __len__(self) -> int:
         """Return number of elements."""
+        return self._length
 
     def __bool__(self) -> bool:
         """Truthiness: empty list is False; otherwise True."""
+        return self._length > 0
 
     def __iter__(self) -> Iterator[T]:
         """Iterate through values head → tail."""
+        curr = self._head
+        while curr:
+            yield curr.value
+            curr = curr.next
 
     def __getitem__(self, index: int) -> T:
         """
@@ -127,6 +200,11 @@ class SinglyLinkedList(Generic[T]):
         Raises:
             IndexError
         """
+        if index < 0 or index >= len(self):
+            raise IndexError('bad index')
+        for i, value in enumerate(self):
+            if i == index:
+                return value
 
     def __setitem__(self, index: int, value: T) -> None:
         """
@@ -135,6 +213,12 @@ class SinglyLinkedList(Generic[T]):
         Raises:
             IndexError
         """
+        if index < 0 or index >= self._length:
+            raise IndexError('bad index')
+        idx, curr = 0, self._head
+        while idx < index:
+            curr = curr.next
+        curr.value = value
 
     def __repr__(self) -> str:
         """
@@ -142,3 +226,4 @@ class SinglyLinkedList(Generic[T]):
 
             SinglyLinkedList([1, 2, 3])
         """
+        return f"SinglyLinkedList({self.to_list()})"

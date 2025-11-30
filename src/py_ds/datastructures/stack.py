@@ -41,7 +41,7 @@ class Stack(Generic[T]):
 
         Time complexity: O(1) amortized.
         """
-        ...
+        self._items.append(item)
 
     def pop(self) -> T:
         """
@@ -52,7 +52,9 @@ class Stack(Generic[T]):
 
         Time complexity: O(1).
         """
-        ...
+        if self.is_empty():
+            raise IndexError("pop from empty stack")
+        return self._items.pop()
 
     def peek(self) -> T:
         """
@@ -63,7 +65,9 @@ class Stack(Generic[T]):
 
         Time complexity: O(1).
         """
-        ...
+        if self.is_empty():
+            raise IndexError("peek from empty stack")
+        return self._items[-1]
 
     def is_empty(self) -> bool:
         """
@@ -71,7 +75,7 @@ class Stack(Generic[T]):
 
         Time complexity: O(1).
         """
-        ...
+        return len(self._items) == 0
 
     # -------- Bulk / utility operations --------
 

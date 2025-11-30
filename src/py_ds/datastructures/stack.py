@@ -29,9 +29,7 @@ class Stack(Generic[T]):
         Example:
             Stack([1, 2, 3])  # 3 is at the top
         """
-        if items is not None:
-            self._items = list(items)[::-1]
-        self._items = []
+        self._items = list(items) if items else []
 
     # -------- Core stack operations --------
 
@@ -88,7 +86,7 @@ class Stack(Generic[T]):
         Time complexity: O(n) or O(1) depending on implementation,
         but that's an implementation detail.
         """
-        ...
+        self._items = []
 
     def extend(self, items: Iterable[T]) -> None:
         """
@@ -103,7 +101,8 @@ class Stack(Generic[T]):
 
         Time complexity: O(k), where k = number of items.
         """
-        ...
+        for item in items:
+            self.push(item)
 
     def to_list(self) -> list[T]:
         """
@@ -114,7 +113,7 @@ class Stack(Generic[T]):
 
         Time complexity: O(n).
         """
-        ...
+        return self._items[::]
 
     # -------- Python protocol methods --------
 
@@ -126,7 +125,7 @@ class Stack(Generic[T]):
 
         Time complexity: O(1).
         """
-        ...
+        return len(self._items)
 
     def __bool__(self) -> bool:
         """
@@ -136,7 +135,7 @@ class Stack(Generic[T]):
 
         Enables: `if stack: ...`
         """
-        ...
+        return len(self._items) > 0
 
     def __iter__(self) -> Iterator[T]:
         """
@@ -150,7 +149,7 @@ class Stack(Generic[T]):
             This order is a design choice; you could document bottom→top
             or top→bottom, but be consistent.
         """
-        ...
+        return iter(self._items[::-1])
 
     def __repr__(self) -> str:
         """
@@ -161,4 +160,4 @@ class Stack(Generic[T]):
 
         This is mainly for debugging / REPL usage.
         """
-        ...
+        return f"Stack({self.to_list()})"

@@ -68,11 +68,16 @@ def test_clear_removes_all_items():
 
 
 def test_iteration_bottom_to_top():
-    # Assuming your __iter__ yields bottom -> top
+    # Assuming your __iter__ yields top -> bottom
     s = Stack([1, 2, 3])
-    assert list(s) == [1, 2, 3]
+    assert list(s) == [3, 2, 1]
 
 
 def test_bool_truthiness():
     assert bool(Stack()) is False
     assert bool(Stack([1])) is True
+
+
+def test_repr_contains_items():
+    s = Stack([1, 2, 3])
+    assert repr(s) == "Stack([1, 2, 3])"

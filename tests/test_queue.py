@@ -78,3 +78,8 @@ def test_iteration_front_to_back():
 def test_bool_truthiness():
     assert bool(Queue()) is False
     assert bool(Queue([1])) is True
+
+
+def test_repr():
+    q = Queue([1, 2, 3])
+    assert repr(q) == "Queue([1, 2, 3])"

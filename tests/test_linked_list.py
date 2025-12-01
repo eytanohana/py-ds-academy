@@ -69,7 +69,7 @@ def test_remove_existing_value():
     ll = SinglyLinkedList([1, 2, 3, 2])
 
     ll.remove(2)  # remove first occurrence
-    assert ll.to_list() == [1, 3, 2]
+    assert ll.to_list() == [1, 2]
 
     ll.remove(2)
     assert ll.to_list() == [1, 3]

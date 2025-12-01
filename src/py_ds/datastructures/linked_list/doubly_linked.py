@@ -64,6 +64,26 @@ class DoublyLinkedList(LinkedListBase[T]):
             self._head = node
         self._length += 1
 
+    def _get_node_at(self, index: int) ->_DoublyNode[T]:
+        if self._length == 0:
+            raise IndexError('pop from an empty list')
+        if index < -self._length or index >= self._length:
+            raise IndexError('invalid index')
+
+        if index < 0:
+            index = self._length + index
+
+        if index > self._length // 2:
+            steps = self._length - index - 1
+            curr = self._tail
+            for _ in range(steps):
+                curr = curr.prev
+        else:
+            curr = self._head
+            for _ in range(index):
+                curr = curr.next
+        return curr
+
     def insert(self, index: int, value: T) -> None:
         """
         Insert a value at a specific index.
@@ -71,36 +91,22 @@ class DoublyLinkedList(LinkedListBase[T]):
         Raises:
             IndexError: if index is out of bounds.
         """
-        if index < 0 or index > self._length:
-            raise IndexError('index out of bounds')
-
-        node = _DoublyNode(value)
-        if index == 0:
-            self.prepend(value)
-            return
-        elif index == self._length:
+        if index == self._length:
             self.append(value)
             return
 
-        if index > self._length // 2:
-            backwards_index = self._length - index
-            curr, next_ = self._tail, None
-            for _ in range(backwards_index):
-                next_ = curr
-                curr = curr.prev
-            curr.next = node
-            node.prev = curr
-            node.next = next_
-            next_.prev = node
+        new_node = _DoublyNode(value)
+        index_node = self._get_node_at(index)
+        prev = index_node.prev
+
+        new_node.next = index_node
+        index_node.prev = new_node
+
+        if prev:
+            prev.next = new_node
+            new_node.prev = prev
         else:
-            prev, curr = None, self._head
-            for _ in range(index):
-                prev = curr
-                curr = curr.next
-            prev.next = node
-            node.prev = prev
-            node.next = curr
-            curr.prev = node
+            self._head = new_node
         self._length += 1
 
     def remove(self, value: T) -> None:
@@ -110,21 +116,28 @@ class DoublyLinkedList(LinkedListBase[T]):
         Raises:
             ValueError: if the value is not found.
         """
-        prev, curr = None, self._head
+        curr = self._head
         while curr and curr.value != value:
-            prev = curr
             curr = curr.next
         if curr is None or curr.value != value:
             raise ValueError("value not found")
 
-        if prev is not None:
-            prev.next = curr.next
-            if curr.next:
-                curr.next.prev = prev
-            else:
-                self._tail = prev
+        prev = curr.prev
+        next_ = curr.next
+
+        if prev:
+            prev.next = next_
         else:
-            self._head = curr.next
+            self._head = next_
+            if self._head:
+                self._head.prev = None
+
+        if next_:
+            next_.prev = prev
+        else:
+            self._tail = prev
+            if self._tail:
+                self._tail.next = None
         self._length -= 1
 
     def pop(self, index: int = -1) -> T:
@@ -136,22 +149,7 @@ class DoublyLinkedList(LinkedListBase[T]):
         Raises:
             IndexError: if the list is empty or index invalid.
         """
-        if self._length == 0:
-            raise IndexError('pop from an empty list')
-        if index < -self._length or index >= self._length:
-            raise IndexError('invalid index')
-
-        real_index = self._length + index if index < 0 else index
-        if real_index > self._length // 2:
-            steps = self._length - real_index - 1
-            curr = self._tail
-            for _ in range(steps):
-                curr = curr.prev
-        else:
-            curr = self._head
-            for _ in range(real_index):
-                curr = curr.next
-
+        curr = self._get_node_at(index)
         value = curr.value
         prev, next_ = curr.prev, curr.next
 
@@ -213,13 +211,7 @@ class DoublyLinkedList(LinkedListBase[T]):
         Raises:
             IndexError
         """
-        if index < -self._length or index >= self._length:
-            raise IndexError('bad index')
-        if index >= 0:
-            return super().__getitem__(index)
-        for i, value in enumerate(self.reverse_iter()):
-            if i == -index - 1:
-                return value
+        return self._get_node_at(index).value
 
     def __setitem__(self, index: int, value: T) -> None:
         """
@@ -228,19 +220,5 @@ class DoublyLinkedList(LinkedListBase[T]):
         Raises:
             IndexError
         """
-        if self._length == 0:
-            raise IndexError('cant set item on empty list')
-        if index < -self._length or index >= self._length:
-            raise IndexError('invalid index')
-
-        real_index = self._length + index if index < 0 else index
-        if real_index > self._length // 2:
-            steps = self._length - real_index - 1
-            curr = self._tail
-            for _ in range(steps):
-                curr = curr.prev
-        else:
-            curr = self._head
-            for _ in range(index):
-                curr = curr.next
-        curr.value = value
+        node = self._get_node_at(index)
+        node.value = value

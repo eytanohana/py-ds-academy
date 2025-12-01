@@ -71,12 +71,15 @@ def test_insert_at_beginning_middle_and_end():
     dll.insert(6, 6)
     assert dll.to_list() == [0, 1, 2, 3, 4, 5, 6]
 
+    dll.insert(-1, 7)
+    assert dll.to_list() == [0, 1, 2, 3, 4, 5, 7, 6]
+
 
 def test_insert_out_of_bounds_raises():
     """Insert should raise IndexError for invalid indices."""
     dll = DoublyLinkedList([1, 2])
     with pytest.raises(IndexError):
-        dll.insert(-1, 0)
+        dll.insert(-10, 0)
     with pytest.raises(IndexError):
         dll.insert(10, 0)
 
@@ -206,7 +209,7 @@ def test_indexing_out_of_bounds():
     with pytest.raises(IndexError):
         _ = dll[10]
     with pytest.raises(IndexError):
-        _ = dll[-1]  # Negative indices not supported
+        _ = dll[-5]  # Negative indices not supported
 
 
 def test_setitem():

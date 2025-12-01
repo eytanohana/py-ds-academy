@@ -1,6 +1,6 @@
 import pytest
 
-from py_ds.datastructures.linked_list import SinglyLinkedList
+from py_ds.datastructures.linked_list.singly_linked import SinglyLinkedList
 
 
 def test_empty_list_initial_state():
@@ -97,4 +97,3 @@ def test_pop_default_pops_last():
 def test_repr():
     ll = SinglyLinkedList([1, 2, 3])
     assert repr(ll) == "SinglyLinkedList([1, 2, 3])"
-

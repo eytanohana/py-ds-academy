@@ -1,19 +1,10 @@
-from __future__ import annotations
+from collections.abc import Iterable, Iterator
+from typing import Optional
 
-from dataclasses import dataclass
-from typing import Generic, Iterable, Iterator, Optional, TypeVar
-
-T = TypeVar("T")
+from py_ds.datastructures.linked_list.base import LinkedListBase, T, _Node
 
 
-@dataclass
-class _Node(Generic[T]):
-    """A single node in the linked list."""
-    value: T
-    next: Optional[_Node[T]] = None
-
-
-class SinglyLinkedList(Generic[T]):
+class SinglyLinkedList(LinkedListBase[T]):
     """
     A singly linked list supporting typical operations:
     - append / prepend
@@ -29,9 +20,7 @@ class SinglyLinkedList(Generic[T]):
         Items are appended in order (first item becomes head).
         """
         self._head: Optional[_Node[T]] = None
-        self._length: int = 0
-        for item in items or []:
-            self.append(item)
+        super().__init__(items)
 
     # ---------------------------------------------------
     # Core list operations
@@ -133,21 +122,6 @@ class SinglyLinkedList(Generic[T]):
         self._length -= 1
         return curr.value
 
-    def find(self, value: T) -> int:
-        """
-        Return the index of the first occurrence of `value`.
-
-        Returns:
-            index (int)
-
-        Raises:
-            ValueError: if value is not found.
-        """
-        for i, node_value in enumerate(self):
-            if value == node_value:
-                return i
-        raise ValueError('value not found')
-
     def clear(self) -> None:
         """Remove all elements."""
         self._head = None
@@ -170,21 +144,9 @@ class SinglyLinkedList(Generic[T]):
             curr = curr.next
         return curr.value
 
-    def to_list(self) -> list[T]:
-        """Return Python list of all values in order."""
-        return list(self)
-
     # ---------------------------------------------------
     # Python protocol methods
     # ---------------------------------------------------
-
-    def __len__(self) -> int:
-        """Return number of elements."""
-        return self._length
-
-    def __bool__(self) -> bool:
-        """Truthiness: empty list is False; otherwise True."""
-        return self._length > 0
 
     def __iter__(self) -> Iterator[T]:
         """Iterate through values head → tail."""
@@ -192,19 +154,6 @@ class SinglyLinkedList(Generic[T]):
         while curr:
             yield curr.value
             curr = curr.next
-
-    def __getitem__(self, index: int) -> T:
-        """
-        Indexing support.
-
-        Raises:
-            IndexError
-        """
-        if index < 0 or index >= len(self):
-            raise IndexError('bad index')
-        for i, value in enumerate(self):
-            if i == index:
-                return value
 
     def __setitem__(self, index: int, value: T) -> None:
         """
@@ -220,10 +169,3 @@ class SinglyLinkedList(Generic[T]):
             curr = curr.next
         curr.value = value
 
-    def __repr__(self) -> str:
-        """
-        Representation:
-
-            SinglyLinkedList([1, 2, 3])
-        """
-        return f"SinglyLinkedList({self.to_list()})"

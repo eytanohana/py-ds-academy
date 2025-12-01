@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
-from typing import Generic, Iterable, Iterator, Optional, TypeVar
+from typing import Generic, Optional, TypeVar
 
 T = TypeVar('T')
 
 
 @dataclass
 class _Node(Generic[T]):
-    """A single node in the singly linked list."""
+    """A node in the singly linked list."""
     value: T
     next: Optional[_Node[T]] = None
 

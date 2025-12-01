@@ -13,7 +13,7 @@ __all__ = [
 
 
 def _get_version() -> str:
-    """Get version from installed package metadata or pyproject.toml."""
+    """Get version from installed package metadata."""
     try:
         return version(packages_distributions()[__package__][0])
     except (PackageNotFoundError, KeyError):
@@ -21,4 +21,3 @@ def _get_version() -> str:
 
 
 __version__ = _get_version()
-del _get_version

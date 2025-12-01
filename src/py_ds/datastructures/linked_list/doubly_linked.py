@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
-from typing import Optional
 
-from py_ds.datastructures.linked_list.base import _Node, T, LinkedListBase
+from py_ds.datastructures.linked_list.base import LinkedListBase, T, _Node
 
 
 @dataclass
@@ -11,7 +12,7 @@ class _DoublyNode(_Node[T]):
     A node in the doubly linked list.
     """
 
-    prev: Optional[_DoublyNode[T]] = None
+    prev: _DoublyNode[T] | None = None
 
 
 class DoublyLinkedList(LinkedListBase[T]):
@@ -27,8 +28,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
     def __init__(self, items: Iterable[T] | None = None) -> None:
         """Initialize the doubly linked list with optional items."""
-        self._head: Optional[_DoublyNode[T]] = None
-        self._tail: Optional[_DoublyNode[T]] = None
+        self._head: _DoublyNode[T] | None = None
+        self._tail: _DoublyNode[T] | None = None
         super().__init__(items)
 
     # ---------------------------------------------------
@@ -175,11 +176,11 @@ class DoublyLinkedList(LinkedListBase[T]):
     # Access helpers
     # ---------------------------------------------------
 
-    def head(self) -> Optional[T]:
+    def head(self) -> T | None:
         """Return the first value, or None if list is empty."""
         return self._head.value if self._head else None
 
-    def tail(self) -> Optional[T]:
+    def tail(self) -> T | None:
         """
         Return the last value, or None if empty.
 

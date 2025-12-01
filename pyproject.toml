@@ -1,10 +1,28 @@
 [project]
 name = "py-ds-eytan"
 version = "0.1.4"
-description = "Add your description here"
+description = "Data structures implemented from scratch for learning and experimentation."
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.11"
 dependencies = []
+
+authors = [
+    { name = "Eytan Ohana" }
+]
+license = { text = "MIT" }
+keywords = ["data-structures", "algorithms", "learning"]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Education",
+]
 
 [build-system]
 requires = ["uv_build>=0.9.13,<0.10.0"]
@@ -18,3 +36,23 @@ dev = [
     "pytest>=9.0.1",
     "ruff>=0.14.7",
 ]
+
+# ---- Ruff configuration ----
+[tool.ruff]
+# Lint and format everything under src and tests
+src = ["src", "tests"]
+line-length = 88  # keep in sync with black
+
+[tool.ruff.lint]
+# Start with Ruff's default rules and extend with bugbear, pyupgrade, etc.
+extend-select = [
+    "B",   # flake8-bugbear: likely bugs / bad patterns
+    "I",   # isort: import sorting
+    "UP",  # pyupgrade: modernize syntax
+    "SIM", # flake8-simplify
+]
+
+# ---- Pytest configuration ----
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

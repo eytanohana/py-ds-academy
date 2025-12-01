@@ -1,23 +1,17 @@
 [project]
 name = "py-ds-eytan"
-version = ["version"]
+version = "0.1.3"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = []
 
 [build-system]
-requires = ["hatchling", "uv-dynamic-versioning"]
-build-backend = "hatchling.build"
-
-[tool.hatch.version]
-source = "uv-dynamic-versioning"
+requires = ["uv_build>=0.9.13,<0.10.0"]
+build-backend = "uv_build"
 
 [tool.uv.build-backend]
 module-name = "py_ds"
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/py_ds"]
 
 [dependency-groups]
 dev = [

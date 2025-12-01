@@ -39,8 +39,8 @@ wheels = [
 ]
 
 [[package]]
-name = "py-ds"
-version = "0.1.0"
+name = "py-ds-eytan"
+version = "0.1.1"
 source = { editable = "." }
 
 [package.dev-dependencies]

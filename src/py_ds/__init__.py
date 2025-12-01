@@ -15,14 +15,10 @@ __all__ = [
 def _get_version() -> str:
     """Get version from installed package metadata or pyproject.toml."""
     try:
-        print(__package__)
-        dist_name = packages_distributions()[__package__][0]
-        print(dist_name)
-        vers = version(dist_name)
-        return vers
-    except PackageNotFoundError:
-        # Fallback: read from pyproject.toml during development
+        return version(packages_distributions()[__package__][0])
+    except (PackageNotFoundError, KeyError):
         return "0.0.0"
 
 
 __version__ = _get_version()
+del _get_version

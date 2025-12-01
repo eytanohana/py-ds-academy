@@ -58,15 +58,15 @@ def test_prepend_adds_to_front():
 def test_insert_at_beginning_middle_and_end():
     """Insert should handle insertion at any position."""
     dll = DoublyLinkedList([1, 2, 4, 5])
-    
+
     # Insert at beginning
     dll.insert(0, 0)
     assert dll.to_list() == [0, 1, 2, 4, 5]
-    
+
     # Insert in middle
     dll.insert(3, 3)
     assert dll.to_list() == [0, 1, 2, 3, 4, 5]
-    
+
     # Insert at end
     dll.insert(6, 6)
     assert dll.to_list() == [0, 1, 2, 3, 4, 5, 6]
@@ -102,7 +102,7 @@ def test_remove_existing_value():
 def test_remove_nonexistent_raises():
     """Remove should raise ValueError if value not found."""
     dll = DoublyLinkedList([1, 2, 3])
-    with pytest.raises(ValueError, match='value not found'):
+    with pytest.raises(ValueError, match="value not found"):
         dll.remove(10)
 
 
@@ -123,15 +123,15 @@ def test_pop_default_pops_last():
 def test_pop_at_index():
     """Pop should remove and return element at specified index."""
     dll = DoublyLinkedList([1, 2, 3, 4, 5])
-    
+
     # Pop first
     assert dll.pop(0) == 1
     assert dll.to_list() == [2, 3, 4, 5]
-    
+
     # Pop middle
     assert dll.pop(2) == 4
     assert dll.to_list() == [2, 3, 5]
-    
+
     # Pop last
     assert dll.pop(-1) == 5
     assert dll.to_list() == [2, 3]
@@ -155,7 +155,7 @@ def test_find():
 def test_find_nonexistent_raises():
     """Find should raise ValueError if value not found."""
     dll = DoublyLinkedList([1, 2, 3])
-    with pytest.raises(ValueError, match='value not found'):
+    with pytest.raises(ValueError, match="value not found"):
         dll.find(10)
 
 
@@ -246,27 +246,26 @@ def test_bool():
 def test_complex_operations():
     """Test a sequence of mixed operations."""
     dll = DoublyLinkedList()
-    
+
     # Build up
     dll.append(2)
     dll.prepend(1)
     dll.append(3)
     dll.insert(3, 4)
     assert dll.to_list() == [1, 2, 3, 4]
-    
+
     # Modify
     dll[1] = 20
     assert dll.to_list() == [1, 20, 3, 4]
-    
+
     # Remove
     dll.remove(20)
     assert dll.to_list() == [1, 3, 4]
-    
+
     # Pop
     assert dll.pop(1) == 3
     assert dll.to_list() == [1, 4]
-    
+
     # Clear
     dll.clear()
     assert len(dll) == 0
-

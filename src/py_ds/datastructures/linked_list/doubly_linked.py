@@ -10,6 +10,7 @@ class _DoublyNode(_Node[T]):
     """
     A node in the doubly linked list.
     """
+
     prev: Optional[_DoublyNode[T]] = None
 
 
@@ -64,11 +65,11 @@ class DoublyLinkedList(LinkedListBase[T]):
             self._head = node
         self._length += 1
 
-    def _get_node_at(self, index: int) ->_DoublyNode[T]:
+    def _get_node_at(self, index: int) -> _DoublyNode[T]:
         if self._length == 0:
-            raise IndexError('pop from an empty list')
+            raise IndexError("pop from an empty list")
         if index < -self._length or index >= self._length:
-            raise IndexError('invalid index')
+            raise IndexError("invalid index")
 
         if index < 0:
             index = self._length + index

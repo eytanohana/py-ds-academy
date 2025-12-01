@@ -1,5 +1,5 @@
 [project]
-name = "py-ds"
+name = "py-ds-eytan"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -12,6 +12,9 @@ py-ds = "py_ds:main"
 [build-system]
 requires = ["uv_build>=0.9.13,<0.10.0"]
 build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "py_ds"
 
 [dependency-groups]
 dev = [

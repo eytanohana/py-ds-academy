@@ -19,4 +19,5 @@ module-name = "py_ds"
 [dependency-groups]
 dev = [
     "pytest>=9.0.1",
+    "ruff>=0.14.7",
 ]

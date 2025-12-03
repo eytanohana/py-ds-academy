@@ -1,4 +1,4 @@
-from importlib.metadata import PackageNotFoundError, packages_distributions, version
+from importlib.metadata import PackageNotFoundError, version
 
 from py_ds.datastructures.linked_list import DoublyLinkedList, SinglyLinkedList
 from py_ds.datastructures.queue import Queue
@@ -15,8 +15,8 @@ __all__ = [
 def _get_version() -> str:
     """Get version from installed package metadata."""
     try:
-        return version(packages_distributions()[__package__][0])
-    except (PackageNotFoundError, KeyError):
+        return version('py-ds-eytan')
+    except PackageNotFoundError:
         return "0.0.0"
 
 

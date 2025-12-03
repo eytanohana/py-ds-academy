@@ -1,6 +1,7 @@
 name: Build Dependencies and Run Tests
 on:
-  push: [ main, master ]
+  push:
+    branches: [ master, main ]
 
 jobs:
   uv-example:

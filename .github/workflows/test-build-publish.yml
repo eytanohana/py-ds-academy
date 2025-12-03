@@ -34,7 +34,7 @@ jobs:
     needs: tests
 
     environment:
-      name: pypi
+      name: testpypi
     permissions:
       id-token: write
       contents: read

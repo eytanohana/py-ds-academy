@@ -15,7 +15,7 @@ __all__ = [
 def _get_version() -> str:
     """Get version from installed package metadata."""
     try:
-        return version('py-ds-eytan')
+        return version("py-ds-eytan")
     except PackageNotFoundError:
         return "0.0.0"
 

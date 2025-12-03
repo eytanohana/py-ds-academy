@@ -1,7 +1,8 @@
 """Tests for DoublyLinkedList."""
 
-from py_ds.datastructures.linked_list.doubly_linked import DoublyLinkedList
 import pytest
+
+from py_ds.datastructures.linked_list.doubly_linked import DoublyLinkedList
 
 
 def test_empty_list_initial_state():

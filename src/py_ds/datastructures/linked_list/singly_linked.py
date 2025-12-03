@@ -1,5 +1,4 @@
 from collections.abc import Iterable, Iterator
-from typing import Optional
 
 from py_ds.datastructures.linked_list.base import LinkedListBase, T, _Node
 
@@ -19,7 +18,7 @@ class SinglyLinkedList(LinkedListBase[T]):
         Initialize the list with optional items.
         Items are appended in order (first item becomes head).
         """
-        self._head: Optional[_Node[T]] = None
+        self._head: _Node[T] | None = None
         super().__init__(items)
 
     # ---------------------------------------------------
@@ -70,7 +69,7 @@ class SinglyLinkedList(LinkedListBase[T]):
         elif index == self._length:
             self.append(value)
         else:
-            prev, curr, idx = None, self._head, 0
+            prev, curr = None, self._head
             for _ in range(index):
                 prev = curr
                 curr = curr.next
@@ -112,7 +111,7 @@ class SinglyLinkedList(LinkedListBase[T]):
         idx = self._length + index if index < 0 else index
         if idx < 0 or idx >= self._length or self._length == 0:
             raise IndexError("invalid index")
-        for i in range(idx):
+        for _ in range(idx):
             prev = curr
             curr = curr.next
         if prev:
@@ -131,11 +130,11 @@ class SinglyLinkedList(LinkedListBase[T]):
     # Access helpers
     # ---------------------------------------------------
 
-    def head(self) -> Optional[T]:
+    def head(self) -> T | None:
         """Return the first value, or None if list is empty."""
         return self._head.value if self._head else None
 
-    def tail(self) -> Optional[T]:
+    def tail(self) -> T | None:
         """Return the last value, or None if empty."""
         if not self._head:
             return None

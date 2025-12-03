@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
-from typing import Generic, Optional, TypeVar
+from typing import Generic, TypeVar
 
 T = TypeVar("T")
 
@@ -13,7 +13,7 @@ class _Node(Generic[T]):
     """A node in the singly linked list."""
 
     value: T
-    next: Optional[_Node[T]] = None
+    next: _Node[T] | None = None
 
 
 class LinkedListBase(ABC, Generic[T]):
@@ -53,11 +53,11 @@ class LinkedListBase(ABC, Generic[T]):
         """Remove all elements."""
 
     @abstractmethod
-    def head(self) -> Optional[T]:
+    def head(self) -> T | None:
         """Return the first value, or None if list is empty."""
 
     @abstractmethod
-    def tail(self) -> Optional[T]:
+    def tail(self) -> T | None:
         """Return the last value, or None if empty."""
 
     @abstractmethod

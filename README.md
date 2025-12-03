@@ -80,13 +80,12 @@ uv run python
 ### 1. Linear Structures
 
 **Stacks**
-- [ ] `Stack` backed by Python list
-- [ ] Operations: `push`, `pop`, `peek`, `is_empty`, `__len__`
-- [ ] Typical use cases (undo history, DFS)
+- [x] `Stack` backed by Python list
+- [x] Operations: `push`, `pop`, `peek`, `is_empty`, `__len__`
 
 **Queues**
-- [ ] `Queue` backed by `collections.deque`
-- [ ] Operations: `enqueue`, `dequeue`, `peek`, `is_empty`, `__len__`
+- [x] `Queue` backed by python list
+- [x] Operations: `enqueue`, `dequeue`, `peek`, `is_empty`, `__len__`
 
 **Linked Lists**
 - [ ] `SinglyLinkedList`

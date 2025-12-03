@@ -4,6 +4,9 @@ on:
     tags:  # publish on any tag starting with `v`, e.g.  v0.1.0
       - v*
 
+env:
+  UV_VERSION: "0.9.15"
+
 jobs:
   tests:
     name: Test on Python ${{ matrix.python-version }}
@@ -21,7 +24,7 @@ jobs:
         with:
           enable-cache: true
           python-version: ${{ matrix.python-version }}
-          version: "0.9.15"
+          version: ${{ env.UV_VERSION }}
 
       - name: Install dependencies
         run: uv sync --locked --all-extras --dev
@@ -48,7 +51,7 @@ jobs:
         uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
-          version: "0.9.15"
+          version: ${{ env.UV_VERSION }}
 
       - name: Build package (wheel and sdist)
         run: uv build

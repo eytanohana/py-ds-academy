@@ -1,7 +1,8 @@
 name: Test Build Publish Package
 on:
   push:
-    branches: [ master, main ]
+    tags:  # publish on any tag starting with `v`, e.g.  v0.1.0
+      - v*
 
 jobs:
   tests:

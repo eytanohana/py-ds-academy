@@ -1,0 +1,41 @@
+name: Release - Build and Publish Package
+
+on:
+  push:
+    tags:
+      - 'v*'   # runs only on tags like v0.1.0
+
+env:
+  UV_VERSION: "0.9.15"
+
+jobs:
+  run-ci:
+    name: Run CI Tests
+    uses: ./.github/workflows/ci.yml    # <--- CALL reusable CI workflow
+
+  build-and-publish:
+    name: Build and Publish Package
+    runs-on: ubuntu-latest
+    needs: run-ci                      # <--- WAIT for CI to pass
+
+    environment:
+      name: testpypi
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up uv and Python
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          version: ${{ env.UV_VERSION }}
+
+      - name: Build package (wheel and sdist)
+        run: uv build
+
+      - name: Publish to TestPyPI
+        run: uv publish --publish-url "https://test.pypi.org/legacy/"

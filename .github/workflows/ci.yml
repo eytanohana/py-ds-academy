@@ -1,8 +1,10 @@
 name: Test Build Publish Package
 on:
   push:
-    tags:  # publish on any tag starting with `v`, e.g.  v0.1.0
-      - v*
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_call:
 
 env:
   UV_VERSION: "0.9.15"
@@ -31,30 +33,3 @@ jobs:
 
       - name: Run tests
         run: uv run pytest tests
-
-  build:
-    name: Build distribution
-    runs-on: ubuntu-latest
-    needs: tests
-
-    environment:
-      name: testpypi
-    permissions:
-      id-token: write
-      contents: read
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
-
-      - name: Set up uv and Python
-        uses: astral-sh/setup-uv@v7
-        with:
-          enable-cache: true
-          version: ${{ env.UV_VERSION }}
-
-      - name: Build package (wheel and sdist)
-        run: uv build
-
-      - name: Publish to PyPI
-        run: uv publish --publish-url "https://test.pypi.org/legacy/"

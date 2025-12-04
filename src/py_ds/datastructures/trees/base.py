@@ -9,17 +9,17 @@ T = TypeVar("T")
 
 
 @dataclass
-class _Node(Generic[T]):
+class _BinaryNode(Generic[T]):
     """A node with references to its left and right child nodes."""
 
     value: T
-    left: _Node[T] | None = None
-    right: _Node[T] | None = None
+    left: _BinaryNode[T] | None = None
+    right: _BinaryNode[T] | None = None
 
 
 class BinaryTree(ABC, Generic[T]):
     def __init__(self, items: Iterable[T] | None = None):
-        self._root: _Node[T] = None
+        self._root: _BinaryNode[T] = None
         items = items or []
         for item in items:
             self.insert(item)
@@ -44,3 +44,6 @@ class BinaryTree(ABC, Generic[T]):
     @property
     def is_empty(self) -> bool:
         return self.size == 0
+
+    @property
+    def height(self) -> int: ...

@@ -1,11 +1,11 @@
 from collections.abc import Iterator
 
-from py_ds.datastructures.trees.base import BinaryTree, T, _Node
+from py_ds.datastructures.trees.base import BinaryTree, T, _BinaryNode
 
 
 class BinarySearchTree(BinaryTree[T]):
     def insert(self, value: T) -> None:
-        insert_node = _Node(value=value)
+        insert_node = _BinaryNode(value=value)
         if self._root is None:
             self._root = insert_node
             return

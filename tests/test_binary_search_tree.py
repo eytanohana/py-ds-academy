@@ -27,9 +27,9 @@ def small_bst() -> BinarySearchTree[int]:
 
 
 def test_empty_tree_properties(empty_bst: BinarySearchTree[int]) -> None:
-    assert empty_bst.is_empty()
+    assert empty_bst.is_empty
     assert len(empty_bst) == 0
-    assert empty_bst.height() == -1
+    assert empty_bst.height == -1
 
     # Traversals over an empty tree yield no elements
     assert list(empty_bst.inorder()) == []
@@ -55,13 +55,13 @@ def test_empty_tree_properties(empty_bst: BinarySearchTree[int]) -> None:
 def test_single_insert_updates_properties(empty_bst: BinarySearchTree[int]) -> None:
     empty_bst.insert(10)
 
-    assert not empty_bst.is_empty()
+    assert not empty_bst.is_empty
     assert len(empty_bst) == 1
     assert 10 in empty_bst
     assert 5 not in empty_bst
 
     # Height of a single-node tree is 0
-    assert empty_bst.height() == 0
+    assert empty_bst.height == 0
 
     # All traversals of a single-node tree should yield [10]
     expected = [10]
@@ -179,7 +179,7 @@ def test_remove_from_single_node_tree() -> None:
 
     bst.remove(10)
 
-    assert bst.is_empty()
+    assert bst.is_empty
     assert len(bst) == 0
     assert 10 not in bst
     assert list(bst.inorder()) == []
@@ -262,13 +262,13 @@ def test_height_after_insertions_unbalanced() -> None:
     # In a naive BST, height should be length - 1 in this pattern
     # (degenerate linked-list shape)
     assert len(bst) == 5
-    assert bst.height() >= 4  # allow for more clever implementations, just not < 4
+    assert bst.height >= 4  # allow for more clever implementations, just not < 4
 
 
 def test_height_on_small_balanced_pattern(small_bst: BinarySearchTree[int]) -> None:
     # We don't enforce exact height, but we can at least assert it's not absurd.
     # For 7 nodes, the minimal possible height is 2 (perfectly balanced).
-    h = small_bst.height()
+    h = small_bst.height
     assert h >= 2
     assert h < len(small_bst)  # height must always be < number of nodes
 
@@ -281,7 +281,7 @@ def test_height_on_small_balanced_pattern(small_bst: BinarySearchTree[int]) -> N
 def test_clear_resets_tree(small_bst: BinarySearchTree[int]) -> None:
     small_bst.clear()
 
-    assert small_bst.is_empty()
+    assert small_bst.is_empty
     assert len(small_bst) == 0
     assert list(small_bst.inorder()) == []
     assert list(small_bst.preorder()) == []

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from collections.abc import Iterator
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
 from typing import Generic, TypeVar
 
@@ -18,6 +18,11 @@ class _Node(Generic[T]):
 
 
 class BinaryTree(ABC, Generic[T]):
+    def __init__(self, items: Iterable[T]):
+        self._root: _Node[T] = None
+        for item in items:
+            self.insert(item)
+
     @abstractmethod
     def insert(self, value: T) -> None:
         """Add a value to the end of the tree."""

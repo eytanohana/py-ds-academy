@@ -6,6 +6,7 @@ from py_ds.datastructures.trees.base import BinaryTree, T, _BinaryNode
 class BinarySearchTree(BinaryTree[T]):
     def insert(self, value: T) -> None:
         insert_node = _BinaryNode(value=value)
+        self.size += 1
         if self._root is None:
             self._root = insert_node
             return
@@ -21,7 +22,6 @@ class BinarySearchTree(BinaryTree[T]):
                     curr.right = insert_node
                     break
                 curr = curr.right
-        self.size += 1
 
     def remove(self, value: T) -> None:
         pass
@@ -35,7 +35,15 @@ class BinarySearchTree(BinaryTree[T]):
     def min(self) -> T:
         if self.is_empty:
             raise ValueError("Empty tree")
+        curr = self._root
+        while curr.left:
+            curr = curr.left
+        return curr.value
 
     def max(self) -> T:
         if self.is_empty:
             raise ValueError("Empty tree")
+        curr = self._root
+        while curr.right:
+            curr = curr.right
+        return curr.value

@@ -26,9 +26,6 @@ class BinarySearchTree(BinaryTree[T]):
     def remove(self, value: T) -> None:
         pass
 
-    def clear(self) -> None:
-        pass
-
     def __iter__(self) -> Iterator[T]:
         pass
 

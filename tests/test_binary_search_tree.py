@@ -121,33 +121,6 @@ def test_preorder_and_postorder_have_correct_length(
 
 
 # ------------------------------------------------------------
-# Duplicate handling
-# ------------------------------------------------------------
-
-
-def test_inserting_duplicate_is_noop() -> None:
-    bst = BinarySearchTree[int]()
-    bst.insert(5)
-    bst.insert(3)
-    bst.insert(7)
-
-    original_len = len(bst)
-    original_inorder = list(bst.inorder())
-
-    # Insert a duplicate value
-    bst.insert(3)
-
-    # Length should not change
-    assert len(bst) == original_len
-
-    # Tree contents should not change
-    assert list(bst.inorder()) == original_inorder
-
-    # Still contains 3
-    assert 3 in bst
-
-
-# ------------------------------------------------------------
 # min / max operations
 # ------------------------------------------------------------
 

@@ -37,9 +37,9 @@ class BinaryTree(ABC, Generic[T]):
     def remove(self, value: T) -> None:
         """Remove the first occurrence of a value."""
 
-    @abstractmethod
     def clear(self) -> None:
-        """Remove all elements."""
+        self._root = None
+        self.size = 0
 
     @abstractmethod
     def __iter__(self) -> Iterator[T]:
@@ -68,9 +68,9 @@ class BinaryTree(ABC, Generic[T]):
         def _inorder(node: _BinaryNode[T] | None):
             if node is None:
                 return
-            _inorder(node.left)
+            yield from _inorder(node.left)
             yield node.value
-            _inorder(node.right)
+            yield from _inorder(node.right)
 
         yield from _inorder(self._root)
 
@@ -79,8 +79,8 @@ class BinaryTree(ABC, Generic[T]):
             if node is None:
                 return
             yield node.value
-            _preorder(node.left)
-            _preorder(node.right)
+            yield from _preorder(node.left)
+            yield from _preorder(node.right)
 
         yield from _preorder(self._root)
 
@@ -88,13 +88,14 @@ class BinaryTree(ABC, Generic[T]):
         def _postorder(node: _BinaryNode[T] | None):
             if node is None:
                 return
-            _postorder(node.left)
-            _postorder(node.right)
+            yield from _postorder(node.left)
+            yield from _postorder(node.right)
             yield node.value
 
         yield from _postorder(self._root)
 
     def level_order(self) -> Iterator[T]:
+        # todo: fix
         def _levelorder(node: _BinaryNode[T] | None):
             if node is None:
                 return

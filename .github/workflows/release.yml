@@ -3,7 +3,7 @@ name: Release - Build and Publish Package
 on:
   push:
     tags:
-      - 'v*'   # runs only on tags like v0.1.0
+      - "v*.*.*"   # runs only on tags like v0.1.0
 
 env:
   UV_VERSION: "0.9.15"
@@ -19,7 +19,7 @@ jobs:
     needs: run-ci                      # <--- WAIT for CI to pass
 
     environment:
-      name: testpypi
+      name: pypi
     permissions:
       id-token: write
       contents: read
@@ -37,5 +37,5 @@ jobs:
       - name: Build package (wheel and sdist)
         run: uv build
 
-      - name: Publish to TestPyPI
-        run: uv publish --publish-url "https://test.pypi.org/legacy/"
+      - name: Publish to PyPI
+        run: uv publish

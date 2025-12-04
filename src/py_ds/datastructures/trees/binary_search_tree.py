@@ -33,7 +33,9 @@ class BinarySearchTree(BinaryTree[T]):
         pass
 
     def min(self) -> T:
-        pass
+        if self.is_empty:
+            raise ValueError("Empty tree")
 
     def max(self) -> T:
-        pass
+        if self.is_empty:
+            raise ValueError("Empty tree")

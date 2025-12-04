@@ -18,10 +18,12 @@ class _Node(Generic[T]):
 
 
 class BinaryTree(ABC, Generic[T]):
-    def __init__(self, items: Iterable[T]):
+    def __init__(self, items: Iterable[T] | None = None):
         self._root: _Node[T] = None
+        items = items or []
         for item in items:
             self.insert(item)
+        self.size = len(items)
 
     @abstractmethod
     def insert(self, value: T) -> None:
@@ -38,3 +40,7 @@ class BinaryTree(ABC, Generic[T]):
     @abstractmethod
     def __iter__(self) -> Iterator[T]:
         """Iterate through values."""
+
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0

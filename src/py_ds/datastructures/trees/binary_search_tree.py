@@ -21,6 +21,7 @@ class BinarySearchTree(BinaryTree[T]):
                     curr.right = insert_node
                     break
                 curr = curr.right
+        self.size += 1
 
     def remove(self, value: T) -> None:
         pass

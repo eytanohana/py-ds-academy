@@ -16,6 +16,10 @@ class _BinaryNode(Generic[T]):
     left: _BinaryNode[T] | None = None
     right: _BinaryNode[T] | None = None
 
+    @property
+    def has_children(self) -> bool:
+        return self.left is not None or self.right is not None
+
 
 class BinaryTree(ABC, Generic[T]):
     def __init__(self, items: Iterable[T] | None = None):
@@ -45,5 +49,36 @@ class BinaryTree(ABC, Generic[T]):
     def is_empty(self) -> bool:
         return self.size == 0
 
+    def __len__(self):
+        return self.size
+
     @property
-    def height(self) -> int: ...
+    def height(self) -> int:
+        if not self._root:
+            return -1
+
+        def _height(node: _BinaryNode[T] | None):
+            if node is None or not node.has_children:
+                return 0
+            return 1 + max(_height(node.left), _height(node.right))
+
+        return _height(self._root)
+
+    def inorder(self) -> Iterator[T]:
+        def _inorder(node: _BinaryNode[T] | None):
+            if node is None:
+                return
+            _inorder(node.left)
+            yield node.value
+            _inorder(node.right)
+
+        yield from _inorder(self._root)
+
+    def preorder(self) -> Iterator[T]:
+        pass
+
+    def postorder(self) -> Iterator[T]:
+        pass
+
+    def level_order(self) -> Iterator[T]:
+        pass

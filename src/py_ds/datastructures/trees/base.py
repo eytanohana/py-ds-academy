@@ -95,15 +95,14 @@ class BinaryTree(ABC, Generic[T]):
         yield from _postorder(self._root)
 
     def level_order(self) -> Iterator[T]:
-        # todo: fix
-        def _levelorder(node: _BinaryNode[T] | None):
-            if node is None:
-                return
+        visited = [self._root] if self._root else []
+        while visited:
+            node = visited.pop(0)
             yield node.value
-            _levelorder(node.left)
-            _levelorder(node.right)
-
-        yield from _levelorder(self._root)
+            if node.left:
+                visited.append(node.left)
+            if node.right:
+                visited.append(node.right)
 
     def __contains__(self, item: T) -> bool:
         if self.is_empty:

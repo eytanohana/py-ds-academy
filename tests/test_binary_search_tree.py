@@ -90,34 +90,14 @@ def test_multiple_inserts_and_len() -> None:
         assert v not in bst
 
 
-# ------------------------------------------------------------
-# Ordering invariant (inorder traversal must be sorted)
-# ------------------------------------------------------------
-
-
-def test_inorder_traversal_is_sorted(small_bst: BinarySearchTree[int]) -> None:
-    values = [5, 3, 7, 2, 4, 6, 8]
-    inorder_values = list(small_bst.inorder())
-
-    assert inorder_values == sorted(values)
-
-
-def test_preorder_and_postorder_have_correct_length(
-    small_bst: BinarySearchTree[int],
-) -> None:
-    n = len(small_bst)
-
-    assert len(list(small_bst.preorder())) == n
-    assert len(list(small_bst.postorder())) == n
-    assert len(list(small_bst.level_order())) == n
-
-    # Using sets, we can at least validate they contain the same elements
-    # (not their order).
-    elements = {5, 3, 7, 2, 4, 6, 8}
-    assert set(small_bst.inorder()) == elements
-    assert set(small_bst.preorder()) == elements
-    assert set(small_bst.postorder()) == elements
-    assert set(small_bst.level_order()) == elements
+def test_traversals(small_bst: BinarySearchTree[int]) -> None:
+    expected_preorder = [5, 3, 2, 4, 7, 6, 8]
+    expected_postorder = [2, 4, 3, 6, 8, 7, 5]
+    expected_levelorder = [5, 3, 7, 2, 4, 6, 8]
+    assert list(small_bst.inorder()) == sorted(expected_preorder)
+    assert list(small_bst.preorder()) == expected_preorder
+    assert list(small_bst.postorder()) == expected_postorder
+    assert list(small_bst.level_order()) == expected_levelorder
 
 
 # ------------------------------------------------------------

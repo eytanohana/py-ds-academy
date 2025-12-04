@@ -75,10 +75,41 @@ class BinaryTree(ABC, Generic[T]):
         yield from _inorder(self._root)
 
     def preorder(self) -> Iterator[T]:
-        pass
+        def _preorder(node: _BinaryNode[T] | None):
+            if node is None:
+                return
+            yield node.value
+            _preorder(node.left)
+            _preorder(node.right)
+
+        yield from _preorder(self._root)
 
     def postorder(self) -> Iterator[T]:
-        pass
+        def _postorder(node: _BinaryNode[T] | None):
+            if node is None:
+                return
+            _postorder(node.left)
+            _postorder(node.right)
+            yield node.value
+
+        yield from _postorder(self._root)
 
     def level_order(self) -> Iterator[T]:
-        pass
+        def _levelorder(node: _BinaryNode[T] | None):
+            if node is None:
+                return
+            yield node.value
+            _levelorder(node.left)
+            _levelorder(node.right)
+
+        yield from _levelorder(self._root)
+
+    def __contains__(self, item: T) -> bool:
+        if self.is_empty:
+            return False
+        curr = self._root
+        while curr is not None:
+            if item == curr.value:
+                return True
+            curr = curr.left if item < curr.value else curr.right
+        return False

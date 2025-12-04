@@ -31,3 +31,9 @@ class BinarySearchTree(BinaryTree[T]):
 
     def __iter__(self) -> Iterator[T]:
         pass
+
+    def min(self) -> T:
+        pass
+
+    def max(self) -> T:
+        pass

@@ -113,7 +113,7 @@ def test_preorder_and_postorder_have_correct_length(
 
     # Using sets, we can at least validate they contain the same elements
     # (not their order).
-    elements = set([5, 3, 7, 2, 4, 6, 8])
+    elements = {5, 3, 7, 2, 4, 6, 8}
     assert set(small_bst.inorder()) == elements
     assert set(small_bst.preorder()) == elements
     assert set(small_bst.postorder()) == elements

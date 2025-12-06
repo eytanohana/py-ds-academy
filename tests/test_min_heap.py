@@ -1,7 +1,8 @@
 # test_minheap.py
 
 import pytest
-from py_ds.datastructures.heap import MinHeap
+
+from py_ds.datastructures.heaps import MinHeap
 
 
 def test_new_heap_is_empty():

@@ -1,5 +1,3 @@
-from collections.abc import Iterator
-
 from py_ds.datastructures.trees.base import BinaryTree, T, _BinaryNode
 
 
@@ -24,10 +22,44 @@ class BinarySearchTree(BinaryTree[T]):
                 curr = curr.right
 
     def remove(self, value: T) -> None:
-        pass
+        if self.is_empty:
+            return
+        curr, parent, left = self._root, None, None
+        while curr and curr.value != value:
+            parent = curr
+            left, curr = (True, curr.left) if value < curr.value else (False, curr.right)
+        if not curr:
+            return
+        self.size -= 1
+        if not (curr.left or curr.right):
+            if curr == self._root:
+                self._root = None
+            elif left:
+                parent.left = None
+            else:
+                parent.right = None
+            return
 
-    def __iter__(self) -> Iterator[T]:
-        pass
+        if curr.left and curr.right:
+            succ_parent = curr
+            succ = curr.right
+            while succ.left:
+                succ_parent = succ
+                succ = succ.left
+            curr.value = succ.value
+            succ_parent.left = None
+            return
+
+        if curr.left:
+            if left:
+                parent.left = curr.left
+            else:
+                parent.right = curr.left
+        else:
+            if left:
+                parent.left = curr.right
+            else:
+                parent.right = curr.right
 
     def min(self) -> T:
         if self.is_empty:

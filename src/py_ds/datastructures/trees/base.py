@@ -41,10 +41,6 @@ class BinaryTree(ABC, Generic[T]):
         self._root = None
         self.size = 0
 
-    @abstractmethod
-    def __iter__(self) -> Iterator[T]:
-        """Iterate through values."""
-
     @property
     def is_empty(self) -> bool:
         return self.size == 0

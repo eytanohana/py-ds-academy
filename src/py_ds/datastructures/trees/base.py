@@ -103,13 +103,3 @@ class BinaryTree(ABC, Generic[T]):
                 visited.append(node.left)
             if node.right:
                 visited.append(node.right)
-
-    def __contains__(self, item: T) -> bool:
-        if self.is_empty:
-            return False
-        curr = self._root
-        while curr is not None:
-            if item == curr.value:
-                return True
-            curr = curr.left if item < curr.value else curr.right
-        return False

@@ -1,7 +1,7 @@
 from collections.abc import Iterable
 from typing import Generic, TypeVar
 
-T = TypeVar("T")
+T = TypeVar('T')
 
 
 class MinHeap(Generic[T]):
@@ -18,7 +18,7 @@ class MinHeap(Generic[T]):
 
     def peek(self) -> T:
         if self._size == 0:
-            raise IndexError("peek from an empty heap")
+            raise IndexError('peek from an empty heap')
         return self._items[0]
 
     def __len__(self) -> int:

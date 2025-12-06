@@ -112,13 +112,13 @@ def test_heap_supports_comparable_tuples():
     """
     heap = MinHeap()
 
-    heap.push((3, "low"))
-    heap.push((1, "high"))
-    heap.push((2, "medium"))
+    heap.push((3, 'low'))
+    heap.push((1, 'high'))
+    heap.push((2, 'medium'))
 
-    assert heap.pop() == (1, "high")
-    assert heap.pop() == (2, "medium")
-    assert heap.pop() == (3, "low")
+    assert heap.pop() == (1, 'high')
+    assert heap.pop() == (2, 'medium')
+    assert heap.pop() == (3, 'low')
     assert not heap
 
 

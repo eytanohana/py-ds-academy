@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable, Iterator
 from typing import Generic, TypeVar
 
-T = TypeVar("T")
+T = TypeVar('T')
 
 
 class Stack(Generic[T]):
@@ -51,7 +51,7 @@ class Stack(Generic[T]):
         Time complexity: O(1).
         """
         if self.is_empty():
-            raise IndexError("pop from empty stack")
+            raise IndexError('pop from empty stack')
         return self._items.pop()
 
     def peek(self) -> T:
@@ -64,7 +64,7 @@ class Stack(Generic[T]):
         Time complexity: O(1).
         """
         if self.is_empty():
-            raise IndexError("peek from empty stack")
+            raise IndexError('peek from empty stack')
         return self._items[-1]
 
     def is_empty(self) -> bool:
@@ -160,4 +160,4 @@ class Stack(Generic[T]):
 
         This is mainly for debugging / REPL usage.
         """
-        return f"Stack({self.to_list()})"
+        return f'Stack({self.to_list()})'

@@ -6,15 +6,15 @@ from py_ds.datastructures.stack import Stack
 from py_ds.datastructures.trees import BinarySearchTree
 
 __all__ = [
-    "BinarySearchTree",
-    "DoublyLinkedList",
-    "Queue",
-    "SinglyLinkedList",
-    "Stack",
+    'BinarySearchTree',
+    'DoublyLinkedList',
+    'Queue',
+    'SinglyLinkedList',
+    'Stack',
 ]
 
 
 try:
-    __version__ = version("py-ds-academy")
+    __version__ = version('py-ds-academy')
 except PackageNotFoundError:
-    __version__ = "0.0.0"
+    __version__ = '0.0.0'

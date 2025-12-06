@@ -1,6 +1,6 @@
 [project]
 name = "py-ds-academy"
-version = "0.1.1"
+version = "0.1.2"
 description = "Data structures implemented from scratch for learning and experimentation."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -25,6 +25,11 @@ classifiers = [
     "Topic :: Software Development :: Libraries",
     "Topic :: Education",
 ]
+
+[project.urls]
+Homepage = "https://github.com/eytanohana/py-ds-academy"
+Repository = "https://github.com/eytanohana/py-ds-academy"
+Issues = "https://github.com/eytanohana/py-ds-academy/issues"
 
 [build-system]
 requires = ["uv_build>=0.9.13,<0.10.0"]

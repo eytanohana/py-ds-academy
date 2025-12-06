@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
 
-from py_ds.datastructures.linked_list.base import LinkedListBase, T, _Node
+from py_ds.datastructures.linked_lists.base import LinkedListBase, T, _Node
 
 
 @dataclass

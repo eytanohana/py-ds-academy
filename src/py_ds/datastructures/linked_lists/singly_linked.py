@@ -1,6 +1,6 @@
 from collections.abc import Iterable, Iterator
 
-from py_ds.datastructures.linked_list.base import LinkedListBase, T, _Node
+from py_ds.datastructures.linked_lists.base import LinkedListBase, T, _Node
 
 
 class SinglyLinkedList(LinkedListBase[T]):

@@ -17,7 +17,7 @@ class MinHeap(Generic[T]):
     def pop(self) -> T: ...
 
     def peek(self) -> T:
-        if self._size == 0:
+        if not self:
             raise IndexError('peek from an empty heap')
         return self._items[0]
 

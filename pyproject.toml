@@ -43,7 +43,7 @@ dev = [
 [tool.ruff]
 # Lint and format everything under src and tests
 src = ["src", "tests"]
-line-length = 88  # keep in sync with black
+line-length = 120
 
 [tool.ruff.lint]
 # Start with Ruff's default rules and extend with bugbear, pyupgrade, etc.

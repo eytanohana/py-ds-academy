@@ -1,6 +1,6 @@
 import pytest
 
-from py_ds.datastructures.linked_list.singly_linked import SinglyLinkedList
+from py_ds.datastructures.linked_lists.singly_linked import SinglyLinkedList
 
 
 def test_empty_list_initial_state():

@@ -5,7 +5,7 @@ from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
 from typing import Generic, TypeVar
 
-T = TypeVar("T")
+T = TypeVar('T')
 
 
 @dataclass
@@ -81,7 +81,7 @@ class LinkedListBase(ABC, Generic[T]):
         for i, node_value in enumerate(self):
             if value == node_value:
                 return i
-        raise ValueError("value not found")
+        raise ValueError('value not found')
 
     def to_list(self) -> list[T]:
         """Return Python list of all values in order."""
@@ -103,7 +103,7 @@ class LinkedListBase(ABC, Generic[T]):
             IndexError
         """
         if index < 0 or index >= len(self):
-            raise IndexError("bad index")
+            raise IndexError('bad index')
         for i, value in enumerate(self):
             if i == index:
                 return value
@@ -111,4 +111,4 @@ class LinkedListBase(ABC, Generic[T]):
     def __repr__(self) -> str:
         """String representation."""
         class_name = self.__class__.__name__
-        return f"{class_name}({self.to_list()})"
+        return f'{class_name}({self.to_list()})'

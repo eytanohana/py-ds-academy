@@ -82,4 +82,4 @@ def test_bool_truthiness():
 
 def test_repr():
     q = Queue([1, 2, 3])
-    assert repr(q) == "Queue([1, 2, 3])"
+    assert repr(q) == 'Queue([1, 2, 3])'

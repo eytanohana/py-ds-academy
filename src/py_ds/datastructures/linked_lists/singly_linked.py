@@ -1,6 +1,6 @@
 from collections.abc import Iterable, Iterator
 
-from py_ds.datastructures.linked_list.base import LinkedListBase, T, _Node
+from py_ds.datastructures.linked_lists.base import LinkedListBase, T, _Node
 
 
 class SinglyLinkedList(LinkedListBase[T]):
@@ -63,7 +63,7 @@ class SinglyLinkedList(LinkedListBase[T]):
             IndexError: if index is out of bounds.
         """
         if index < 0 or index > self._length:
-            raise IndexError("index out of bounds on list")
+            raise IndexError('index out of bounds on list')
         if index == 0:
             self.prepend(value)
         elif index == self._length:
@@ -96,7 +96,7 @@ class SinglyLinkedList(LinkedListBase[T]):
                 self._head = self._head.next
             self._length -= 1
         else:
-            raise ValueError("value not found")
+            raise ValueError('value not found')
 
     def pop(self, index: int = -1) -> T:
         """
@@ -110,7 +110,7 @@ class SinglyLinkedList(LinkedListBase[T]):
         prev, curr = None, self._head
         idx = self._length + index if index < 0 else index
         if idx < 0 or idx >= self._length or self._length == 0:
-            raise IndexError("invalid index")
+            raise IndexError('invalid index')
         for _ in range(idx):
             prev = curr
             curr = curr.next
@@ -162,7 +162,7 @@ class SinglyLinkedList(LinkedListBase[T]):
             IndexError
         """
         if index < 0 or index >= self._length:
-            raise IndexError("bad index")
+            raise IndexError('bad index')
         idx, curr = 0, self._head
         while idx < index:
             curr = curr.next

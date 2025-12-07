@@ -12,7 +12,19 @@ class MinHeap(Generic[T]):
         for item in items:
             self.push(item)
 
-    def push(self, item: T) -> None: ...
+    def _swap(self, idx1, idx2) -> None:
+        self._items[idx1], self._items[idx2] = self._items[idx2], self._items[idx1]
+
+    def push(self, item: T) -> None:
+        index = self._size
+        if index >= len(self._items):
+            self._items.append(item)
+        else:
+            self._items[index] = item
+        while index > 0 and self._items[index] < self._items[parent_idx := (index - 1) // 2]:
+            self._swap(index, parent_idx)
+            index = parent_idx
+        self._size += 1
 
     def pop(self) -> T: ...
 

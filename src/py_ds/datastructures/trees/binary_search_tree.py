@@ -63,7 +63,7 @@ class BinarySearchTree(BinaryTree[T]):
 
     def min(self) -> T:
         if self.is_empty:
-            raise ValueError("Empty tree")
+            raise ValueError('Empty tree')
         curr = self._root
         while curr.left:
             curr = curr.left
@@ -71,7 +71,7 @@ class BinarySearchTree(BinaryTree[T]):
 
     def max(self) -> T:
         if self.is_empty:
-            raise ValueError("Empty tree")
+            raise ValueError('Empty tree')
         curr = self._root
         while curr.right:
             curr = curr.right

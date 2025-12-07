@@ -1,5 +1,7 @@
 # py-ds
 
+[![CI status](https://github.com/eytanohana/py-ds-academy/actions/workflows/ci.yml/badge.svg)](https://github.com/eytanohana/py-ds-academy/actions/workflows/ci.yml)
+
 A small playground project for implementing classic data structures from scratch in Python.
 
 The goal is **learning + correctness** (with tests), not squeezing out every last micro-optimization.

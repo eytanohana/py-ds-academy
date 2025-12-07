@@ -80,4 +80,4 @@ def test_bool_truthiness():
 
 def test_repr_contains_items():
     s = Stack([1, 2, 3])
-    assert repr(s) == "Stack([1, 2, 3])"
+    assert repr(s) == 'Stack([1, 2, 3])'

@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
 
-from py_ds.datastructures.linked_list.base import LinkedListBase, T, _Node
+from py_ds.datastructures.linked_lists.base import LinkedListBase, T, _Node
 
 
 @dataclass
@@ -68,9 +68,9 @@ class DoublyLinkedList(LinkedListBase[T]):
 
     def _get_node_at(self, index: int) -> _DoublyNode[T]:
         if self._length == 0:
-            raise IndexError("pop from an empty list")
+            raise IndexError('pop from an empty list')
         if index < -self._length or index >= self._length:
-            raise IndexError("invalid index")
+            raise IndexError('invalid index')
 
         if index < 0:
             index = self._length + index
@@ -122,7 +122,7 @@ class DoublyLinkedList(LinkedListBase[T]):
         while curr and curr.value != value:
             curr = curr.next
         if curr is None or curr.value != value:
-            raise ValueError("value not found")
+            raise ValueError('value not found')
 
         prev = curr.prev
         next_ = curr.next

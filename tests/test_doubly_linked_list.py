@@ -2,7 +2,7 @@
 
 import pytest
 
-from py_ds.datastructures.linked_list.doubly_linked import DoublyLinkedList
+from py_ds.datastructures.linked_lists.doubly_linked import DoublyLinkedList
 
 
 def test_empty_list_initial_state():
@@ -103,7 +103,7 @@ def test_remove_existing_value():
 def test_remove_nonexistent_raises():
     """Remove should raise ValueError if value not found."""
     dll = DoublyLinkedList([1, 2, 3])
-    with pytest.raises(ValueError, match="value not found"):
+    with pytest.raises(ValueError, match='value not found'):
         dll.remove(10)
 
 
@@ -156,7 +156,7 @@ def test_find():
 def test_find_nonexistent_raises():
     """Find should raise ValueError if value not found."""
     dll = DoublyLinkedList([1, 2, 3])
-    with pytest.raises(ValueError, match="value not found"):
+    with pytest.raises(ValueError, match='value not found'):
         dll.find(10)
 
 
@@ -233,7 +233,7 @@ def test_setitem_out_of_bounds():
 def test_repr():
     """Repr should show the list contents."""
     dll = DoublyLinkedList([1, 2, 3])
-    assert repr(dll) == "DoublyLinkedList([1, 2, 3])"
+    assert repr(dll) == 'DoublyLinkedList([1, 2, 3])'
 
 
 def test_bool():

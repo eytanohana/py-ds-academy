@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable, Iterator
 from typing import Generic, TypeVar
 
-T = TypeVar("T")
+T = TypeVar('T')
 
 
 class Queue(Generic[T]):
@@ -45,7 +45,7 @@ class Queue(Generic[T]):
         Time complexity: O(1).
         """
         if self.is_empty():
-            raise IndexError("dequeue from empty queue")
+            raise IndexError('dequeue from empty queue')
         return self._items.pop(0)
 
     def peek(self) -> T:
@@ -56,7 +56,7 @@ class Queue(Generic[T]):
             IndexError: if the queue is empty.
         """
         if self.is_empty():
-            raise IndexError("peek from empty queue")
+            raise IndexError('peek from empty queue')
         return self._items[0]
 
     def is_empty(self) -> bool:
@@ -116,4 +116,4 @@ class Queue(Generic[T]):
 
             Queue([1, 2, 3])
         """
-        return f"Queue({self._items})"
+        return f'Queue({self._items})'

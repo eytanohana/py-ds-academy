@@ -24,6 +24,7 @@ class LinkedListBase(ABC, Generic[T]):
 
     def __init__(self, items: Iterable[T] | None = None) -> None:
         """Initialize the list with optional items."""
+        self._head: _Node[T] | None = None
         self._length: int = 0
         for item in items or []:
             self.append(item)
@@ -104,9 +105,10 @@ class LinkedListBase(ABC, Generic[T]):
         """
         if index < 0 or index >= len(self):
             raise IndexError('bad index')
-        for i, value in enumerate(self):
-            if i == index:
-                return value
+        curr = self._head
+        for _ in range(index):
+            curr = curr.next
+        return curr.value
 
     def __repr__(self) -> str:
         """String representation."""

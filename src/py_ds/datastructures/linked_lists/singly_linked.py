@@ -1,4 +1,4 @@
-from collections.abc import Iterable, Iterator
+from collections.abc import Iterator
 
 from py_ds.datastructures.linked_lists.base import LinkedListBase, T, _Node
 
@@ -12,14 +12,6 @@ class SinglyLinkedList(LinkedListBase[T]):
     - iteration
     - length, truthiness
     """
-
-    def __init__(self, items: Iterable[T] | None = None) -> None:
-        """
-        Initialize the list with optional items.
-        Items are appended in order (first item becomes head).
-        """
-        self._head: _Node[T] | None = None
-        super().__init__(items)
 
     # ---------------------------------------------------
     # Core list operations

@@ -35,24 +35,21 @@ class MinHeap(Generic[T]):
     def _right_child(self, index) -> T:
         return self._items[self._right_index(index)]
 
+    def _heapify_up(self, index: int) -> None:
+        while index > 0 and self._items[index] < self._items[parent_idx := (index - 1) // 2]:
+            self._swap(index, parent_idx)
+            index = parent_idx
+
     def push(self, item: T) -> None:
         index = self._size
         if index >= len(self._items):
             self._items.append(item)
         else:
             self._items[index] = item
-        while index > 0 and self._items[index] < self._items[parent_idx := (index - 1) // 2]:
-            self._swap(index, parent_idx)
-            index = parent_idx
+        self._heapify_up(index)
         self._size += 1
 
-    def pop(self) -> T:
-        if not self:
-            raise IndexError('pop from an empty heap')
-        parent_idx = 0
-        item = self._items[parent_idx]
-        self._items[parent_idx] = self._items[self._size - 1]
-        self._size -= 1
+    def _heapify_down(self, parent_idx: int) -> None:
         while self._has_left_child(parent_idx):
             smaller_child, smaller_child_idx = self._left_child(parent_idx), self._left_index(parent_idx)
             if self._has_right_child(parent_idx) and (right_child := self._right_child(parent_idx)) < smaller_child:
@@ -63,6 +60,15 @@ class MinHeap(Generic[T]):
                 parent_idx = smaller_child_idx
             else:
                 break
+
+    def pop(self) -> T:
+        if not self:
+            raise IndexError('pop from an empty heap')
+        parent_idx = 0
+        item = self._items[parent_idx]
+        self._items[parent_idx] = self._items[self._size - 1]
+        self._size -= 1
+        self._heapify_down(parent_idx)
         return item
 
     def peek(self) -> T:

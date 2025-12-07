@@ -48,17 +48,16 @@ class BinaryTree(ABC, Generic[T]):
     def __len__(self):
         return self.size
 
+    def _height(self, node: _BinaryNode[T] | None):
+        if node is None or not node.has_children:
+            return 0
+        return 1 + max(self._height(node.left), self._height(node.right))
+
     @property
     def height(self) -> int:
         if not self._root:
             return -1
-
-        def _height(node: _BinaryNode[T] | None):
-            if node is None or not node.has_children:
-                return 0
-            return 1 + max(_height(node.left), _height(node.right))
-
-        return _height(self._root)
+        return self._height(self._root)
 
     def inorder(self) -> Iterator[T]:
         def _inorder(node: _BinaryNode[T] | None):

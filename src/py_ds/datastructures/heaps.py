@@ -104,7 +104,7 @@ class MaxHeap(Heap):
         parent_idx = 0
         while self._has_left_child(parent_idx):
             bigger_child, bigger_child_idx = self._left_child(parent_idx), self._left_index(parent_idx)
-            if self._has_right_child(parent_idx) and (right_child := self._right_child(parent_idx)) < bigger_child:
+            if self._has_right_child(parent_idx) and (right_child := self._right_child(parent_idx)) > bigger_child:
                 bigger_child, bigger_child_idx = right_child, self._right_index(parent_idx)
 
             if self._items[parent_idx] < bigger_child:

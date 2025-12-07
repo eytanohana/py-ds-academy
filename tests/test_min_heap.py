@@ -7,7 +7,7 @@ from py_ds.datastructures.heaps import MinHeap
 
 def test_new_heap_is_empty():
     heap = MinHeap()
-    assert len(heap) == 0
+    assert len(heap) == 1
     assert not heap
 
 

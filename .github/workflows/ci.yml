@@ -1,4 +1,4 @@
-name: CI - Test Package
+name: CI
 on:
   push:
     branches: [ master, main ]

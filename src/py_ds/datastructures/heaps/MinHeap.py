@@ -15,6 +15,26 @@ class MinHeap(Generic[T]):
     def _swap(self, idx1, idx2) -> None:
         self._items[idx1], self._items[idx2] = self._items[idx2], self._items[idx1]
 
+    @staticmethod
+    def _left_index(index) -> int:
+        return 2 * index + 1
+
+    @staticmethod
+    def _right_index(index) -> int:
+        return 2 * index + 2
+
+    def _has_left_child(self, index) -> bool:
+        return self._left_index(index) < self._size
+
+    def _has_right_child(self, index) -> bool:
+        return self._right_index(index) < self._size
+
+    def _left_child(self, index) -> T:
+        return self._items[self._left_index(index)]
+
+    def _right_child(self, index) -> T:
+        return self._items[self._right_index(index)]
+
     def push(self, item: T) -> None:
         index = self._size
         if index >= len(self._items):
@@ -26,7 +46,24 @@ class MinHeap(Generic[T]):
             index = parent_idx
         self._size += 1
 
-    def pop(self) -> T: ...
+    def pop(self) -> T:
+        if not self:
+            raise IndexError('pop from an empty heap')
+        parent_idx = 0
+        item = self._items[parent_idx]
+        self._items[parent_idx] = self._items[self._size - 1]
+        self._size -= 1
+        while self._has_left_child(parent_idx):
+            smaller_child, smaller_child_idx = self._left_child(parent_idx), self._left_index(parent_idx)
+            if self._has_right_child(parent_idx) and (right_child := self._right_child(parent_idx)) < smaller_child:
+                smaller_child, smaller_child_idx = right_child, self._right_index(parent_idx)
+
+            if self._items[parent_idx] > smaller_child:
+                self._swap(parent_idx, smaller_child_idx)
+                parent_idx = smaller_child_idx
+            else:
+                break
+        return item
 
     def peek(self) -> T:
         if not self:

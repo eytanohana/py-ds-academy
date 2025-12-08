@@ -21,45 +21,43 @@ class BinarySearchTree(BinaryTree[T]):
                     break
                 curr = curr.right
 
+    def _replace_child(
+        self, parent_node: _BinaryNode[T] | None, old_child: _BinaryNode[T], new_child: _BinaryNode[T] | None
+    ) -> None:
+        if not parent_node:
+            self._root = new_child
+        elif parent_node.left is old_child:
+            parent_node.left = new_child
+        else:
+            parent_node.right = new_child
+
     def remove(self, value: T) -> None:
         if self.is_empty:
             return
-        curr, parent, left = self._root, None, None
-        while curr and curr.value != value:
-            parent = curr
-            left, curr = (True, curr.left) if value < curr.value else (False, curr.right)
-        if not curr:
+        current = self._root
+        parent: _BinaryNode[T] = None
+        while current and current.value != value:
+            parent, current = current, (current.left if value <= current.value else current.right)
+
+        if current is None:
             return
+
         self.size -= 1
-        if not (curr.left or curr.right):
-            if curr == self._root:
-                self._root = None
-            elif left:
-                parent.left = None
-            else:
-                parent.right = None
+
+        if current.left is None or current.right is None:
+            child = current.left if current.left is not None else current.right
+            self._replace_child(parent, current, child)
             return
 
-        if curr.left and curr.right:
-            succ_parent = curr
-            succ = curr.right
-            while succ.left:
-                succ_parent = succ
-                succ = succ.left
-            curr.value = succ.value
-            succ_parent.left = None
-            return
+        succ_parent, succ = current, current.right
+        while succ.left is not None:
+            succ_parent, succ = succ, succ.left
 
-        if curr.left:
-            if left:
-                parent.left = curr.left
-            else:
-                parent.right = curr.left
+        current.value = succ.value
+        if succ_parent.left is succ:
+            succ_parent.left = succ.right
         else:
-            if left:
-                parent.left = curr.right
-            else:
-                parent.right = curr.right
+            succ_parent.right = succ.right
 
     def min(self) -> T:
         if self.is_empty:

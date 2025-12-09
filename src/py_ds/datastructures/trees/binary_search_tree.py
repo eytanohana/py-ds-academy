@@ -31,7 +31,8 @@ class BinarySearchTree(BinaryTree[T]):
         else:
             parent_node.right = new_child
 
-    def remove(self, value: T) -> None:
+    def remove(self, value: T
+               ) -> None:
         if self.is_empty:
             return
         current = self._root

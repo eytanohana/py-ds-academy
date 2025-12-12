@@ -23,8 +23,8 @@ class _BinaryNode(Generic[T]):
 
 class BinaryTree(ABC, Generic[T]):
     def __init__(self, items: Iterable[T] | None = None):
-        self._root: _BinaryNode[T] = None
-        self.size = 0
+        self._root: _BinaryNode[T] | None = None
+        self.size: int = 0
         items = items or []
         for item in items:
             self.insert(item)

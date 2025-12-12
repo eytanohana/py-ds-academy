@@ -54,26 +54,29 @@ class BinarySearchTree(BinaryTree[T]):
             succ_parent, succ = succ, succ.left
 
         current.value = succ.value
-        if succ_parent.left is succ:
-            succ_parent.left = succ.right
-        else:
-            succ_parent.right = succ.right
+        self._replace_child(succ_parent, succ, succ.right)
+
+    @staticmethod
+    def _get_min_node(node: _BinaryNode[T]) -> _BinaryNode[T]:
+        while node.left is not None:
+            node = node.left
+        return node
+
+    @staticmethod
+    def _get_max_node(node: _BinaryNode[T]) -> _BinaryNode[T]:
+        while node.right is not None:
+            node = node.right
+        return node
 
     def min(self) -> T:
         if self.is_empty:
             raise ValueError('Empty tree')
-        curr = self._root
-        while curr.left:
-            curr = curr.left
-        return curr.value
+        return self._get_min_node(self._root).value
 
     def max(self) -> T:
         if self.is_empty:
             raise ValueError('Empty tree')
-        curr = self._root
-        while curr.right:
-            curr = curr.right
-        return curr.value
+        return self._get_max_node(self._root).value
 
     def __contains__(self, item: T) -> bool:
         if self.is_empty:

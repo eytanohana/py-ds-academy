@@ -54,10 +54,7 @@ class BinarySearchTree(BinaryTree[T]):
             succ_parent, succ = succ, succ.left
 
         current.value = succ.value
-        if succ_parent.left is succ:
-            succ_parent.left = succ.right
-        else:
-            succ_parent.right = succ.right
+        self._replace_child(succ_parent, succ, succ.right)
 
     def min(self) -> T:
         if self.is_empty:

@@ -55,6 +55,32 @@ class AVLTree(BinarySearchTree[T]):
             node.right = self._insert_recursive(node.right, value)
         return self._rebalance(node)
 
+    def _remove_recursive(self, node: _BinaryNode[T] | None, value: T) -> tuple[_BinaryNode[T] | None, bool]:
+        if node is None:
+            return None, False
+
+        if value < node.value:
+            node.left, removed = self._remove_recursive(node.left, value)
+        elif value > node.value:
+            node.right, removed = self._remove_recursive(node.right, value)
+        else:
+            if node.left is None:
+                return node.right, True
+            elif node.right is None:
+                return node.left, True
+
+            temp = self._get_min_node(node.right)
+            node.value = temp.value
+            node.right, _ = self._remove_recursive(node.right, temp.value)
+            removed = True
+
+        return self._rebalance(node), removed
+
+    def remove(self, value: T) -> None:
+        self._root, removed = self._remove_recursive(self._root, value)
+        if removed:
+            self.size -= 1
+
     def insert(self, value: T) -> None:
         self._root = self._insert_recursive(self._root, value)
         self.size += 1

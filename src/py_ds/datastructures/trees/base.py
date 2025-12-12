@@ -99,3 +99,32 @@ class BinaryTree(ABC, Generic[T]):
                 visited.append(node.left)
             if node.right:
                 visited.append(node.right)
+
+    def __str__(self) -> str:
+        if self._root is None:
+            return 'EMPTY'
+
+        def build_tree_str(node: _BinaryNode[T], prefix: str, is_left: bool) -> str:
+            tree = ''
+
+            if node.right:
+                tree += build_tree_str(node.right, prefix + ('│   ' if is_left else '    '), False)
+
+            tree += prefix + ('┌── ' if not is_left else '└── ') + str(node.value) + '\n'
+
+            if node.left:
+                tree += build_tree_str(node.left, prefix + ('    ' if is_left else '│   '), True)
+            return tree
+
+        result = ''
+        if self._root.right:
+            right_result = build_tree_str(self._root.right, '', False)
+            result += right_result
+
+        result += f'{self._root.value}\n'
+
+        if self._root.left:
+            left_result = build_tree_str(self._root.left, '', True)
+            result += left_result
+
+        return result

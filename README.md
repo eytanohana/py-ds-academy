@@ -1,6 +1,9 @@
-# py-ds
+# py-ds-academy
 
+![PyPI - Version](https://img.shields.io/pypi/v/py-ds-academy)
+![PyPI - License](https://img.shields.io/pypi/l/py-ds-academy)
 [![CI status](https://github.com/eytanohana/py-ds-academy/actions/workflows/ci.yml/badge.svg)](https://github.com/eytanohana/py-ds-academy/actions/workflows/ci.yml)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/py-ds-academy)
 
 A small playground project for implementing classic data structures from scratch in Python.
 

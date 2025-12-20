@@ -42,6 +42,7 @@ module-name = "py_ds"
 dev = [
     "pytest>=9.0.1",
     "ruff>=0.14.7",
+    "pre-commit>=3.0.0",
 ]
 
 # ---- Ruff configuration ----

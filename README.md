@@ -23,7 +23,7 @@ The goal is **learning + correctness** (with tests), not squeezing out every las
 ## 📦 Project Layout
 
 ```text
-py-ds/
+py-ds-academy/
 ├─ pyproject.toml
 ├─ README.md
 ├─ .python-version
@@ -34,16 +34,26 @@ py-ds/
 │        ├── __init__.py
 │        ├── stack.py
 │        ├── queue.py
-│        ├── linked_list.py
-│        ├── doubly_linked_list.py
-│        ├── binary_tree.py
-│        ├── bst.py
-│        ├── heap.py
-│        └── graph.py
+│        ├── heaps.py
+│        ├── linked_lists/
+│        │  ├── __init__.py
+│        │  ├── base.py
+│        │  ├── singly_linked.py
+│        │  └── doubly_linked.py
+│        └── trees/
+│           ├── __init__.py
+│           ├── base.py
+│           ├── binary_search_tree.py
+│           └── avl.py
 └─ tests/
    ├─ test_stack.py
    ├─ test_queue.py
-   └─ test_linked_list.py
+   ├─ test_linked_list.py
+   ├─ test_doubly_linked_list.py
+   ├─ test_max_heap.py
+   ├─ test_min_heap.py
+   ├─ test_binary_search_tree.py
+   └─ test_avl_tree.py
 ```
 
 All importable code lives under `src/py_ds/`.
@@ -72,10 +82,34 @@ uv run python
 ```
 
 ```python
->>> from py_ds.datastructures import Stack
+>>> from py_ds import Stack, Queue, SinglyLinkedList, DoublyLinkedList
+>>> from py_ds import MinHeap, MaxHeap, BinarySearchTree, AVLTree
+
+>>> # Stack example
 >>> s = Stack([1, 2, 3])
 >>> s.pop()
 3
+
+>>> # Queue example
+>>> q = Queue([1, 2, 3])
+>>> q.dequeue()
+1
+
+>>> # Linked List example
+>>> ll = SinglyLinkedList([1, 2, 3])
+>>> ll.append(4)
+>>> list(ll)
+[1, 2, 3, 4]
+
+>>> # Heap example
+>>> h = MinHeap([3, 1, 4, 1, 5])
+>>> h.pop()
+1
+
+>>> # BST example
+>>> bst = BinarySearchTree([5, 3, 7, 2, 4])
+>>> list(bst.inorder())
+[2, 3, 4, 5, 7]
 ```
 
 ---
@@ -84,54 +118,69 @@ uv run python
 
 ### 1. Linear Structures
 
-**Stacks**
+**Stacks** ✅
 - [x] `Stack` backed by Python list
-- [x] Operations: `push`, `pop`, `peek`, `is_empty`, `__len__`
+- [x] Operations: `push`, `pop`, `peek`, `is_empty`, `__len__`, `clear`, `extend`, `to_list`
+- [x] Iteration support (`__iter__`)
 
-**Queues**
-- [x] `Queue` backed by python list
-- [x] Operations: `enqueue`, `dequeue`, `peek`, `is_empty`, `__len__`
+**Queues** ✅
+- [x] `Queue` backed by Python list
+- [x] Operations: `enqueue`, `dequeue`, `peek`, `is_empty`, `__len__`, `clear`, `extend`, `to_list`
+- [x] Iteration support (`__iter__`)
 
-**Linked Lists**
-- [ ] `SinglyLinkedList`
-  - [ ] `append`, `prepend`, `insert`, `remove`, `find`
-  - [ ] Iteration support (`__iter__`)
-- [ ] `DoublyLinkedList`
-  - [ ] Efficient insert/remove at both ends
-  - [ ] Bidirectional traversal
+**Linked Lists** ✅
+- [x] `SinglyLinkedList`
+  - [x] `append`, `prepend`, `insert`, `remove`, `pop`, `find`
+  - [x] Iteration support (`__iter__`)
+  - [x] Indexing support (`__getitem__`, `__setitem__`)
+  - [x] `head()`, `tail()`, `clear()`
+- [x] `DoublyLinkedList`
+  - [x] Efficient O(1) `append` and `prepend` (with tail pointer)
+  - [x] Bidirectional traversal (`__iter__`, `reverse_iter`)
+  - [x] All operations from `SinglyLinkedList`
+  - [x] Optimized indexing with bidirectional search
 
 ---
 
 ### 2. Trees
 
-**Binary Tree (generic node-based)**
-- [ ] `BinaryTreeNode` (value, left, right)
-- [ ] Traversals:
-  - [ ] Preorder
-  - [ ] Inorder
-  - [ ] Postorder
-  - [ ] Level-order (BFS)
+**Binary Tree (generic node-based)** ✅
+- [x] `BinaryTree` base class with `_BinaryNode`
+- [x] Traversals:
+  - [x] Preorder (`preorder()`)
+  - [x] Inorder (`inorder()`)
+  - [x] Postorder (`postorder()`)
+  - [x] Level-order / BFS (`level_order()`)
+- [x] Tree height calculation
+- [x] Tree visualization (`__str__`)
 
-**Binary Search Tree (BST)**
-- [ ] Insert
-- [ ] Search (`contains`, `find`)
-- [ ] Delete (handle 0, 1, 2 children)
-- [ ] Find min / max
-- [ ] Inorder traversal (sorted output)
+**Binary Search Tree (BST)** ✅
+- [x] `BinarySearchTree` implementation
+- [x] Insert
+- [x] Search (`__contains__`)
+- [x] Delete (`remove`) - handles 0, 1, 2 children
+- [x] Find min / max (`min()`, `max()`)
+- [x] Inherits all traversals from `BinaryTree`
 
-Later:
-- [ ] Self-balancing tree (e.g., AVL or Red-Black) – optional stretch goal
+**Self-Balancing Trees** ✅
+- [x] `AVLTree` - self-balancing BST
+  - [x] Automatic rebalancing on insert/remove
+  - [x] Rotations: left, right, left-right, right-left
+  - [x] Balance factor calculation
+  - [x] Inherits all BST operations
 
 ---
 
-### 3. Heaps / Priority Queues
+### 3. Heaps / Priority Queues ✅
 
-**Binary Heap (min-heap or max-heap)**
-- [ ] `insert`
-- [ ] `peek`
-- [ ] `extract`
-- [ ] `heapify` from existing list
-- [ ] Use cases: priority queue, heap sort
+**Binary Heap**
+- [x] `Heap` abstract base class
+- [x] `MinHeap` implementation
+- [x] `MaxHeap` implementation
+- [x] Operations: `push`, `pop`, `peek`
+- [x] Heap construction from iterable
+- [x] `heapify_up` and `heapify_down` operations
+- [x] Use cases: priority queue, heap sort
 
 ---
 
@@ -166,6 +215,21 @@ Stretch:
 
 ---
 
+## ✨ Implemented Features Summary
+
+The following data structures are fully implemented and tested:
+
+- ✅ **Stack** - LIFO stack with list backing
+- ✅ **Queue** - FIFO queue with list backing  
+- ✅ **SinglyLinkedList** - Single-direction linked list
+- ✅ **DoublyLinkedList** - Double-direction linked list with O(1) append/prepend
+- ✅ **MinHeap** - Minimum binary heap
+- ✅ **MaxHeap** - Maximum binary heap
+- ✅ **BinarySearchTree** - Binary search tree with insert, remove, search, min/max
+- ✅ **AVLTree** - Self-balancing AVL tree (extends BST)
+
+---
+
 ## 🧪 Testing
 
 Each data structure gets its own test module under `tests/`.
@@ -184,15 +248,7 @@ uv run pytest
 - Use **type hints** everywhere
 - Raise the right built-in exceptions
 - Document time complexity in docstrings
-
----
-
-## 📝 Future Ideas
-
-- [ ] Benchmarks comparing implementations
-- [ ] Tree / graph visualizations
-- [ ] Jupyter notebooks for demos
-
+- 
 ---
 
 This project is mainly for learning + fun. No guarantees — just data structures implemented by hand.

@@ -46,6 +46,10 @@ jobs:
           tag: ${{ github.ref_name }}
         run: |
           gh release create "$tag" \
-              --notes "## Release Notes\nReleased on $(date -u +%Y-%m-%d)\n\n" \
-              --title="$tag" \
-              --generate-notes
+            --notes "$(cat <<EOF
+            ## Release Notes
+            Released on $(date -u +%Y-%m-%d)
+
+            EOF
+          )" \
+          --generate-notes

@@ -48,3 +48,40 @@ jobs:
           gh release create "$tag" \
             --notes $'## Release Notes\nReleased on '"$(date -u +%Y-%m-%d)"$'\n\n' \
             --generate-notes
+
+  deploy-docs:
+    name: Deploy Docs (versioned)
+    runs-on: ubuntu-latest
+    needs: run-ci
+
+    permissions:
+      contents: write   # mike pushes to gh-pages using GITHUB_TOKEN
+
+    steps:
+      - name: Checkout repository (full history)
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up uv and Python
+        uses: astral-sh/setup-uv@681c641aba71e4a1c380be3ab5e12ad51f415867 # v7
+        with:
+          enable-cache: true
+          version: ${{ env.UV_VERSION }}
+
+      - name: Install docs dependencies
+        run: |
+          uv sync --group docs --no-dev
+
+      - name: Configure git identity for gh-pages commits
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy docs for this tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"   # v0.5.4 -> 0.5.4
+          uv run mike deploy --push --update-aliases "$VERSION" latest
+          uv run mike set-default --push latest

@@ -203,7 +203,3 @@ Each node maintains a balance factor:
 - Worst-case performance is acceptable
 - Simplicity is preferred
 - Memory overhead is a concern
-
-## API Reference
-
-::: py_ds.datastructures.trees.avl.AVLTree

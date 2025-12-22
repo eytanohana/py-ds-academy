@@ -144,7 +144,3 @@ def max_depth(node):
 
 height = max_depth(tree.root)
 ```
-
-## API Reference
-
-::: py_ds.datastructures.trees.base.BinaryTree

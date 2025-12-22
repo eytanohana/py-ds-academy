@@ -144,7 +144,3 @@ def evaluate_postfix(expression: str) -> int:
 
 result = evaluate_postfix("3 4 + 2 *")  # (3+4)*2 = 14
 ```
-
-## API Reference
-
-::: py_ds.datastructures.stack.Stack

@@ -139,7 +139,3 @@ class TaskScheduler:
     def has_pending_tasks(self):
         return not self.queue.is_empty()
 ```
-
-## API Reference
-
-::: py_ds.datastructures.queue.Queue

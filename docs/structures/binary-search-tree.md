@@ -158,7 +158,3 @@ The `remove` operation handles three cases:
 ## Balancing
 
 For guaranteed O(log n) performance, consider using [AVLTree](avl-tree.md) which automatically maintains balance.
-
-## API Reference
-
-::: py_ds.datastructures.trees.binary_search_tree.BinarySearchTree

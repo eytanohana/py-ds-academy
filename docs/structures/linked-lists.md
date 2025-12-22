@@ -206,9 +206,3 @@ class BrowserHistory:
 - You need bidirectional traversal
 - You're implementing undo/redo functionality
 - You need efficient tail access
-
-## API Reference
-
-::: py_ds.datastructures.linked_lists.singly_linked.SinglyLinkedList
-
-::: py_ds.datastructures.linked_lists.doubly_linked.DoublyLinkedList

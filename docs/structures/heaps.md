@@ -238,9 +238,3 @@ def heapify_down(heap, index):
         heap[index], heap[smallest] = heap[smallest], heap[index]
         heapify_down(heap, smallest)
 ```
-
-## API Reference
-
-::: py_ds.datastructures.heaps.MinHeap
-
-::: py_ds.datastructures.heaps.MaxHeap

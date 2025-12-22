@@ -7,15 +7,10 @@ T = TypeVar('T')
 
 
 class Stack(Generic[T]):
-    """
-    A simple LIFO (last-in, first-out) stack.
+    """A simple LIFO (last-in, first-out) stack.
 
-    Backed by a dynamic array (Python list).
-    Typical operations:
-    - push: O(1) amortized
-    - pop: O(1)
-    - peek: O(1)
-    - is_empty / len: O(1)
+    Backed by a dynamic array (Python list). Provides efficient O(1) operations
+    for push, pop, and peek operations.
     """
 
     def __init__(self, items: Iterable[T] | None = None) -> None:
@@ -34,16 +29,20 @@ class Stack(Generic[T]):
     # -------- Core stack operations --------
 
     def push(self, item: T) -> None:
-        """
-        Push a single item onto the top of the stack.
+        """Push a single item onto the top of the stack.
+
+        Args:
+            item: The item to push onto the stack.
 
         Time complexity: O(1) amortized.
         """
         self._items.append(item)
 
     def pop(self) -> T:
-        """
-        Remove and return the top item of the stack.
+        """Remove and return the top item of the stack.
+
+        Returns:
+            The item that was at the top of the stack.
 
         Raises:
             IndexError: If the stack is empty.
@@ -55,8 +54,10 @@ class Stack(Generic[T]):
         return self._items.pop()
 
     def peek(self) -> T:
-        """
-        Return the top item of the stack without removing it.
+        """Return the top item of the stack without removing it.
+
+        Returns:
+            The item at the top of the stack.
 
         Raises:
             IndexError: If the stack is empty.
@@ -68,8 +69,10 @@ class Stack(Generic[T]):
         return self._items[-1]
 
     def is_empty(self) -> bool:
-        """
-        Return True if the stack has no elements, False otherwise.
+        """Check if the stack is empty.
+
+        Returns:
+            True if the stack has no elements, False otherwise.
 
         Time complexity: O(1).
         """
@@ -78,38 +81,38 @@ class Stack(Generic[T]):
     # -------- Bulk / utility operations --------
 
     def clear(self) -> None:
-        """
-        Remove all items from the stack.
+        """Remove all items from the stack.
 
-        After this call, is_empty() must be True and len(stack) == 0.
+        After this call, is_empty() returns True and len(stack) == 0.
 
-        Time complexity: O(n) or O(1) depending on implementation,
-        but that's an implementation detail.
+        Time complexity: O(1).
         """
         self._items = []
 
     def extend(self, items: Iterable[T]) -> None:
-        """
-        Push multiple items onto the stack, in iteration order.
+        """Push multiple items onto the stack, in iteration order.
 
         The last item of `items` becomes the new top of the stack.
+
+        Args:
+            items: An iterable of items to push onto the stack.
 
         Example:
             s = Stack([1])
             s.extend([2, 3])
             # now stack top is 3
 
-        Time complexity: O(k), where k = number of items.
+        Time complexity: O(k), where k is the number of items.
         """
         for item in items:
             self.push(item)
 
     def to_list(self) -> list[T]:
-        """
-        Return a shallow copy of the stack contents as a list.
+        """Convert the stack to a Python list.
 
-        Convention:
-            The last element of the returned list is the top of the stack.
+        Returns:
+            A shallow copy of the stack contents as a list. The last element
+            of the returned list is the top of the stack.
 
         Time complexity: O(n).
         """
@@ -118,46 +121,44 @@ class Stack(Generic[T]):
     # -------- Python protocol methods --------
 
     def __len__(self) -> int:
-        """
-        Return the number of items in the stack.
+        """Return the number of items in the stack.
 
-        Enables: len(stack)
+        Returns:
+            The number of items in the stack.
 
         Time complexity: O(1).
         """
         return len(self._items)
 
     def __bool__(self) -> bool:
-        """
-        Truthiness of the stack.
+        """Return the truthiness of the stack.
 
-        By convention, a stack is False if empty, True otherwise.
+        Returns:
+            False if the stack is empty, True otherwise.
 
         Enables: `if stack: ...`
         """
         return len(self._items) > 0
 
     def __iter__(self) -> Iterator[T]:
-        """
-        Iterate over the items in the stack from bottom to top.
+        """Iterate over the items in the stack from top to bottom.
+
+        Yields:
+            Each item in the stack, starting from the top.
 
         Example:
             s = Stack([1, 2, 3])
-            list(s)  # [1, 2, 3]
-
-        Note:
-            This order is a design choice; you could document bottom→top
-            or top→bottom, but be consistent.
+            list(s)  # [3, 2, 1]  (top to bottom)
         """
         return iter(self._items[::-1])
 
     def __repr__(self) -> str:
-        """
-        Return a useful string representation of the stack.
+        """Return a string representation of the stack.
+
+        Returns:
+            A string representation showing the class name and stack contents.
 
         Example:
             Stack([1, 2, 3])
-
-        This is mainly for debugging / REPL usage.
         """
         return f'Stack({self.to_list()})'

@@ -1,6 +1,6 @@
 # py-ds-academy
 
-<div align="center">
+<div align="center" markdown>
 
 ![PyPI - Version](https://img.shields.io/pypi/v/py-ds-academy)
 ![PyPI - License](https://img.shields.io/pypi/l/py-ds-academy)
@@ -8,10 +8,6 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/py-ds-academy)
 
 **Data structures implemented from scratch for learning and experimentation**
-
-[Getting Started](getting-started/installation.md){ .md-button .md-button--primary }
-[API Reference](reference/api.md){ .md-button }
-[GitHub](https://github.com/eytanohana/py-ds-academy){ .md-button .md-button--secondary }
 
 </div>
 

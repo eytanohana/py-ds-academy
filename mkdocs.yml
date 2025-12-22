@@ -1,4 +1,109 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
 
-site_name: My Docs
+site_name: py-ds-academy
+site_description: Data structures implemented from scratch for learning and experimentation
+site_author: Eytan Ohana
+site_url: https://eytanohana.github.io/py-ds-academy
+
+repo_name: eytanohana/py-ds-academy
+repo_url: https://github.com/eytanohana/py-ds-academy
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  # Code blocks with syntax highlighting
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      pygments_lang_class: true
+  # Attribute lists for styling (e.g., { .md-button })
+  - attr_list
+  # HTML in markdown (e.g., <div> tags)
+  - md_in_html
+  # Table of contents
+  - toc:
+      permalink: true
+
+plugins:
+  - search:
+      lang: en
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_signature_annotations: true
+            separate_signature: true
+            docstring_style: google
+            show_root_heading: true
+            show_root_toc_entry: true
+            show_object_full_path: false
+            show_category_heading: true
+            show_if_no_docstring: false
+            members_order: source
+            merge_init_into_class: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/eytanohana
+    - icon: fontawesome/brands/python
+      link: https://www.python.org
+  version:
+    provider: mike
+
+copyright: Copyright &copy; 2024 Eytan Ohana
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quickstart.md
+  - Data Structures:
+      - Overview: structures.md
+      - Linear Structures:
+          - Stack: structures/stack.md
+          - Queue: structures/queue.md
+          - Linked Lists: structures/linked-lists.md
+      - Trees:
+          - Binary Tree: structures/binary-tree.md
+          - Binary Search Tree: structures/binary-search-tree.md
+          - AVL Tree: structures/avl-tree.md
+      - Heaps:
+          - Heap Overview: structures/heaps.md
+  - Reference:
+      - API Reference: reference/api.md
+  - Contributing: contributing.md
 

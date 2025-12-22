@@ -74,6 +74,8 @@ plugins:
             show_if_no_docstring: false
             members_order: source
             merge_init_into_class: true
+            show_symbol_type_heading: true
+            inherited_members: true
 
 extra:
   social:

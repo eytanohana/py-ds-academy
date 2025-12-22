@@ -43,7 +43,7 @@ theme:
     repo: fontawesome/brands/github
 
 markdown_extensions:
-  # Code blocks with syntax highlighting
+  - admonition
   - pymdownx.superfences
   - pymdownx.highlight:
       anchor_linenums: true

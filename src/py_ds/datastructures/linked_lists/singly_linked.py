@@ -4,13 +4,10 @@ from py_ds.datastructures.linked_lists.base import LinkedListBase, T, _Node
 
 
 class SinglyLinkedList(LinkedListBase[T]):
-    """
-    A singly linked list supporting typical operations:
-    - append / prepend
-    - insert at index
-    - remove by value
-    - iteration
-    - length, truthiness
+    """A singly linked list supporting typical operations.
+
+    Supports append/prepend, insert at index, remove by value, iteration,
+    and length/truthiness operations.
     """
 
     # ---------------------------------------------------
@@ -18,8 +15,10 @@ class SinglyLinkedList(LinkedListBase[T]):
     # ---------------------------------------------------
 
     def append(self, value: T) -> None:
-        """
-        Add a value to the end of the list.
+        """Add a value to the end of the list.
+
+        Args:
+            value: The value to append to the list.
 
         Time complexity: O(n).
         """
@@ -34,8 +33,10 @@ class SinglyLinkedList(LinkedListBase[T]):
         self._length += 1
 
     def prepend(self, value: T) -> None:
-        """
-        Add a value to the beginning of the list.
+        """Add a value to the beginning of the list.
+
+        Args:
+            value: The value to prepend to the list.
 
         Time complexity: O(1).
         """
@@ -48,11 +49,14 @@ class SinglyLinkedList(LinkedListBase[T]):
         self._length += 1
 
     def insert(self, index: int, value: T) -> None:
-        """
-        Insert a value at a specific index.
+        """Insert a value at a specific index.
+
+        Args:
+            index: The position at which to insert the value.
+            value: The value to insert.
 
         Raises:
-            IndexError: if index is out of bounds.
+            IndexError: If index is out of bounds.
         """
         if index < 0 or index > self._length:
             raise IndexError('index out of bounds on list')
@@ -71,11 +75,13 @@ class SinglyLinkedList(LinkedListBase[T]):
             self._length += 1
 
     def remove(self, value: T) -> None:
-        """
-        Remove the first occurrence of `value` from the list.
+        """Remove the first occurrence of `value` from the list.
+
+        Args:
+            value: The value to remove from the list.
 
         Raises:
-            ValueError: if the value is not found.
+            ValueError: If the value is not found.
         """
         prev, curr = None, self._head
         while curr and curr.value != value:
@@ -91,13 +97,17 @@ class SinglyLinkedList(LinkedListBase[T]):
             raise ValueError('value not found')
 
     def pop(self, index: int = -1) -> T:
-        """
-        Remove and return the item at the given index.
+        """Remove and return the item at the given index.
 
         Args:
             index: 0-based index, negative indexes supported (Python style).
+                Defaults to -1 (last element).
+
+        Returns:
+            The value at the specified index.
+
         Raises:
-            IndexError: if the list is empty or index invalid.
+            IndexError: If the list is empty or index is invalid.
         """
         prev, curr = None, self._head
         idx = self._length + index if index < 0 else index
@@ -114,7 +124,7 @@ class SinglyLinkedList(LinkedListBase[T]):
         return curr.value
 
     def clear(self) -> None:
-        """Remove all elements."""
+        """Remove all elements from the list."""
         self._head = None
         self._length = 0
 
@@ -123,11 +133,19 @@ class SinglyLinkedList(LinkedListBase[T]):
     # ---------------------------------------------------
 
     def head(self) -> T | None:
-        """Return the first value, or None if list is empty."""
+        """Return the first value in the list.
+
+        Returns:
+            The first value in the list, or None if the list is empty.
+        """
         return self._head.value if self._head else None
 
     def tail(self) -> T | None:
-        """Return the last value, or None if empty."""
+        """Return the last value in the list.
+
+        Returns:
+            The last value in the list, or None if the list is empty.
+        """
         if not self._head:
             return None
         curr = self._head
@@ -140,18 +158,25 @@ class SinglyLinkedList(LinkedListBase[T]):
     # ---------------------------------------------------
 
     def __iter__(self) -> Iterator[T]:
-        """Iterate through values head → tail."""
+        """Iterate through values from head to tail.
+
+        Yields:
+            The values in the list from head to tail.
+        """
         curr = self._head
         while curr:
             yield curr.value
             curr = curr.next
 
     def __setitem__(self, index: int, value: T) -> None:
-        """
-        Set item at index.
+        """Set item at the specified index.
+
+        Args:
+            index: The position at which to set the value.
+            value: The value to set.
 
         Raises:
-            IndexError
+            IndexError: If index is out of bounds.
         """
         if index < 0 or index >= self._length:
             raise IndexError('bad index')

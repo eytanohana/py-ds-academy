@@ -2,35 +2,22 @@
 
 Complete API documentation for all data structures in py-ds-academy.
 
+Browse individual data structure APIs using the navigation menu on the left, or see the overview below.
+
 ## Linear Structures
 
-### Stack
-::: py_ds.datastructures.stack.Stack
-
-### Queue
-::: py_ds.datastructures.queue.Queue
-
-### Singly Linked List
-::: py_ds.datastructures.linked_lists.singly_linked.SinglyLinkedList
-
-### Doubly Linked List
-::: py_ds.datastructures.linked_lists.doubly_linked.DoublyLinkedList
+- **[Stack](stack.md)** - Last-In-First-Out (LIFO) data structure
+- **[Queue](queue.md)** - First-In-First-Out (FIFO) data structure
+- **[Singly Linked List](singly-linked-list.md)** - Linked list with forward links only
+- **[Doubly Linked List](doubly-linked-list.md)** - Linked list with forward and backward links
 
 ## Trees
 
-### Binary Tree
-::: py_ds.datastructures.trees.base.BinaryTree
-
-### Binary Search Tree
-::: py_ds.datastructures.trees.binary_search_tree.BinarySearchTree
-
-### AVL Tree
-::: py_ds.datastructures.trees.avl.AVLTree
+- **[Binary Tree](binary-tree.md)** - Tree where each node has at most two children
+- **[Binary Search Tree](binary-search-tree.md)** - Ordered binary tree for efficient searching
+- **[AVL Tree](avl-tree.md)** - Self-balancing binary search tree
 
 ## Heaps
 
-### Min Heap
-::: py_ds.datastructures.heaps.MinHeap
-
-### Max Heap
-::: py_ds.datastructures.heaps.MaxHeap
+- **[Min Heap](min-heap.md)** - Complete binary tree with minimum at root
+- **[Max Heap](max-heap.md)** - Complete binary tree with maximum at root

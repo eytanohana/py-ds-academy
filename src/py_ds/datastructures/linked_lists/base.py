@@ -114,13 +114,16 @@ class LinkedListBase(ABC, Generic[T]):
             The last value in the list, or None if the list is empty.
         """
 
-    @abstractmethod
     def __iter__(self) -> Iterator[T]:
         """Iterate through values in the list.
 
         Yields:
-            Each value in the list, in order from head to tail.
+            The values in the list from head to tail.
         """
+        curr = self._head
+        while curr:
+            yield curr.value
+            curr = curr.next
 
     # ---------------------------------------------------
     # Concrete methods (shared implementations)

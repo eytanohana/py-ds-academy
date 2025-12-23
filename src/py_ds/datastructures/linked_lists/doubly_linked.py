@@ -225,17 +225,6 @@ class DoublyLinkedList(LinkedListBase[T]):
     # Python protocol methods
     # ---------------------------------------------------
 
-    def __iter__(self) -> Iterator[T]:
-        """Iterate through values from head to tail.
-
-        Yields:
-            The values in the list from head to tail.
-        """
-        curr = self._head
-        while curr:
-            yield curr.value
-            curr = curr.next
-
     def reverse_iter(self) -> Iterator[T]:
         """Iterate through values from tail to head.
 

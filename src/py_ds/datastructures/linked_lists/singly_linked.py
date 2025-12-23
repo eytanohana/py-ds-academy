@@ -1,5 +1,3 @@
-from collections.abc import Iterator
-
 from py_ds.datastructures.linked_lists.base import LinkedListBase, T, _Node
 
 
@@ -156,17 +154,6 @@ class SinglyLinkedList(LinkedListBase[T]):
     # ---------------------------------------------------
     # Python protocol methods
     # ---------------------------------------------------
-
-    def __iter__(self) -> Iterator[T]:
-        """Iterate through values from head to tail.
-
-        Yields:
-            The values in the list from head to tail.
-        """
-        curr = self._head
-        while curr:
-            yield curr.value
-            curr = curr.next
 
     def __setitem__(self, index: int, value: T) -> None:
         """Set item at the specified index.

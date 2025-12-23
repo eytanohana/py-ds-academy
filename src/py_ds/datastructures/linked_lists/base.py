@@ -193,5 +193,4 @@ class LinkedListBase(ABC, Generic[T]):
         Returns:
             A string representation showing the class name and list contents.
         """
-        class_name = self.__class__.__name__
-        return f'{class_name}({self.to_list()})'
+        return f'{self.__class__.__name__}({self.to_list()})'

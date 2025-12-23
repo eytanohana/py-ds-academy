@@ -84,6 +84,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Raises:
             IndexError: If the list is empty or index is out of bounds.
+
+        Time complexity: O(n).
         """
         if self._length == 0:
             raise IndexError('pop from an empty list')
@@ -113,6 +115,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Raises:
             IndexError: If index is out of bounds.
+
+        Time complexity: O(n).
         """
         if index == self._length:
             self.append(value)
@@ -140,6 +144,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Raises:
             ValueError: If the value is not found.
+
+        Time complexity: O(n).
         """
         curr = self._head
         while curr and curr.value != value:
@@ -177,6 +183,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Raises:
             IndexError: If the list is empty or index is invalid.
+
+        Time complexity: O(n).
         """
         curr = self._get_node_at(index)
         value = curr.value
@@ -195,7 +203,10 @@ class DoublyLinkedList(LinkedListBase[T]):
         return value
 
     def clear(self) -> None:
-        """Remove all elements from the list."""
+        """Remove all elements from the list.
+
+        Time complexity: O(n).
+        """
         self._head = self._tail = None
         self._length = 0
 
@@ -208,6 +219,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Returns:
             The first value in the list, or None if the list is empty.
+
+        Time complexity: O(1).
         """
         return self._head.value if self._head else None
 
@@ -217,7 +230,7 @@ class DoublyLinkedList(LinkedListBase[T]):
         Returns:
             The last value in the list, or None if the list is empty.
 
-        Time complexity: O(1) thanks to tail pointer.
+        Time complexity: O(1).
         """
         return self._tail.value if self._tail else None
 
@@ -233,6 +246,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Yields:
             The values in the list from tail to head.
+
+        Time complexity: O(n).
         """
         curr = self._tail
         while curr:
@@ -251,6 +266,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Raises:
             IndexError: If index is out of bounds.
+
+        Time complexity: O(n).
         """
         return self._get_node_at(index).value
 
@@ -263,6 +280,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Raises:
             IndexError: If index is out of bounds.
+
+        Time complexity: O(n).
         """
         node = self._get_node_at(index)
         node.value = value
@@ -272,6 +291,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Returns:
             A visual representation of the linked list.
+
+        Time complexity: O(n).
         """
         if not self:
             return 'HEAD ⇆ TAIL'

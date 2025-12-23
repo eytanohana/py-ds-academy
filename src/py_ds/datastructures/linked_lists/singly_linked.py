@@ -112,19 +112,19 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(n).
         """
-        prev, curr = None, self._head
         idx = self._length + index if index < 0 else index
-        if idx < 0 or idx >= self._length or self._length == 0:
+        if idx < 0 or idx >= self._length:
             raise IndexError('invalid index')
-        for _ in range(idx):
-            prev = curr
-            curr = curr.next
-        if prev:
-            prev.next = curr.next
-        else:
-            self._head = None
+        try:
+            assert idx - 1 >= 0
+            prev_node = self._get_node_at(idx - 1)
+            value = prev_node.next.value
+            prev_node.next = prev_node.next.next
+        except AssertionError:
+            value = self._head.value
+            self._head = self._head.next
         self._length -= 1
-        return curr.value
+        return value
 
     def clear(self) -> None:
         """Remove all elements from the list.

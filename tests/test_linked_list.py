@@ -103,6 +103,36 @@ def test_pop_default_pops_last():
     assert value == 3
 
 
+def test_pop_positive_index():
+    ll = SinglyLinkedList([1, 2, 3, 4, 5])
+    value = ll.pop(0)
+    assert value == 1
+    assert ll.to_list() == [2, 3, 4, 5]
+
+    value = ll.pop(3)
+    assert value == 5
+    assert ll.to_list() == [2, 3, 4]
+
+    value = ll.pop(1)
+    assert value == 3
+    assert ll.to_list() == [2, 4]
+
+
+def test_pop_negative_index():
+    ll = SinglyLinkedList([1, 2, 3, 4, 5])
+    value = ll.pop(-2)
+    assert value == 4
+    assert ll.to_list() == [1, 2, 3, 5]
+
+    value = ll.pop(-4)
+    assert value == 1
+    assert ll.to_list() == [2, 3, 5]
+
+    value = ll.pop(-2)
+    assert value == 3
+    assert ll.to_list() == [2, 5]
+
+
 def test_str_and_repr():
     ll = SinglyLinkedList([1, 2, 3])
     assert str(ll) == 'HEAD → 1 → 2 → 3 → NULL'

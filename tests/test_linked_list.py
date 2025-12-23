@@ -141,3 +141,18 @@ def test_str_and_repr():
     ll2 = SinglyLinkedList()
     assert str(ll2) == 'HEAD → NULL'
     assert repr(ll2) == 'SinglyLinkedList([])'
+
+
+def test_get_item():
+    ll = SinglyLinkedList([1, 2, 3])
+    assert ll[0] == 1
+    assert ll[1] == 2
+    assert ll[2] == 3
+    with pytest.raises(IndexError):
+        _ = ll[3]
+
+    assert ll[-1] == 3
+    assert ll[-2] == 2
+    assert ll[-3] == 1
+    with pytest.raises(IndexError):
+        _ = ll[-4]

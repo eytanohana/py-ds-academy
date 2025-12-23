@@ -24,10 +24,8 @@ class SinglyLinkedList(LinkedListBase[T]):
         if self._head is None:
             self._head = new_node
         else:
-            curr = self._head
-            while curr.next:
-                curr = curr.next
-            curr.next = new_node
+            last = self._get_node_at(-1)
+            last.next = new_node
         self._length += 1
 
     def prepend(self, value: T) -> None:

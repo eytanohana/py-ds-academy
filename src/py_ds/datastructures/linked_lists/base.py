@@ -183,12 +183,7 @@ class LinkedListBase(ABC, Generic[T]):
         Raises:
             IndexError: If the index is out of range.
         """
-        if index < 0 or index >= len(self):
-            raise IndexError('bad index')
-        curr = self._head
-        for _ in range(index):
-            curr = curr.next
-        return curr.value
+        return self._get_node_at(index).value
 
     def __repr__(self) -> str:
         """Return a string representation of the linked list.
@@ -197,3 +192,34 @@ class LinkedListBase(ABC, Generic[T]):
             A string representation showing the class name and list contents.
         """
         return f'{self.__class__.__name__}({self.to_list()})'
+
+    def _get_node_at(self, index: int) -> _Node[T]:
+        """Get the node at the specified index.
+
+        Uses bidirectional traversal for efficiency when accessing nodes near
+        the tail.
+
+        Args:
+            index: The position of the node to retrieve. Supports negative
+                indexing.
+
+        Returns:
+            The node at the specified index.
+
+        Raises:
+            IndexError: If the list is empty or index is out of bounds.
+
+        Time complexity: O(n).
+        """
+        if self._length == 0:
+            raise IndexError('empty list')
+        if index < -self._length or index >= self._length:
+            raise IndexError('invalid index')
+
+        if index < 0:
+            index = self._length + index
+
+        curr = self._head
+        for _ in range(index):
+            curr = curr.next
+        return curr

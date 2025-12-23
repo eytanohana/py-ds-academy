@@ -158,10 +158,7 @@ class SinglyLinkedList(LinkedListBase[T]):
         """
         if not self._head:
             return None
-        curr = self._head
-        while curr and curr.next:
-            curr = curr.next
-        return curr.value
+        return self._get_node_at(-1).value
 
     # ---------------------------------------------------
     # Python protocol methods

@@ -94,6 +94,11 @@ def test_pop_default_pops_last():
     assert value == 3
 
 
-def test_repr():
+def test_str_and_repr():
     ll = SinglyLinkedList([1, 2, 3])
+    assert str(ll) == 'HEAD → 1 → 2 → 3 → NULL'
     assert repr(ll) == 'SinglyLinkedList([1, 2, 3])'
+
+    ll2 = SinglyLinkedList()
+    assert str(ll2) == 'HEAD → NULL'
+    assert repr(ll2) == 'SinglyLinkedList([])'

@@ -184,3 +184,13 @@ class SinglyLinkedList(LinkedListBase[T]):
         while idx < index:
             curr = curr.next
         curr.value = value
+
+    def __str__(self) -> str:
+        """Return a string representation of the linked list.
+
+        Returns:
+            A visual representation of the linked list.
+        """
+        if not self:
+            return 'HEAD → NULL'
+        return 'HEAD → ' + ' → '.join(str(item) for item in self) + ' → NULL'

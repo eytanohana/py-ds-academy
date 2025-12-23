@@ -55,6 +55,8 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Raises:
             IndexError: If index is out of bounds.
+
+        Time complexity: O(n).
         """
         if index < 0 or index > self._length:
             raise IndexError('index out of bounds on list')
@@ -80,6 +82,8 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Raises:
             ValueError: If the value is not found.
+
+        Time complexity: O(n).
         """
         prev, curr = None, self._head
         while curr and curr.value != value:
@@ -106,6 +110,8 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Raises:
             IndexError: If the list is empty or index is invalid.
+
+        Time complexity: O(n).
         """
         prev, curr = None, self._head
         idx = self._length + index if index < 0 else index
@@ -122,7 +128,10 @@ class SinglyLinkedList(LinkedListBase[T]):
         return curr.value
 
     def clear(self) -> None:
-        """Remove all elements from the list."""
+        """Remove all elements from the list.
+
+        Time complexity: O(1).
+        """
         self._head = None
         self._length = 0
 
@@ -135,6 +144,8 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Returns:
             The first value in the list, or None if the list is empty.
+
+        Time complexity: O(1).
         """
         return self._head.value if self._head else None
 
@@ -143,6 +154,8 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Returns:
             The last value in the list, or None if the list is empty.
+
+        Time complexity: O(n).
         """
         if not self._head:
             return None
@@ -164,6 +177,8 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Raises:
             IndexError: If index is out of bounds.
+
+        Time complexity: O(n).
         """
         if index < 0 or index >= self._length:
             raise IndexError('bad index')
@@ -177,6 +192,8 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Returns:
             A visual representation of the linked list.
+
+        Time complexity: O(n).
         """
         if not self:
             return 'HEAD → NULL'

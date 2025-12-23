@@ -56,7 +56,7 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(n).
         """
-        index = self._length + index if index < 0 else index
+        index = self._length + index + 1 if index < 0 else index
         if index < 0 or index > self._length:
             raise IndexError('index out of bounds on list')
         if index == 0:
@@ -64,12 +64,9 @@ class SinglyLinkedList(LinkedListBase[T]):
         elif index == self._length:
             self.append(value)
         else:
-            prev, curr = None, self._head
-            for _ in range(index):
-                prev = curr
-                curr = curr.next
             new_node = _Node(value=value)
-            new_node.next = curr
+            prev = self._get_node_at(index - 1)
+            new_node.next = prev.next
             prev.next = new_node
             self._length += 1
 

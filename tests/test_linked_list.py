@@ -41,7 +41,7 @@ def test_prepend_adds_to_front():
     assert len(ll) == 3
 
 
-def test_insert_at_beginning_middle_and_end():
+def test_positive_insert_at_beginning_middle_and_end():
     ll = SinglyLinkedList([1, 3, 4])
 
     # insert at beginning
@@ -57,21 +57,32 @@ def test_insert_at_beginning_middle_and_end():
     assert ll.to_list() == [0, 1, 2, 3, 4, 5]
 
 
+def test_negative_insert_at_beginning_middle_and_end():
+    ll = SinglyLinkedList([1, 3, 4])
+
+    # insert at beginning
+    ll.insert(-1, 0)
+    assert ll.to_list() == [1, 3, 4, 0]
+
+    # insert in middle
+    ll.insert(-2, 2)
+    assert ll.to_list() == [1, 3, 4, 2, 0]
+
+    # insert right after beginning aka value ends up at index -5 after insertion
+    ll.insert(-len(ll), 5)
+    assert ll.to_list() == [1, 5, 3, 4, 2, 0]
+
+    # insert at beginning
+    ll.insert(-len(ll) - 1, 6)
+    assert ll.to_list() == [6, 1, 5, 3, 4, 2, 0]
+
+
 def test_insert_out_of_bounds_raises():
     ll = SinglyLinkedList([1, 2, 3])
     with pytest.raises(IndexError):
         ll.insert(10, 99)
     with pytest.raises(IndexError):
-        ll.insert(-4, 99)
-
-
-def test_insert_negative_index():
-    ll = SinglyLinkedList([1, 2, 3])
-    ll.insert(-2, 99)
-    assert ll.to_list() == [1, 99, 2, 3]
-
-    ll.insert(-1, 55)
-    assert ll.to_list() == [1, 99, 2, 55, 3]
+        ll.insert(-5, 99)
 
 
 def test_remove_existing_value():

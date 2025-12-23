@@ -50,7 +50,7 @@ class SinglyLinkedList(LinkedListBase[T]):
         """Insert a value at a specific index.
 
         Args:
-            index: The position at which to insert the value.
+            index: 0-based index, negative indexes supported (Python style).
             value: The value to insert.
 
         Raises:
@@ -58,6 +58,7 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(n).
         """
+        index = self._length + index if index < 0 else index
         if index < 0 or index > self._length:
             raise IndexError('index out of bounds on list')
         if index == 0:

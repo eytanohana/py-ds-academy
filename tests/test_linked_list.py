@@ -62,7 +62,16 @@ def test_insert_out_of_bounds_raises():
     with pytest.raises(IndexError):
         ll.insert(10, 99)
     with pytest.raises(IndexError):
-        ll.insert(-2, 99)  # up to you if you support negative; here we treat as error
+        ll.insert(-4, 99)
+
+
+def test_insert_negative_index():
+    ll = SinglyLinkedList([1, 2, 3])
+    ll.insert(-2, 99)
+    assert ll.to_list() == [1, 99, 2, 3]
+
+    ll.insert(-1, 55)
+    assert ll.to_list() == [1, 99, 2, 55, 3]
 
 
 def test_remove_existing_value():

@@ -176,12 +176,7 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(n).
         """
-        if index < 0 or index >= self._length:
-            raise IndexError('bad index')
-        idx, curr = 0, self._head
-        while idx < index:
-            curr = curr.next
-        curr.value = value
+        self._get_node_at(index).value = value
 
     def __str__(self) -> str:
         """Return a string representation of the linked list.

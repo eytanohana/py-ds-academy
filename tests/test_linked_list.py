@@ -156,3 +156,32 @@ def test_get_item():
     assert ll[-3] == 1
     with pytest.raises(IndexError):
         _ = ll[-4]
+
+
+def test_set_item():
+    ll = SinglyLinkedList([1, 2, 3])
+    ll[0] = 10
+    assert ll[0] == 10
+
+    ll[1] = 20
+    assert ll[1] == 20
+
+    ll[2] = 30
+    assert ll[2] == 30
+
+    with pytest.raises(IndexError):
+        ll[3] = 40
+
+    ll = SinglyLinkedList([1, 2, 3])
+
+    ll[-1] = 30
+    assert ll[-1] == 30
+
+    ll[-2] = 20
+    assert ll[-2] == 20
+
+    ll[-3] = 10
+    assert ll[-3] == 10
+
+    with pytest.raises(IndexError):
+        ll[-4] = 40

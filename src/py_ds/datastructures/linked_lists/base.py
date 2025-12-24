@@ -175,7 +175,7 @@ class LinkedListBase(ABC, Generic[T]):
         """Get the value at the given index.
 
         Args:
-            index: The index of the value to retrieve.
+            index: 0-based index, negative indexes supported (Python style).
 
         Returns:
             The value at the specified index.
@@ -196,12 +196,8 @@ class LinkedListBase(ABC, Generic[T]):
     def _get_node_at(self, index: int) -> _Node[T]:
         """Get the node at the specified index.
 
-        Uses bidirectional traversal for efficiency when accessing nodes near
-        the tail.
-
         Args:
-            index: The position of the node to retrieve. Supports negative
-                indexing.
+            index: The position of the node to retrieve. Supports negative indexing.
 
         Returns:
             The node at the specified index.

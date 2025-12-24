@@ -166,6 +166,7 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Args:
             index: The position at which to set the value.
+                0-based index, negative indexes supported (Python style).
             value: The value to set.
 
         Raises:

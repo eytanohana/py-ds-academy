@@ -193,6 +193,12 @@ class LinkedListBase(ABC, Generic[T]):
         """
         return f'{self.__class__.__name__}({self.to_list()})'
 
+    def _validate_index(self, index: int) -> None:
+        if self._length == 0:
+            raise IndexError('empty list')
+        if index < -self._length or index >= self._length:
+            raise IndexError('invalid index')
+
     def _get_node_at(self, index: int) -> _Node[T]:
         """Get the node at the specified index.
 
@@ -207,11 +213,7 @@ class LinkedListBase(ABC, Generic[T]):
 
         Time complexity: O(n).
         """
-        if self._length == 0:
-            raise IndexError('empty list')
-        if index < -self._length or index >= self._length:
-            raise IndexError('invalid index')
-
+        self._validate_index(index)
         if index < 0:
             index = self._length + index
 

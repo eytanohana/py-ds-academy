@@ -76,8 +76,7 @@ class DoublyLinkedList(LinkedListBase[T]):
         the tail.
 
         Args:
-            index: The position of the node to retrieve. Supports negative
-                indexing.
+            index: The position of the node to retrieve. Supports negative indexing.
 
         Returns:
             The node at the specified index.
@@ -87,23 +86,16 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(n).
         """
-        if self._length == 0:
-            raise IndexError('pop from an empty list')
-        if index < -self._length or index >= self._length:
-            raise IndexError('invalid index')
-
+        self._validate_index(index)
         if index < 0:
             index = self._length + index
 
-        if index > self._length // 2:
-            steps = self._length - index - 1
-            curr = self._tail
-            for _ in range(steps):
-                curr = curr.prev
-        else:
-            curr = self._head
-            for _ in range(index):
-                curr = curr.next
+        if index <= self._length // 2:
+            return super()._get_node_at(index)
+
+        curr = self._tail
+        for _ in range(self._length - index - 1):
+            curr = curr.prev
         return curr
 
     def insert(self, index: int, value: T) -> None:
@@ -283,8 +275,7 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(n).
         """
-        node = self._get_node_at(index)
-        node.value = value
+        self._get_node_at(index).value = value
 
     def __str__(self) -> str:
         """Return a string representation of the linked list.

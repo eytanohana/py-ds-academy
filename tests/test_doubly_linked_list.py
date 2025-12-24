@@ -28,7 +28,7 @@ def test_append_adds_to_end():
     dll.append(1)
     dll.append(2)
     dll.append(3)
-    assert dll.to_list() == [1, 2, 3]
+    assert list(dll) == [1, 2, 3]
     assert dll.head() == 1
     assert dll.tail() == 3
     assert len(dll) == 3
@@ -50,7 +50,7 @@ def test_prepend_adds_to_front():
     dll.prepend(3)
     dll.prepend(2)
     dll.prepend(1)
-    assert dll.to_list() == [1, 2, 3]
+    assert list(dll) == [1, 2, 3]
     assert dll.head() == 1
     assert dll.tail() == 3
     assert len(dll) == 3
@@ -62,18 +62,18 @@ def test_insert_at_beginning_middle_and_end():
 
     # Insert at beginning
     dll.insert(0, 0)
-    assert dll.to_list() == [0, 1, 2, 4, 5]
+    assert list(dll) == [0, 1, 2, 4, 5]
 
     # Insert in middle
     dll.insert(3, 3)
-    assert dll.to_list() == [0, 1, 2, 3, 4, 5]
+    assert list(dll) == [0, 1, 2, 3, 4, 5]
 
     # Insert at end
     dll.insert(6, 6)
-    assert dll.to_list() == [0, 1, 2, 3, 4, 5, 6]
+    assert list(dll) == [0, 1, 2, 3, 4, 5, 6]
 
     dll.insert(-1, 7)
-    assert dll.to_list() == [0, 1, 2, 3, 4, 5, 7, 6]
+    assert list(dll) == [0, 1, 2, 3, 4, 5, 7, 6]
 
 
 def test_insert_out_of_bounds_raises():
@@ -89,15 +89,15 @@ def test_remove_existing_value():
     """Remove should remove the first occurrence of a value."""
     dll = DoublyLinkedList([1, 2, 3, 2, 4])
     dll.remove(2)
-    assert dll.to_list() == [1, 3, 2, 4]
+    assert list(dll) == [1, 3, 2, 4]
     dll.remove(1)
-    assert dll.to_list() == [3, 2, 4]
+    assert list(dll) == [3, 2, 4]
     dll.remove(4)
-    assert dll.to_list() == [3, 2]
+    assert list(dll) == [3, 2]
     dll.remove(2)
-    assert dll.to_list() == [3]
+    assert list(dll) == [3]
     dll.remove(3)
-    assert dll.to_list() == []
+    assert list(dll) == []
 
 
 def test_remove_nonexistent_raises():
@@ -112,13 +112,13 @@ def test_pop_default_pops_last():
     dll = DoublyLinkedList([1, 2, 3])
     value = dll.pop()
     assert value == 3
-    assert dll.to_list() == [1, 2]
+    assert list(dll) == [1, 2]
     value = dll.pop()
     assert value == 2
-    assert dll.to_list() == [1]
+    assert list(dll) == [1]
     value = dll.pop()
     assert value == 1
-    assert dll.to_list() == []
+    assert list(dll) == []
 
 
 def test_pop_at_index():
@@ -127,15 +127,15 @@ def test_pop_at_index():
 
     # Pop first
     assert dll.pop(0) == 1
-    assert dll.to_list() == [2, 3, 4, 5]
+    assert list(dll) == [2, 3, 4, 5]
 
     # Pop middle
     assert dll.pop(2) == 4
-    assert dll.to_list() == [2, 3, 5]
+    assert list(dll) == [2, 3, 5]
 
     # Pop last
     assert dll.pop(-1) == 5
-    assert dll.to_list() == [2, 3]
+    assert list(dll) == [2, 3]
 
 
 def test_pop_empty_raises():
@@ -167,7 +167,7 @@ def test_clear():
     assert len(dll) == 0
     assert dll.head() is None
     assert dll.tail() is None
-    assert dll.to_list() == []
+    assert list(dll) == []
 
 
 def test_iteration():
@@ -218,9 +218,9 @@ def test_setitem():
     dll = DoublyLinkedList([1, 2, 3])
     dll[0] = 10
     dll[2] = 30
-    assert dll.to_list() == [10, 2, 30]
+    assert list(dll) == [10, 2, 30]
     dll[-1] = 40
-    assert dll.to_list() == [10, 2, 40]
+    assert list(dll) == [10, 2, 40]
 
 
 def test_setitem_out_of_bounds():
@@ -258,19 +258,19 @@ def test_complex_operations():
     dll.prepend(1)
     dll.append(3)
     dll.insert(3, 4)
-    assert dll.to_list() == [1, 2, 3, 4]
+    assert list(dll) == [1, 2, 3, 4]
 
     # Modify
     dll[1] = 20
-    assert dll.to_list() == [1, 20, 3, 4]
+    assert list(dll) == [1, 20, 3, 4]
 
     # Remove
     dll.remove(20)
-    assert dll.to_list() == [1, 3, 4]
+    assert list(dll) == [1, 3, 4]
 
     # Pop
     assert dll.pop(1) == 3
-    assert dll.to_list() == [1, 4]
+    assert list(dll) == [1, 4]
 
     # Clear
     dll.clear()

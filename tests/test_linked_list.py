@@ -6,7 +6,7 @@ from py_ds.datastructures.linked_lists.singly_linked import SinglyLinkedList
 def test_empty_list_initial_state():
     ll: SinglyLinkedList[int] = SinglyLinkedList()
     assert len(ll) == 0
-    assert ll.to_list() == []
+    assert list(ll) == []
     assert ll.head() is None
     assert ll.tail() is None
     assert bool(ll) is False
@@ -15,7 +15,7 @@ def test_empty_list_initial_state():
 def test_init_with_items():
     ll = SinglyLinkedList([1, 2, 3])
     assert len(ll) == 3
-    ll_list = ll.to_list()
+    ll_list = list(ll)
     assert ll_list == [1, 2, 3]
     assert ll.head() == 1
     assert ll.tail() == 3
@@ -26,7 +26,8 @@ def test_append_adds_to_end():
     ll.append(1)
     ll.append(2)
     ll.append(3)
-    assert ll.to_list() == [1, 2, 3]
+    assert list(ll) == list(ll)
+    assert list(ll) == [1, 2, 3]
     assert ll.tail() == 3
     assert len(ll) == 3
 
@@ -36,7 +37,7 @@ def test_prepend_adds_to_front():
     ll.prepend(3)
     ll.prepend(2)
     ll.prepend(1)
-    assert ll.to_list() == [1, 2, 3]
+    assert list(ll) == [1, 2, 3]
     assert ll.head() == 1
     assert len(ll) == 3
 
@@ -46,15 +47,15 @@ def test_positive_insert_at_beginning_middle_and_end():
 
     # insert at beginning
     ll.insert(0, 0)
-    assert ll.to_list() == [0, 1, 3, 4]
+    assert list(ll) == [0, 1, 3, 4]
 
     # insert in middle
     ll.insert(2, 2)
-    assert ll.to_list() == [0, 1, 2, 3, 4]
+    assert list(ll) == [0, 1, 2, 3, 4]
 
     # insert at end (index == len)
     ll.insert(len(ll), 5)
-    assert ll.to_list() == [0, 1, 2, 3, 4, 5]
+    assert list(ll) == [0, 1, 2, 3, 4, 5]
 
 
 def test_negative_insert_at_beginning_middle_and_end():
@@ -62,19 +63,19 @@ def test_negative_insert_at_beginning_middle_and_end():
 
     # insert at beginning
     ll.insert(-1, 0)
-    assert ll.to_list() == [1, 3, 4, 0]
+    assert list(ll) == [1, 3, 4, 0]
 
     # insert in middle
     ll.insert(-2, 2)
-    assert ll.to_list() == [1, 3, 4, 2, 0]
+    assert list(ll) == [1, 3, 4, 2, 0]
 
     # insert right after beginning aka value ends up at index -5 after insertion
     ll.insert(-len(ll), 5)
-    assert ll.to_list() == [1, 5, 3, 4, 2, 0]
+    assert list(ll) == [1, 5, 3, 4, 2, 0]
 
     # insert at beginning
     ll.insert(-len(ll) - 1, 6)
-    assert ll.to_list() == [6, 1, 5, 3, 4, 2, 0]
+    assert list(ll) == [6, 1, 5, 3, 4, 2, 0]
 
 
 def test_insert_out_of_bounds_raises():
@@ -89,16 +90,16 @@ def test_remove_existing_value():
     ll = SinglyLinkedList([1, 2, 3, 2])
 
     ll.remove(2)  # remove first occurrence
-    assert ll.to_list() == [1, 3, 2]
+    assert list(ll) == [1, 3, 2]
 
     ll.remove(2)
-    assert ll.to_list() == [1, 3]
+    assert list(ll) == [1, 3]
 
     ll.remove(1)
-    assert ll.to_list() == [3]
+    assert list(ll) == [3]
 
     ll.remove(3)
-    assert ll.to_list() == []
+    assert list(ll) == []
     assert len(ll) == 0
 
 
@@ -118,30 +119,30 @@ def test_pop_positive_index():
     ll = SinglyLinkedList([1, 2, 3, 4, 5])
     value = ll.pop(0)
     assert value == 1
-    assert ll.to_list() == [2, 3, 4, 5]
+    assert list(ll) == [2, 3, 4, 5]
 
     value = ll.pop(3)
     assert value == 5
-    assert ll.to_list() == [2, 3, 4]
+    assert list(ll) == [2, 3, 4]
 
     value = ll.pop(1)
     assert value == 3
-    assert ll.to_list() == [2, 4]
+    assert list(ll) == [2, 4]
 
 
 def test_pop_negative_index():
     ll = SinglyLinkedList([1, 2, 3, 4, 5])
     value = ll.pop(-2)
     assert value == 4
-    assert ll.to_list() == [1, 2, 3, 5]
+    assert list(ll) == [1, 2, 3, 5]
 
     value = ll.pop(-4)
     assert value == 1
-    assert ll.to_list() == [2, 3, 5]
+    assert list(ll) == [2, 3, 5]
 
     value = ll.pop(-2)
     assert value == 3
-    assert ll.to_list() == [2, 5]
+    assert list(ll) == [2, 5]
 
 
 def test_str_and_repr():

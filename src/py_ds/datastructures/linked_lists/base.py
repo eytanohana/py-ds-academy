@@ -146,15 +146,6 @@ class LinkedListBase(ABC, Generic[T]):
                 return i
         raise ValueError('value not found')
 
-    def to_list(self) -> list[T]:
-        """Convert the linked list to a Python list.
-
-        Returns:
-            A Python list containing all values in the linked list, in order
-            from head to tail.
-        """
-        return list(self)
-
     def __len__(self) -> int:
         """Return the number of elements in the list.
 
@@ -206,7 +197,7 @@ class LinkedListBase(ABC, Generic[T]):
         Returns:
             A string representation showing the class name and list contents.
         """
-        return f'{self.__class__.__name__}({self.to_list()})'
+        return f'{self.__class__.__name__}({list(self)})'
 
     def _validate_index(self, index: int) -> None:
         if self._length == 0:

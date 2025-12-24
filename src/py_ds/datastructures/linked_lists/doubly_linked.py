@@ -31,10 +31,6 @@ class DoublyLinkedList(LinkedListBase[T]):
         self._tail: _DoublyNode[T] | None = None
         super().__init__(items)
 
-    # ---------------------------------------------------
-    # Core list operations
-    # ---------------------------------------------------
-
     def append(self, value: T) -> None:
         """Add a value to the end of the list.
 
@@ -202,10 +198,6 @@ class DoublyLinkedList(LinkedListBase[T]):
         self._head = self._tail = None
         self._length = 0
 
-    # ---------------------------------------------------
-    # Access helpers
-    # ---------------------------------------------------
-
     def head(self) -> T | None:
         """Return the first value in the list.
 
@@ -226,10 +218,6 @@ class DoublyLinkedList(LinkedListBase[T]):
         """
         return self._tail.value if self._tail else None
 
-    # ---------------------------------------------------
-    # Python protocol methods
-    # ---------------------------------------------------
-
     def reverse_iter(self) -> Iterator[T]:
         """Iterate through values from tail to head.
 
@@ -245,37 +233,6 @@ class DoublyLinkedList(LinkedListBase[T]):
         while curr:
             yield curr.value
             curr = curr.prev
-
-    def __getitem__(self, index: int) -> T:
-        """Get the value at the specified index.
-
-        Args:
-            index: The position of the value to retrieve. Supports negative
-                indexing.
-
-        Returns:
-            The value at the specified index.
-
-        Raises:
-            IndexError: If index is out of bounds.
-
-        Time complexity: O(n).
-        """
-        return self._get_node_at(index).value
-
-    def __setitem__(self, index: int, value: T) -> None:
-        """Set item at the specified index.
-
-        Args:
-            index: The position at which to set the value.
-            value: The value to set.
-
-        Raises:
-            IndexError: If index is out of bounds.
-
-        Time complexity: O(n).
-        """
-        self._get_node_at(index).value = value
 
     def __str__(self) -> str:
         """Return a string representation of the linked list.

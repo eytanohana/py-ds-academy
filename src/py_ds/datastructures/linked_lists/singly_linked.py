@@ -8,10 +8,6 @@ class SinglyLinkedList(LinkedListBase[T]):
     and length/truthiness operations.
     """
 
-    # ---------------------------------------------------
-    # Core list operations
-    # ---------------------------------------------------
-
     def append(self, value: T) -> None:
         """Add a value to the end of the list.
 
@@ -131,10 +127,6 @@ class SinglyLinkedList(LinkedListBase[T]):
         self._head = None
         self._length = 0
 
-    # ---------------------------------------------------
-    # Access helpers
-    # ---------------------------------------------------
-
     def head(self) -> T | None:
         """Return the first value in the list.
 
@@ -156,25 +148,6 @@ class SinglyLinkedList(LinkedListBase[T]):
         if not self._head:
             return None
         return self._get_node_at(-1).value
-
-    # ---------------------------------------------------
-    # Python protocol methods
-    # ---------------------------------------------------
-
-    def __setitem__(self, index: int, value: T) -> None:
-        """Set item at the specified index.
-
-        Args:
-            index: The position at which to set the value.
-                0-based index, negative indexes supported (Python style).
-            value: The value to set.
-
-        Raises:
-            IndexError: If index is out of bounds.
-
-        Time complexity: O(n).
-        """
-        self._get_node_at(index).value = value
 
     def __str__(self) -> str:
         """Return a string representation of the linked list.

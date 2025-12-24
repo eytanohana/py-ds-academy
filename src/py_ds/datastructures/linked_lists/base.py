@@ -185,6 +185,21 @@ class LinkedListBase(ABC, Generic[T]):
         """
         return self._get_node_at(index).value
 
+    def __setitem__(self, index: int, value: T) -> None:
+        """Set item at the specified index.
+
+        Args:
+            index: The position at which to set the value.
+                0-based index, negative indexes supported (Python style).
+            value: The value to set.
+
+        Raises:
+            IndexError: If index is out of bounds.
+
+        Time complexity: O(n).
+        """
+        self._get_node_at(index).value = value
+
     def __repr__(self) -> str:
         """Return a string representation of the linked list.
 

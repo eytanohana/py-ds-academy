@@ -31,10 +31,6 @@ class DoublyLinkedList(LinkedListBase[T]):
         self._tail: _DoublyNode[T] | None = None
         super().__init__(items)
 
-    # ---------------------------------------------------
-    # Core list operations
-    # ---------------------------------------------------
-
     def append(self, value: T) -> None:
         """Add a value to the end of the list.
 
@@ -76,32 +72,26 @@ class DoublyLinkedList(LinkedListBase[T]):
         the tail.
 
         Args:
-            index: The position of the node to retrieve. Supports negative
-                indexing.
+            index: The position of the node to retrieve. Supports negative indexing.
 
         Returns:
             The node at the specified index.
 
         Raises:
             IndexError: If the list is empty or index is out of bounds.
-        """
-        if self._length == 0:
-            raise IndexError('pop from an empty list')
-        if index < -self._length or index >= self._length:
-            raise IndexError('invalid index')
 
+        Time complexity: O(n).
+        """
+        self._validate_index(index)
         if index < 0:
             index = self._length + index
 
-        if index > self._length // 2:
-            steps = self._length - index - 1
-            curr = self._tail
-            for _ in range(steps):
-                curr = curr.prev
-        else:
-            curr = self._head
-            for _ in range(index):
-                curr = curr.next
+        if index <= self._length // 2:
+            return super()._get_node_at(index)
+
+        curr = self._tail
+        for _ in range(self._length - index - 1):
+            curr = curr.prev
         return curr
 
     def insert(self, index: int, value: T) -> None:
@@ -113,6 +103,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Raises:
             IndexError: If index is out of bounds.
+
+        Time complexity: O(n).
         """
         if index == self._length:
             self.append(value)
@@ -140,6 +132,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Raises:
             ValueError: If the value is not found.
+
+        Time complexity: O(n).
         """
         curr = self._head
         while curr and curr.value != value:
@@ -177,6 +171,8 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Raises:
             IndexError: If the list is empty or index is invalid.
+
+        Time complexity: O(n).
         """
         curr = self._get_node_at(index)
         value = curr.value
@@ -195,19 +191,20 @@ class DoublyLinkedList(LinkedListBase[T]):
         return value
 
     def clear(self) -> None:
-        """Remove all elements from the list."""
+        """Remove all elements from the list.
+
+        Time complexity: O(n).
+        """
         self._head = self._tail = None
         self._length = 0
-
-    # ---------------------------------------------------
-    # Access helpers
-    # ---------------------------------------------------
 
     def head(self) -> T | None:
         """Return the first value in the list.
 
         Returns:
             The first value in the list, or None if the list is empty.
+
+        Time complexity: O(1).
         """
         return self._head.value if self._head else None
 
@@ -217,24 +214,9 @@ class DoublyLinkedList(LinkedListBase[T]):
         Returns:
             The last value in the list, or None if the list is empty.
 
-        Time complexity: O(1) thanks to tail pointer.
+        Time complexity: O(1).
         """
         return self._tail.value if self._tail else None
-
-    # ---------------------------------------------------
-    # Python protocol methods
-    # ---------------------------------------------------
-
-    def __iter__(self) -> Iterator[T]:
-        """Iterate through values from head to tail.
-
-        Yields:
-            The values in the list from head to tail.
-        """
-        curr = self._head
-        while curr:
-            yield curr.value
-            curr = curr.next
 
     def reverse_iter(self) -> Iterator[T]:
         """Iterate through values from tail to head.
@@ -244,36 +226,22 @@ class DoublyLinkedList(LinkedListBase[T]):
 
         Yields:
             The values in the list from tail to head.
+
+        Time complexity: O(n).
         """
         curr = self._tail
         while curr:
             yield curr.value
             curr = curr.prev
 
-    def __getitem__(self, index: int) -> T:
-        """Get the value at the specified index.
-
-        Args:
-            index: The position of the value to retrieve. Supports negative
-                indexing.
+    def __str__(self) -> str:
+        """Return a string representation of the linked list.
 
         Returns:
-            The value at the specified index.
+            A visual representation of the linked list.
 
-        Raises:
-            IndexError: If index is out of bounds.
+        Time complexity: O(n).
         """
-        return self._get_node_at(index).value
-
-    def __setitem__(self, index: int, value: T) -> None:
-        """Set item at the specified index.
-
-        Args:
-            index: The position at which to set the value.
-            value: The value to set.
-
-        Raises:
-            IndexError: If index is out of bounds.
-        """
-        node = self._get_node_at(index)
-        node.value = value
+        if not self:
+            return 'HEAD ⇆ TAIL'
+        return 'HEAD ⇆ ' + ' ⇆ '.join(str(item) for item in self) + ' ⇆ TAIL'

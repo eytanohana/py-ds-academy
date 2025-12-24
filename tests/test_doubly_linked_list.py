@@ -230,10 +230,15 @@ def test_setitem_out_of_bounds():
         dll[10] = 999
 
 
-def test_repr():
+def test_str_and_repr():
     """Repr should show the list contents."""
     dll = DoublyLinkedList([1, 2, 3])
+    assert str(dll) == 'HEAD ⇆ 1 ⇆ 2 ⇆ 3 ⇆ TAIL'
     assert repr(dll) == 'DoublyLinkedList([1, 2, 3])'
+
+    dll2 = DoublyLinkedList()
+    assert str(dll2) == 'HEAD ⇆ TAIL'
+    assert repr(dll2) == 'DoublyLinkedList([])'
 
 
 def test_bool():

@@ -70,7 +70,7 @@ class BinaryTree(ABC, Generic[T]):
         """
         return self.size == 0
 
-    def __len__(self):
+    def __len__(self) -> int:
         """Return the number of elements in the tree.
 
         Returns:

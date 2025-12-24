@@ -114,13 +114,16 @@ class LinkedListBase(ABC, Generic[T]):
             The last value in the list, or None if the list is empty.
         """
 
-    @abstractmethod
     def __iter__(self) -> Iterator[T]:
         """Iterate through values in the list.
 
         Yields:
-            Each value in the list, in order from head to tail.
+            The values in the list from head to tail.
         """
+        curr = self._head
+        while curr:
+            yield curr.value
+            curr = curr.next
 
     # ---------------------------------------------------
     # Concrete methods (shared implementations)
@@ -172,7 +175,7 @@ class LinkedListBase(ABC, Generic[T]):
         """Get the value at the given index.
 
         Args:
-            index: The index of the value to retrieve.
+            index: 0-based index, negative indexes supported (Python style).
 
         Returns:
             The value at the specified index.
@@ -180,12 +183,22 @@ class LinkedListBase(ABC, Generic[T]):
         Raises:
             IndexError: If the index is out of range.
         """
-        if index < 0 or index >= len(self):
-            raise IndexError('bad index')
-        curr = self._head
-        for _ in range(index):
-            curr = curr.next
-        return curr.value
+        return self._get_node_at(index).value
+
+    def __setitem__(self, index: int, value: T) -> None:
+        """Set item at the specified index.
+
+        Args:
+            index: The position at which to set the value.
+                0-based index, negative indexes supported (Python style).
+            value: The value to set.
+
+        Raises:
+            IndexError: If index is out of bounds.
+
+        Time complexity: O(n).
+        """
+        self._get_node_at(index).value = value
 
     def __repr__(self) -> str:
         """Return a string representation of the linked list.
@@ -193,5 +206,33 @@ class LinkedListBase(ABC, Generic[T]):
         Returns:
             A string representation showing the class name and list contents.
         """
-        class_name = self.__class__.__name__
-        return f'{class_name}({self.to_list()})'
+        return f'{self.__class__.__name__}({self.to_list()})'
+
+    def _validate_index(self, index: int) -> None:
+        if self._length == 0:
+            raise IndexError('empty list')
+        if index < -self._length or index >= self._length:
+            raise IndexError('invalid index')
+
+    def _get_node_at(self, index: int) -> _Node[T]:
+        """Get the node at the specified index.
+
+        Args:
+            index: The position of the node to retrieve. Supports negative indexing.
+
+        Returns:
+            The node at the specified index.
+
+        Raises:
+            IndexError: If the list is empty or index is out of bounds.
+
+        Time complexity: O(n).
+        """
+        self._validate_index(index)
+        if index < 0:
+            index = self._length + index
+
+        curr = self._head
+        for _ in range(index):
+            curr = curr.next
+        return curr

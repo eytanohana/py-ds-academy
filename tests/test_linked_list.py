@@ -41,7 +41,7 @@ def test_prepend_adds_to_front():
     assert len(ll) == 3
 
 
-def test_insert_at_beginning_middle_and_end():
+def test_positive_insert_at_beginning_middle_and_end():
     ll = SinglyLinkedList([1, 3, 4])
 
     # insert at beginning
@@ -57,12 +57,32 @@ def test_insert_at_beginning_middle_and_end():
     assert ll.to_list() == [0, 1, 2, 3, 4, 5]
 
 
+def test_negative_insert_at_beginning_middle_and_end():
+    ll = SinglyLinkedList([1, 3, 4])
+
+    # insert at beginning
+    ll.insert(-1, 0)
+    assert ll.to_list() == [1, 3, 4, 0]
+
+    # insert in middle
+    ll.insert(-2, 2)
+    assert ll.to_list() == [1, 3, 4, 2, 0]
+
+    # insert right after beginning aka value ends up at index -5 after insertion
+    ll.insert(-len(ll), 5)
+    assert ll.to_list() == [1, 5, 3, 4, 2, 0]
+
+    # insert at beginning
+    ll.insert(-len(ll) - 1, 6)
+    assert ll.to_list() == [6, 1, 5, 3, 4, 2, 0]
+
+
 def test_insert_out_of_bounds_raises():
     ll = SinglyLinkedList([1, 2, 3])
     with pytest.raises(IndexError):
         ll.insert(10, 99)
     with pytest.raises(IndexError):
-        ll.insert(-2, 99)  # up to you if you support negative; here we treat as error
+        ll.insert(-5, 99)
 
 
 def test_remove_existing_value():
@@ -94,6 +114,85 @@ def test_pop_default_pops_last():
     assert value == 3
 
 
-def test_repr():
+def test_pop_positive_index():
+    ll = SinglyLinkedList([1, 2, 3, 4, 5])
+    value = ll.pop(0)
+    assert value == 1
+    assert ll.to_list() == [2, 3, 4, 5]
+
+    value = ll.pop(3)
+    assert value == 5
+    assert ll.to_list() == [2, 3, 4]
+
+    value = ll.pop(1)
+    assert value == 3
+    assert ll.to_list() == [2, 4]
+
+
+def test_pop_negative_index():
+    ll = SinglyLinkedList([1, 2, 3, 4, 5])
+    value = ll.pop(-2)
+    assert value == 4
+    assert ll.to_list() == [1, 2, 3, 5]
+
+    value = ll.pop(-4)
+    assert value == 1
+    assert ll.to_list() == [2, 3, 5]
+
+    value = ll.pop(-2)
+    assert value == 3
+    assert ll.to_list() == [2, 5]
+
+
+def test_str_and_repr():
     ll = SinglyLinkedList([1, 2, 3])
+    assert str(ll) == 'HEAD → 1 → 2 → 3 → NULL'
     assert repr(ll) == 'SinglyLinkedList([1, 2, 3])'
+
+    ll2 = SinglyLinkedList()
+    assert str(ll2) == 'HEAD → NULL'
+    assert repr(ll2) == 'SinglyLinkedList([])'
+
+
+def test_get_item():
+    ll = SinglyLinkedList([1, 2, 3])
+    assert ll[0] == 1
+    assert ll[1] == 2
+    assert ll[2] == 3
+    with pytest.raises(IndexError):
+        _ = ll[3]
+
+    assert ll[-1] == 3
+    assert ll[-2] == 2
+    assert ll[-3] == 1
+    with pytest.raises(IndexError):
+        _ = ll[-4]
+
+
+def test_set_item():
+    ll = SinglyLinkedList([1, 2, 3])
+    ll[0] = 10
+    assert ll[0] == 10
+
+    ll[1] = 20
+    assert ll[1] == 20
+
+    ll[2] = 30
+    assert ll[2] == 30
+
+    with pytest.raises(IndexError):
+        ll[3] = 40
+
+    ll = SinglyLinkedList([1, 2, 3])
+
+    ll[-1] = 30
+    assert ll[-1] == 30
+
+    ll[-2] = 20
+    assert ll[-2] == 20
+
+    ll[-3] = 10
+    assert ll[-3] == 10
+
+    with pytest.raises(IndexError):
+        ll[-4] = 40

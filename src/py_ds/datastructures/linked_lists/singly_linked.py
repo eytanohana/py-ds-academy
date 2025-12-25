@@ -52,7 +52,7 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(n).
         """
-        index = self._length + index + 1 if index < 0 else index
+        index = self._get_positive_index(index) + int(index < 0)
         if index < 0 or index > self._length:
             raise IndexError('index out of bounds on list')
         if index == 0:
@@ -109,7 +109,7 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(n).
         """
-        idx = self._length + index if index < 0 else index  # get the positive index
+        idx = self._get_positive_index(index)
         if idx < 0 or idx >= self._length:
             raise IndexError('invalid index')
         try:
@@ -117,9 +117,13 @@ class SinglyLinkedList(LinkedListBase[T]):
             prev_node = self._get_node_at(idx - 1)
             value = prev_node.next.value
             prev_node.next = prev_node.next.next
+            if prev_node.next is None:
+                self._tail = prev_node
         except AssertionError:
             value = self._head.value
             self._head = self._head.next
+            if self._head is None:
+                self._tail = None
         self._length -= 1
         return value
 
@@ -128,7 +132,7 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(1).
         """
-        self._head = None
+        self._head = self._tail = None
         self._length = 0
 
     def head(self) -> T | None:
@@ -149,9 +153,9 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(n).
         """
-        if not self._head:
+        if not self._tail:
             return None
-        return self._get_node_at(-1).value
+        return self._tail.value
 
     def __str__(self) -> str:
         """Return a string representation of the linked list.

@@ -156,7 +156,7 @@ class LinkedListStack:
     def pop(self):
         if self._list.head() is None:
             raise IndexError("Stack is empty")
-        return self._list.pop()
+        return self._list.pop(0)
     
     def peek(self):
         head = self._list.head()

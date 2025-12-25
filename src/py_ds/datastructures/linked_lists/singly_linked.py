@@ -18,10 +18,10 @@ class SinglyLinkedList(LinkedListBase[T]):
         """
         new_node = _Node(value=value)
         if self._head is None:
-            self._head = new_node
+            self._head = self._tail = new_node
         else:
-            last = self._get_node_at(-1)
-            last.next = new_node
+            self._tail.next = new_node
+            self._tail = new_node
         self._length += 1
 
     def prepend(self, value: T) -> None:
@@ -34,7 +34,7 @@ class SinglyLinkedList(LinkedListBase[T]):
         """
         new_node = _Node(value=value)
         if self._head is None:
-            self._head = new_node
+            self._head = self._tail = new_node
         else:
             new_node.next = self._head
             self._head = new_node
@@ -81,14 +81,18 @@ class SinglyLinkedList(LinkedListBase[T]):
         while curr and curr.value != value:
             prev = curr
             curr = curr.next
-        if curr and curr.value == value:
-            if prev:
-                prev.next = curr.next
-            else:
-                self._head = self._head.next
-            self._length -= 1
-        else:
+        if not curr or curr.value != value:
             raise ValueError('value not found')
+
+        if prev:
+            prev.next = curr.next
+            if curr == self._tail:
+                self._tail = prev
+        else:
+            self._head = self._head.next
+            if self._head is None:
+                self._tail = None
+        self._length -= 1
 
     def pop(self, index: int = -1) -> T:
         """Remove and return the item at the given index.
@@ -105,7 +109,7 @@ class SinglyLinkedList(LinkedListBase[T]):
 
         Time complexity: O(n).
         """
-        idx = self._length + index if index < 0 else index
+        idx = self._length + index if index < 0 else index  # get the positive index
         if idx < 0 or idx >= self._length:
             raise IndexError('invalid index')
         try:

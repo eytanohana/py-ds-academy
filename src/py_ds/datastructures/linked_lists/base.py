@@ -37,6 +37,7 @@ class LinkedListBase(ABC, Generic[T]):
                 If None, creates an empty list.
         """
         self._head: _Node[T] | None = None
+        self._tail: _Node[T] | None = None
         self._length: int = 0
         for item in items or []:
             self.append(item)
@@ -220,10 +221,14 @@ class LinkedListBase(ABC, Generic[T]):
         Time complexity: O(n).
         """
         self._validate_index(index)
-        if index < 0:
-            index = self._length + index
+        index = self._get_positive_index(index)
 
         curr = self._head
         for _ in range(index):
             curr = curr.next
         return curr
+
+    def _get_positive_index(self, index: int):
+        if index < 0:
+            return self._length + index
+        return index

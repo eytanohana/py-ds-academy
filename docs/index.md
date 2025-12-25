@@ -66,7 +66,7 @@ uv run python
 - ✅ **Stack** - LIFO stack with list backing
 - ✅ **Queue** - FIFO queue with list backing
 - ✅ **SinglyLinkedList** - Single-direction linked list
-- ✅ **DoublyLinkedList** - Double-direction linked list with O(1) append/prepend
+- ✅ **DoublyLinkedList** - Double-direction linked list
 
 ### Trees
 

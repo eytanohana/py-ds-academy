@@ -63,11 +63,11 @@ from py_ds import SinglyLinkedList, DoublyLinkedList
 
 # Singly linked list
 sll = SinglyLinkedList([1, 2, 3])
-sll.append(4)
-sll.prepend(0)
+sll.append(4)  # O(1) operation
+sll.prepend(0)  # O(1) operation
 print(list(sll))  # [0, 1, 2, 3, 4]
 
-# Doubly linked list (more efficient append/prepend)
+# Doubly linked list (supports reverse iteration / more efficient append/prepend)
 dll = DoublyLinkedList([1, 2, 3])
 dll.append(4)  # O(1) operation
 dll.prepend(0)  # O(1) operation

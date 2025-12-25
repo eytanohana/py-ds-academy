@@ -22,7 +22,7 @@ from py_ds import SinglyLinkedList
 sll = SinglyLinkedList([1, 2, 3])
 
 # Append at the end
-sll.append(4)  # O(n) - must traverse to end
+sll.append(4)  # O(1) - uses tail pointer
 
 # Prepend at the beginning
 sll.prepend(0)  # O(1)
@@ -55,7 +55,7 @@ sll.clear()
 
 | Operation | Time Complexity |
 |-----------|----------------|
-| `append(item)` | O(n) |
+| `append(item)` | O(1) |
 | `prepend(item)` | O(1) |
 | `insert(index, item)` | O(n) |
 | `remove(item)` | O(n) |
@@ -64,7 +64,7 @@ sll.clear()
 | `__getitem__(index)` | O(n) |
 | `__setitem__(index, item)` | O(n) |
 | `head()` | O(1) |
-| `tail()` | O(n) |
+| `tail()` | O(1) |
 
 ## Doubly Linked List
 
@@ -115,19 +115,19 @@ tail = dll.tail()  # O(1)
 
 ### Time Complexity
 
-| Operation | Time Complexity |
-|-----------|----------------|
-| `append(item)` | O(1) ⚡ |
-| `prepend(item)` | O(1) |
-| `insert(index, item)` | O(n) |
-| `remove(item)` | O(n) |
-| `pop()` | O(1) ⚡ |
-| `find(item)` | O(n) |
-| `__getitem__(index)` | O(n) |
-| `__setitem__(index, item)` | O(n) |
-| `head()` | O(1) |
-| `tail()` | O(1) ⚡ |
-| `reverse_iter()` | O(n) |
+| Operation                  | Time Complexity |
+|----------------------------|----------------|
+| `append(item)`             | O(1)           |
+| `prepend(item)`            | O(1)           |
+| `insert(index, item)`      | O(n) ⚡         |
+| `remove(item)`             | O(n)           |
+| `pop(index)`               | O(n) ⚡         |
+| `find(item)`               | O(n)           |
+| `__getitem__(index)`       | O(n) ⚡         |
+| `__setitem__(index, item)` | O(n) ⚡         |
+| `head()`                   | O(1)           |
+| `tail()`                   | O(1)           |
+| `reverse_iter()`           | O(n)           |
 
 ⚡ = Advantage over singly linked list
 
@@ -202,7 +202,6 @@ class BrowserHistory:
 - You're implementing a simple stack or queue
 
 **Use DoublyLinkedList when:**
-- You need efficient append operations
 - You need bidirectional traversal
 - You're implementing undo/redo functionality
-- You need efficient tail access
+- You need efficient reverse iteration

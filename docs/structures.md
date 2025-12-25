@@ -36,8 +36,8 @@ Dynamic data structures that store elements in nodes connected by pointers.
 - **DoublyLinkedList** - Nodes point to both next and previous
 
 **Key Operations:**
-- `append(item)` - O(1) for doubly-linked, O(n) for singly-linked
-- `prepend(item)` - O(1) for doubly-linked, O(1) for singly-linked
+- `append(item)` - O(1) for both (using tail pointer)
+- `prepend(item)` - O(1) for both
 - `insert(index, item)` - O(n)
 - `remove(item)` - O(n)
 
@@ -120,7 +120,7 @@ Priority queue implementations using binary heaps.
 
 - **Need LIFO?** → Use a **Stack**
 - **Need FIFO?** → Use a **Queue**
-- **Need dynamic size with O(1) append?** → Use a **DoublyLinkedList**
+- **Need dynamic size with O(1) append?** → Use a **SinglyLinkedList** or **DoublyLinkedList** (both support O(1) append)
 - **Need sorted data with fast search?** → Use a **BinarySearchTree**
 - **Need guaranteed O(log n) performance?** → Use an **AVLTree**
 - **Need priority-based access?** → Use a **Heap**

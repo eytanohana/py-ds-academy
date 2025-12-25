@@ -35,6 +35,7 @@ def test_append_adds_to_end():
 def test_prepend_adds_to_front():
     ll = SinglyLinkedList[int]()
     ll.prepend(3)
+    assert ll.head() == 3 and ll.tail() == 3
     ll.prepend(2)
     ll.prepend(1)
     assert list(ll) == [1, 2, 3]
@@ -56,6 +57,7 @@ def test_positive_insert_at_beginning_middle_and_end():
     # insert at end (index == len)
     ll.insert(len(ll), 5)
     assert list(ll) == [0, 1, 2, 3, 4, 5]
+    assert ll.tail() == 5
 
 
 def test_negative_insert_at_beginning_middle_and_end():
@@ -64,6 +66,7 @@ def test_negative_insert_at_beginning_middle_and_end():
     # insert at beginning
     ll.insert(-1, 0)
     assert list(ll) == [1, 3, 4, 0]
+    assert ll.tail() == 0
 
     # insert in middle
     ll.insert(-2, 2)
@@ -94,6 +97,7 @@ def test_remove_existing_value():
 
     ll.remove(2)
     assert list(ll) == [1, 3]
+    assert ll.tail() == 3
 
     ll.remove(1)
     assert list(ll) == [3]
@@ -113,6 +117,7 @@ def test_pop_default_pops_last():
     ll = SinglyLinkedList([1, 2, 3])
     value = ll.pop()
     assert value == 3
+    assert ll.tail() == 2
 
 
 def test_pop_positive_index():
@@ -128,6 +133,7 @@ def test_pop_positive_index():
     value = ll.pop(1)
     assert value == 3
     assert list(ll) == [2, 4]
+    assert ll.tail() == 4
 
 
 def test_pop_negative_index():

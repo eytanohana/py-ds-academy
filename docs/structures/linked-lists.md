@@ -197,11 +197,13 @@ class BrowserHistory:
 ## When to Use Which?
 
 **Use SinglyLinkedList when:**
+
 - You only need forward traversal
 - Memory is a concern
 - You're implementing a simple stack or queue
 
 **Use DoublyLinkedList when:**
+
 - You need bidirectional traversal
 - You're implementing undo/redo functionality
 - You need efficient reverse iteration

@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
 
-from py_ds.datastructures.linked_lists.base import LinkedListBase, T, _Node
+from py_ds.datastructures.linked_lists.singly_linked import LinkedList, T, _Node
 
 
 @dataclass
@@ -13,7 +13,7 @@ class _DoublyNode(_Node[T]):
     prev: _DoublyNode[T] | None = None
 
 
-class DoublyLinkedList(LinkedListBase[T]):
+class DoublyLinkedList(LinkedList[T]):
     """A doubly linked list with forward and backward links.
 
     Advantages over singly linked list include O(1) append (with tail pointer),

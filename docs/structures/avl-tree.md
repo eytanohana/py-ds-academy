@@ -193,12 +193,14 @@ Each node maintains a balance factor:
 ## When to Use AVL vs BST
 
 **Use AVLTree when:**
+
 - You need guaranteed O(log n) performance
 - Data insertion order is unpredictable
 - Worst-case performance matters
 - You're inserting/deleting frequently
 
 **Use BinarySearchTree when:**
+
 - Data is inserted in random order
 - Worst-case performance is acceptable
 - Simplicity is preferred

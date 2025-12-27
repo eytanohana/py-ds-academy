@@ -123,6 +123,7 @@ py-ds-academy/
 ## Questions?
 
 If you have questions or need help, please:
+
 - Open an issue on GitHub
 - Check existing issues and discussions
 - Review the documentation

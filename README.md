@@ -37,7 +37,6 @@ py-ds-academy/
 │        ├── heaps.py
 │        ├── linked_lists/
 │        │  ├── __init__.py
-│        │  ├── base.py
 │        │  ├── singly_linked.py
 │        │  └── doubly_linked.py
 │        └── trees/
@@ -82,7 +81,7 @@ uv run python
 ```
 
 ```python
->>> from py_ds import Stack, Queue, SinglyLinkedList, DoublyLinkedList
+>>> from py_ds import Stack, Queue, LinkedList, DoublyLinkedList
 >>> from py_ds import MinHeap, MaxHeap, BinarySearchTree, AVLTree
 
 >>> # Stack example
@@ -96,7 +95,7 @@ uv run python
 1
 
 >>> # Linked List example
->>> ll = SinglyLinkedList([1, 2, 3])
+>>> ll = LinkedList([1, 2, 3])
 >>> ll.append(4)
 >>> list(ll)
 [1, 2, 3, 4]
@@ -129,7 +128,7 @@ uv run python
 - [x] Iteration support (`__iter__`)
 
 **Linked Lists** ✅
-- [x] `SinglyLinkedList`
+- [x] `LinkedList`
   - [x] `append`, `prepend`, `insert`, `remove`, `pop`, `find`
   - [x] Iteration support (`__iter__`)
   - [x] Indexing support (`__getitem__`, `__setitem__`)
@@ -137,7 +136,7 @@ uv run python
 - [x] `DoublyLinkedList`
   - [x] Efficient O(1) `append` and `prepend` (with tail pointer)
   - [x] Bidirectional traversal (`__iter__`, `reverse_iter`)
-  - [x] All operations from `SinglyLinkedList`
+  - [x] All operations from `LinkedList`
   - [x] Optimized indexing with bidirectional search
 
 ---
@@ -221,7 +220,7 @@ The following data structures are fully implemented and tested:
 
 - ✅ **Stack** - LIFO stack with list backing
 - ✅ **Queue** - FIFO queue with list backing  
-- ✅ **SinglyLinkedList** - Single-direction linked list
+- ✅ **LinkedList** - Single-direction linked list
 - ✅ **DoublyLinkedList** - Double-direction linked list with O(1) append/prepend
 - ✅ **MinHeap** - Minimum binary heap
 - ✅ **MaxHeap** - Maximum binary heap

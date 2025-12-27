@@ -193,7 +193,7 @@ To preview your documentation changes locally:
 mkdocs serve
 ```
 
-Visit `http://127.0.0.1:8000` to view the site.
+Visit `http://127.0.0.1:8000/py-ds-academy/` to view the site.
 
 ## Pull Request Process
 

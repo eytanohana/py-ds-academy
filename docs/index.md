@@ -94,7 +94,7 @@ Explore the documentation to learn more:
 
 - **[Getting Started](getting-started/installation.md)** - Installation and setup
 - **[Data Structures](structures.md)** - Overview of all implemented structures
-- **[API Reference](reference/api.md)** - Complete API documentation
+- **[API Reference](reference/index.md)** - Complete API documentation
 
 ## 🤝 Contributing
 

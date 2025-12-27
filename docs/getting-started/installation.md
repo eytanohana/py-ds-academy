@@ -49,7 +49,7 @@ pip install --upgrade py-ds-academy
 
 - Read the [Quick Start Guide](quickstart.md) to begin using the library
 - Explore the [Data Structures Overview](../structures.md)
-- Check out the [API Reference](../reference/api.md)
+- Check out the [API Reference](../reference/index.md)
 
 ## Development Installation
 

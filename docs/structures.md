@@ -128,5 +128,5 @@ Priority queue implementations using binary heaps.
 ## 📖 Next Steps
 
 - Explore individual data structure pages for detailed documentation
-- Check out the [API Reference](reference/api.md) for complete method signatures
+- Check out the [API Reference](reference/index.md) for complete method signatures
 - See [Getting Started](getting-started/quickstart.md) for usage examples

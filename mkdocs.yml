@@ -107,7 +107,7 @@ nav:
       - Heaps:
           - Heap Overview: structures/heaps.md
   - Reference:
-      - API Reference: reference/api.md
+      - reference/index.md
       - Linear Structures:
           - Stack: reference/stack.md
           - Queue: reference/queue.md

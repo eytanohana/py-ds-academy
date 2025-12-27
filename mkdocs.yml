@@ -33,6 +33,7 @@ theme:
     - navigation.expand
     - navigation.path
     - navigation.top
+    - navigation.footer
     - navigation.indexes
     - search.suggest
     - search.highlight

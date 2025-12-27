@@ -14,8 +14,7 @@ class Stack(Generic[T]):
     """
 
     def __init__(self, items: Iterable[T] | None = None) -> None:
-        """
-        Initialize the stack.
+        """Initialize the stack.
 
         Args:
             items: Optional iterable of initial items. The last item in the

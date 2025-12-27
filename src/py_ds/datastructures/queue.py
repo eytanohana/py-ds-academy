@@ -13,8 +13,7 @@ class Queue(Generic[T]):
     """
 
     def __init__(self, items: Iterable[T] | None = None) -> None:
-        """
-        Initialize the queue.
+        """Initialize the queue.
 
         Args:
             items: Optional iterable of initial items.

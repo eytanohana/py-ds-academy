@@ -42,6 +42,7 @@ theme:
     - content.tabs.link
     - content.tooltips
   icon:
+    logo: fontawesome/solid/scroll
     repo: fontawesome/brands/github
 
 markdown_extensions:

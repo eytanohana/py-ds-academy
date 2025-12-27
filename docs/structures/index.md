@@ -8,7 +8,7 @@ This page provides an overview of all data structures implemented in py-ds-acade
 
 Linear data structures store elements in a sequential manner.
 
-#### [Stack](structures/stack.md)
+#### [Stack](stack.md)
 A Last-In-First-Out (LIFO) data structure backed by a Python list.
 
 **Key Operations:**
@@ -18,7 +18,7 @@ A Last-In-First-Out (LIFO) data structure backed by a Python list.
 
 **Use Cases:** Expression evaluation, undo/redo functionality, backtracking algorithms
 
-#### [Queue](structures/queue.md)
+#### [Queue](queue.md)
 A First-In-First-Out (FIFO) data structure backed by a Python list.
 
 **Key Operations:**
@@ -28,7 +28,7 @@ A First-In-First-Out (FIFO) data structure backed by a Python list.
 
 **Use Cases:** Task scheduling, breadth-first search, buffering
 
-#### [Linked Lists](structures/linked-lists.md)
+#### [Linked Lists](linked-lists.md)
 Dynamic data structures that store elements in nodes connected by pointers.
 
 **Types:**
@@ -49,7 +49,7 @@ Dynamic data structures that store elements in nodes connected by pointers.
 
 Hierarchical data structures with nodes connected by edges.
 
-#### [Binary Tree](structures/binary-tree.md)
+#### [Binary Tree](binary-tree.md)
 A tree where each node has at most two children.
 
 **Traversals:**
@@ -60,7 +60,7 @@ A tree where each node has at most two children.
 
 **Use Cases:** Expression trees, hierarchical data representation
 
-#### [Binary Search Tree](structures/binary-search-tree.md)
+#### [Binary Search Tree](binary-search-tree.md)
 A binary tree with ordering property: left < node < right.
 
 **Key Operations:**
@@ -70,7 +70,7 @@ A binary tree with ordering property: left < node < right.
 
 **Use Cases:** Searching, sorting, range queries
 
-#### [AVL Tree](structures/avl-tree.md)
+#### [AVL Tree](avl-tree.md)
 A self-balancing binary search tree that maintains height balance.
 
 **Key Features:**
@@ -86,7 +86,7 @@ A self-balancing binary search tree that maintains height balance.
 
 Complete binary trees that satisfy the heap property.
 
-#### [Heaps](structures/heaps.md)
+#### [Heaps](heaps.md)
 Priority queue implementations using binary heaps.
 
 **Types:**
@@ -128,5 +128,5 @@ Priority queue implementations using binary heaps.
 ## 📖 Next Steps
 
 - Explore individual data structure pages for detailed documentation
-- Check out the [API Reference](reference/index.md) for complete method signatures
-- See [Getting Started](getting-started/quickstart.md) for usage examples
+- Check out the [API Reference](../reference/index.md) for complete method signatures
+- See [Getting Started](../getting-started/quickstart.md) for usage examples

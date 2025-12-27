@@ -245,6 +245,6 @@ except IndexError:
 
 ## Next Steps
 
-- Explore detailed documentation for each [Data Structure](../structures.md)
+- Explore detailed documentation for each [Data Structure](../structures/index.md)
 - Check out the complete [API Reference](../reference/index.md)
 - See [Installation Guide](installation.md) for setup instructions

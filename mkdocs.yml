@@ -95,7 +95,7 @@ nav:
       - Installation: getting-started/installation.md
       - Quick Start: getting-started/quickstart.md
   - Data Structures:
-      - Overview: structures.md
+      - structures/index.md
       - Linear Structures:
           - Stack: structures/stack.md
           - Queue: structures/queue.md

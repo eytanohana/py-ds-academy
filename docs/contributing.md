@@ -28,6 +28,9 @@ Follow the steps in [uv's installation guide](https://docs.astral.sh/uv/getting-
 ```bash
 # Create the venv and install dependencies (including dev and doc dependencies)
 uv sync --all-groups
+
+# Install pre-commit hooks (required before development)
+pre-commit install
 ```
 
 ### Verify Development Setup
@@ -44,8 +47,6 @@ python -c "from py_ds import Stack, Queue, LinkedList; print('Development setup 
 ```
 
 ## Development Workflow
-
-### Making Changes
 
 1. **Create a new branch** for your changes:
    ```bash
@@ -131,20 +132,76 @@ py-ds-academy/
 3. Write comprehensive tests in `tests/`
 4. Add documentation in `docs/structures/`
 5. Update `docs/structures.md` overview
-6. Update the README if needed
+6. add api reference in `docs/reference/`
+7. add documentation in `docs/reference/api.md`
+8. Update the README if needed
 
 ## Documentation
+
+### Updating Documentation
+
+When updating documentation, you may need to update multiple files:
+
+1. **Update the relevant documentation file** in `docs/`:
+   - Structure guides: `docs/structures/`
+   - Reference docs: `docs/reference/`
+   - Getting started: `docs/getting-started/`
+
+2. **Update `mkdocs.yml`** if you:
+   - Add a new documentation page
+   - Rename or move a documentation file
+   - Change the navigation structure
+
+   The `mkdocs.yml` file controls the site navigation. Make sure your new or updated pages are included in the `nav` section with the correct path.
+
+   Example: If you add a new file `docs/structures/new-structure.md`, add it to the navigation:
+   ```yaml
+   nav:
+     - Data Structures:
+         - Overview: structures.md
+         - New Structure: structures/new-structure.md
+   ```
+
+3. **Update API reference** if you:
+   - Add new classes or methods
+   - Change method signatures
+   - Add new modules
+
+   API reference pages use `mkdocstrings` to auto-generate from docstrings. Ensure your docstrings are properly formatted.
+
+### Documentation Guidelines
 
 - Keep documentation up to date with code changes
 - Add examples for new features
 - Update API reference when adding new methods
 - Use clear, concise language
+- Test code examples to ensure they work
+
+### Previewing Documentation
+
+To preview your documentation changes locally:
+
+```bash
+# Serve the documentation site locally
+uv run mkdocs serve
+```
+
+Visit `http://127.0.0.1:8000` to view the site.
+
+## Development Dependencies
+
+When you install with `--all-groups`, you get:
+
+- `pytest` - Testing framework
+- `ruff` - Linting and formatting
+- `pre-commit` - Git hooks for code quality
+- `mkdocs-material` - Documentation generation
 
 ## Pull Request Process
 
 1. Ensure your PR addresses a specific issue or adds a feature
 2. Include tests for new functionality
-3. Update documentation as needed
+3. Update documentation as needed (including `mkdocs.yml` if navigation changes)
 4. Ensure all CI checks pass
 5. Request review from maintainers
 

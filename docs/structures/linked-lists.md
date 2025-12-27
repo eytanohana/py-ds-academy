@@ -6,20 +6,20 @@
 
 py-ds-academy provides two implementations:
 
-- **SinglyLinkedList** - Each node points only to the next node
+- **LinkedList** - Each node points only to the next node
 - **DoublyLinkedList** - Each node points to both next and previous nodes
 
-## Singly Linked List
+## Linked List
 
 A linear data structure where each node contains data and a reference to the next node.
 
 ### Operations
 
 ```python
-from py_ds import SinglyLinkedList
+from py_ds import LinkedList
 
 # Create a linked list
-sll = SinglyLinkedList([1, 2, 3])
+sll = LinkedList([1, 2, 3])
 
 # Append at the end
 sll.append(4)  # O(1) - uses tail pointer
@@ -148,7 +148,7 @@ O(n) where n is the number of elements. DoublyLinkedList uses slightly more memo
 ```python
 class LinkedListStack:
     def __init__(self):
-        self._list = SinglyLinkedList()
+        self._list = LinkedList()
     
     def push(self, item):
         self._list.prepend(item)
@@ -196,7 +196,7 @@ class BrowserHistory:
 
 ## When to Use Which?
 
-**Use SinglyLinkedList when:**
+**Use LinkedList when:**
 
 - You only need forward traversal
 - Memory is a concern

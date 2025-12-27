@@ -111,7 +111,6 @@ nav:
           - Stack: reference/stack.md
           - Queue: reference/queue.md
           - Linked Lists:
-            - Base Linked List: reference/linked-list-base.md
             - Singly Linked List: reference/singly-linked-list.md
             - Doubly Linked List: reference/doubly-linked-list.md
       - Trees:

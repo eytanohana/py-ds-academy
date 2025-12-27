@@ -32,7 +32,7 @@ A First-In-First-Out (FIFO) data structure backed by a Python list.
 Dynamic data structures that store elements in nodes connected by pointers.
 
 **Types:**
-- **SinglyLinkedList** - Nodes point to next only
+- **LinkedList** - Nodes point to next only
 - **DoublyLinkedList** - Nodes point to both next and previous
 
 **Key Operations:**
@@ -108,7 +108,7 @@ Priority queue implementations using binary heaps.
 |-----------|--------|--------|--------|-------|
 | Stack | O(1) | O(1) | O(n) | O(n) |
 | Queue | O(1) | O(1) | O(n) | O(n) |
-| SinglyLinkedList | O(1)* | O(n) | O(n) | O(n) |
+| LinkedList | O(1)* | O(n) | O(n) | O(n) |
 | DoublyLinkedList | O(1) | O(n) | O(n) | O(n) |
 | BinarySearchTree | O(log n) | O(log n) | O(log n) | O(n) |
 | AVLTree | O(log n) | O(log n) | O(log n) | O(n) |
@@ -120,7 +120,7 @@ Priority queue implementations using binary heaps.
 
 - **Need LIFO?** → Use a **Stack**
 - **Need FIFO?** → Use a **Queue**
-- **Need dynamic size with O(1) append?** → Use a **SinglyLinkedList** or **DoublyLinkedList** (both support O(1) append)
+- **Need dynamic size with O(1) append?** → Use a **LinkedList** or **DoublyLinkedList** (both support O(1) append)
 - **Need sorted data with fast search?** → Use a **BinarySearchTree**
 - **Need guaranteed O(log n) performance?** → Use an **AVLTree**
 - **Need priority-based access?** → Use a **Heap**

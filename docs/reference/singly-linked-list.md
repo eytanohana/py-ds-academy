@@ -1,3 +1,3 @@
-# Singly Linked List
+# Linked List
 
-::: py_ds.datastructures.linked_lists.singly_linked.SinglyLinkedList
+::: py_ds.datastructures.linked_lists.singly_linked.LinkedList

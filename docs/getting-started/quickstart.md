@@ -59,10 +59,10 @@ for item in queue:
 Dynamic data structures for efficient insertion and deletion:
 
 ```python
-from py_ds import SinglyLinkedList, DoublyLinkedList
+from py_ds import LinkedList, DoublyLinkedList
 
-# Singly linked list
-sll = SinglyLinkedList([1, 2, 3])
+# Linked list
+sll = LinkedList([1, 2, 3])
 sll.append(4)  # O(1) operation
 sll.prepend(0)  # O(1) operation
 print(list(sll))  # [0, 1, 2, 3, 4]

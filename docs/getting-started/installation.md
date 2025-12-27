@@ -7,7 +7,7 @@
 
 ## Install from PyPI
 
-The easiest way to install py-ds-academy is using pip:
+The easiest way to install [py-ds-academy](https://pypi.org/project/py-ds-academy) is using pip:
 
 ```bash
 pip install py-ds-academy

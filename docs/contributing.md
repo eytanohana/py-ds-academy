@@ -33,14 +33,21 @@ uv sync --all-groups
 pre-commit install
 ```
 
+When you install with `--all-groups`, you get:
+
+- `pytest` - Testing framework
+- `ruff` - Linting and formatting
+- `pre-commit` - Git hooks for code quality
+- `mkdocs-material` - Documentation generation
+
 ### Verify Development Setup
 
 ```bash
 # Run tests
-uv run pytest
+pytest
 
 # Run linting
-uv run ruff check .
+ruff check .
 
 # Try importing
 python -c "from py_ds import Stack, Queue, LinkedList; print('Development setup successful!')"
@@ -59,13 +66,13 @@ python -c "from py_ds import Stack, Queue, LinkedList; print('Development setup 
 
 4. **Ensure all tests pass:**
    ```bash
-   uv run pytest
+   pytest
    ```
 
 5. **Run linting and formatting:**
    ```bash
-   uv run ruff check .
-   uv run ruff format .
+   ruff check .  # or `ruff check --fix .` for fixable lint errors
+   ruff format .
    ```
 
 6. **Commit your changes** with clear commit messages
@@ -183,19 +190,10 @@ To preview your documentation changes locally:
 
 ```bash
 # Serve the documentation site locally
-uv run mkdocs serve
+mkdocs serve
 ```
 
 Visit `http://127.0.0.1:8000` to view the site.
-
-## Development Dependencies
-
-When you install with `--all-groups`, you get:
-
-- `pytest` - Testing framework
-- `ruff` - Linting and formatting
-- `pre-commit` - Git hooks for code quality
-- `mkdocs-material` - Documentation generation
 
 ## Pull Request Process
 

@@ -81,8 +81,8 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/eytanohana
-    - icon: fontawesome/brands/python
-      link: https://www.python.org
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/eytan-ohana
   version:
     provider: mike
 

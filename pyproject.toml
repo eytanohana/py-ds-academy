@@ -66,7 +66,15 @@ extend-select = [
     "I",   # isort: import sorting
     "UP",  # pyupgrade: modernize syntax
     "SIM", # flake8-simplify
+    "D",   # pydocstyle: check google docstrings
 ]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Ignore `D` rules everywhere except for the `src/` directory.
+"!src/**.py" = ["D"]
 
 # ---- Pytest configuration ----
 [tool.pytest.ini_options]

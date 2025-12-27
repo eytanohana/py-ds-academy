@@ -106,7 +106,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ---
 
-<div align="center">
+<div align="center" markdown>
 
 Made with ❤️ by [Eytan Ohana](https://github.com/eytanohana)
 

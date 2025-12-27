@@ -4,44 +4,72 @@ Thank you for your interest in contributing to py-ds-academy! This document prov
 
 ## Getting Started
 
-1. **Fork the repository** on GitHub
+### Fork and Clone the Repository
+
+1. **Fork the repository** on GitHub by clicking the "Fork" button
 2. **Clone your fork** locally:
    ```bash
    git clone https://github.com/your-username/py-ds-academy.git
+
    cd py-ds-academy
    ```
-3. **Set up development environment**:
-   ```bash
-   uv sync --group dev
-   ```
+
+### Set Up the Development Environment
+
+#### Using uv (Recommended)
+
+[uv](https://github.com/astral-sh/uv) is a fast Python package installer and resolver written in Rust.
+
+**Install uv:**
+
+Follow the steps in [uv's installation guide](https://docs.astral.sh/uv/getting-started/installation/) for your OS.
+
+**Set up the project:**
+```bash
+# Create the venv and install dependencies (including dev and doc dependencies)
+uv sync --all-groups
+```
+
+### Verify Development Setup
+
+```bash
+# Run tests
+uv run pytest
+
+# Run linting
+uv run ruff check .
+
+# Try importing
+python -c "from py_ds import Stack, Queue, LinkedList; print('Development setup successful!')"
+```
 
 ## Development Workflow
 
 ### Making Changes
 
-1. Create a new branch for your changes:
+1. **Create a new branch** for your changes:
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
-2. Make your changes following the project's coding standards
+2. **Make your changes** following the project's coding standards
 
-3. Write or update tests for your changes
+3. **Write or update tests** for your changes
 
-4. Ensure all tests pass:
+4. **Ensure all tests pass:**
    ```bash
    uv run pytest
    ```
 
-5. Run linting and formatting:
+5. **Run linting and formatting:**
    ```bash
    uv run ruff check .
    uv run ruff format .
    ```
 
-6. Commit your changes with clear commit messages
+6. **Commit your changes** with clear commit messages
 
-7. Push to your fork and create a Pull Request
+7. **Push to your fork** and create a Pull Request
 
 ## Coding Standards
 

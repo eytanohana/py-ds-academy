@@ -24,6 +24,17 @@ bst = BinarySearchTree()
 
 # Create a BST from an iterable
 bst = BinarySearchTree([5, 3, 7, 2, 4, 6, 8])
+
+# Print the tree structure (visual representation)
+print(bst)
+# Output:
+#      ┌── 8
+#  ┌── 7
+#  │   └── 6
+#  5
+#  │   ┌── 4
+#  └── 3
+#      └── 2
 ```
 
 ### Insertion
@@ -91,7 +102,9 @@ level_order_values = list(bst.level_order())
 | `max()` | O(log n) | O(n) |
 | Traversals | O(n) | O(n) |
 
-**Note:** Worst case occurs when the tree becomes a linked list (unbalanced).
+!!! note
+
+    Worst case occurs when the tree becomes a linked list (unbalanced).
 
 ## Space Complexity
 
@@ -109,6 +122,9 @@ O(n) where n is the number of nodes.
 
 ```python
 bst = BinarySearchTree([5, 3, 7, 2, 4, 6, 8])
+
+# Print the tree structure
+print(bst)
 
 # Get sorted values
 sorted_data = list(bst.inorder())  # [2, 3, 4, 5, 6, 7, 8]

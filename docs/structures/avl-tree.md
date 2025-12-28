@@ -25,6 +25,17 @@ avl = AVLTree()
 
 # Create an AVL tree from an iterable
 avl = AVLTree([1, 2, 3, 4, 5, 6, 7])
+
+# Print the tree structure (visual representation)
+print(avl)
+# Output:
+#      ┌── 7
+#  ┌── 6
+#  │   └── 5
+#  4
+#  │   ┌── 3
+#  └── 2
+#      └── 1
 ```
 
 ### Insertion
@@ -158,8 +169,11 @@ avl.insert(1)  # Automatically rebalances
 avl.insert(9)  # Automatically rebalances
 avl.remove(5)  # Automatically rebalances
 
+# Print the tree structure to see the balanced tree
+print(avl)
+
 # Height is kept minimal
-print(avl.height())  # O(log n) height guaranteed
+print(avl.height)  # O(log n) height guaranteed
 
 # All operations remain O(log n)
 sorted_values = list(avl.inorder())  # Always sorted
@@ -175,11 +189,11 @@ values = list(range(1000))
 
 # BST becomes a linked list (O(n) operations)
 bst = BinarySearchTree(values)
-print(bst.height())  # ~1000 (unbalanced!)
+print(bst.height)  # ~1000 (unbalanced!)
 
 # AVL stays balanced (O(log n) operations)
 avl = AVLTree(values)
-print(avl.height())  # ~10 (balanced!)
+print(avl.height)  # ~10 (balanced!)
 ```
 
 ## Balance Factor

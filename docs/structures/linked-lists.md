@@ -47,6 +47,9 @@ sll[0] = 10  # O(n)
 head = sll.head()
 tail = sll.tail()
 
+# Print the linked list (visual representation)
+print(sll)  # HEAD → 10 → 1 → 99 → 3 → TAIL
+
 # Clear all nodes
 sll.clear()
 ```
@@ -111,6 +114,9 @@ for item in dll.reverse_iter():
 # Get head and tail
 head = dll.head()
 tail = dll.tail()  # O(1)
+
+# Print the doubly linked list (visual representation)
+print(dll)  # HEAD ⇆ 10 → 1 ⇆ 99 ⇆ 3 ⇆ TAIL
 ```
 
 ### Time Complexity

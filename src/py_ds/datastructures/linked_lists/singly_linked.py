@@ -277,8 +277,8 @@ class LinkedList(Generic[T]):
         Time complexity: O(n).
         """
         if not self:
-            return 'HEAD → NULL'
-        return 'HEAD → ' + ' → '.join(str(item) for item in self) + ' → NULL'
+            return 'HEAD → TAIL'
+        return 'HEAD → ' + ' → '.join(str(item) for item in self) + ' → TAIL'
 
     def _validate_index(self, index: int) -> None:
         """Validate that an index is within bounds.

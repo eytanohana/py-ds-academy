@@ -153,11 +153,11 @@ def test_pop_negative_index():
 
 def test_str_and_repr():
     ll = LinkedList([1, 2, 3])
-    assert str(ll) == 'HEAD → 1 → 2 → 3 → NULL'
+    assert str(ll) == 'HEAD → 1 → 2 → 3 → TAIL'
     assert repr(ll) == 'LinkedList([1, 2, 3])'
 
     ll2 = LinkedList()
-    assert str(ll2) == 'HEAD → NULL'
+    assert str(ll2) == 'HEAD → TAIL'
     assert repr(ll2) == 'LinkedList([])'
 
 

@@ -581,7 +581,7 @@ wheels = [
 
 [[package]]
 name = "py-ds-academy"
-version = "0.5.13"
+version = "0.5.14"
 source = { editable = "." }
 
 [package.dev-dependencies]

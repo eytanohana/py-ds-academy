@@ -66,12 +66,14 @@ sll = LinkedList([1, 2, 3])
 sll.append(4)  # O(1) operation
 sll.prepend(0)  # O(1) operation
 print(list(sll))  # [0, 1, 2, 3, 4]
+print(sll)  # HEAD → 0 → 1 → 2 → 3 → 4 → TAIL
 
 # Doubly linked list (supports reverse iteration / more efficient append/prepend)
 dll = DoublyLinkedList([1, 2, 3])
 dll.append(4)  # O(1) operation
 dll.prepend(0)  # O(1) operation
 print(list(dll))  # [0, 1, 2, 3, 4]
+print(dll)  # HEAD ⇆ 0 ⇆ 1 ⇆ 2 ⇆ 3 ⇆ 4 ⇆ TAIL
 
 # Reverse iteration (doubly linked only)
 for item in dll.reverse_iter():
@@ -108,6 +110,17 @@ from py_ds import BinarySearchTree
 # Create a BST
 bst = BinarySearchTree([5, 3, 7, 2, 4, 6, 8])
 
+# Print the tree structure (visual representation)
+print(bst)
+# Output:
+#      ┌── 8
+#  ┌── 7
+#  │   └── 6
+#  5
+#  │   ┌── 4
+#  └── 3
+#      └── 2
+
 # Search for an element
 if 4 in bst:
     print("Found!")
@@ -136,12 +149,23 @@ from py_ds import AVLTree
 # Create an AVL tree (automatically balances)
 avl = AVLTree([1, 2, 3, 4, 5, 6, 7])
 
+# Print the tree structure (visual representation)
+print(avl)
+# Output:
+#      ┌── 7
+#  ┌── 6
+#  │   └── 5
+#  4
+#  │   ┌── 3
+#  └── 2
+#      └── 1
+
 # All BST operations work, with guaranteed O(log n) performance
 avl.insert(8)
 avl.remove(4)
 
 # Check if balanced
-print(avl.height())  # Tree height is kept minimal
+print(avl.height)  # Tree height is kept minimal
 ```
 
 ## Common Patterns

@@ -23,13 +23,12 @@ Binary trees can be traversed in several ways:
 Visit: **Root → Left → Right**
 
 ```python
-from py_ds.datastructures.trees.base import BinaryTree
+from py_ds import BinarySearchTree
 
-tree = BinaryTree()
-# ... build tree ...
+tree = BinarySearchTree([5, 3, 7, 2, 4])
 
-for node in tree.preorder():
-    print(node.value)
+for value in tree.preorder():
+    print(value)  # 5, 3, 2, 4, 7
 ```
 
 ### Inorder Traversal
@@ -37,8 +36,8 @@ for node in tree.preorder():
 Visit: **Left → Root → Right**
 
 ```python
-for node in tree.inorder():
-    print(node.value)
+for value in tree.inorder():
+    print(value)  # 2, 3, 4, 5, 7
 ```
 
 ### Postorder Traversal
@@ -46,8 +45,8 @@ for node in tree.inorder():
 Visit: **Left → Right → Root**
 
 ```python
-for node in tree.postorder():
-    print(node.value)
+for value in tree.postorder():
+    print(value)  # 2, 4, 3, 7, 5
 ```
 
 ### Level-Order Traversal (BFS)
@@ -55,8 +54,8 @@ for node in tree.postorder():
 Visit nodes level by level, left to right:
 
 ```python
-for node in tree.level_order():
-    print(node.value)
+for value in tree.level_order():
+    print(value)  # 5, 3, 7, 2, 4
 ```
 
 ## Operations
@@ -70,13 +69,18 @@ height = tree.height  # O(n)
 ### Tree Visualization
 
 ```python
+from py_ds import BinarySearchTree
+
+tree = BinarySearchTree([5, 3, 7, 2, 4])
+
 # Print the tree structure (visual representation)
 print(tree)
 # Output:
-#     4
-# ┌── 3
-# 2
-# └── 1
+#  ┌── 7
+#  5
+#  │   ┌── 4
+#  └── 3
+#      └── 2
 ```
 
 ## Time Complexity
@@ -87,7 +91,7 @@ print(tree)
 | `inorder()` | O(n) |
 | `postorder()` | O(n) |
 | `level_order()` | O(n) |
-| `height()` | O(n) |
+| `height` | O(n) |
 
 ## Space Complexity
 
@@ -114,12 +118,26 @@ print(tree)
 
 from py_ds.datastructures.trees.base import BinaryTree, _BinaryNode
 
-tree = BinaryTree()
-tree.root = _BinaryNode('*')
-tree.root.left = _BinaryNode('+')
-tree.root.right = _BinaryNode(2)
-tree.root.left.left = _BinaryNode(3)
-tree.root.left.right = _BinaryNode(4)
+# Create a simple concrete class for building expression trees
+class ExpressionTree(BinaryTree):
+    """A simple binary tree for building expression trees manually."""
+    
+    def insert(self, value):
+        """Not used for expression trees - we build manually."""
+        pass
+    
+    def remove(self, value):
+        """Not used for expression trees."""
+        pass
+
+# Build the expression tree manually
+tree = ExpressionTree()
+tree._root = _BinaryNode('*')
+tree._root.left = _BinaryNode('+')
+tree._root.right = _BinaryNode(2)
+tree._root.left.left = _BinaryNode(3)
+tree._root.left.right = _BinaryNode(4)
+tree.size = 5  # Update size manually
 
 # Print the tree structure
 print(tree)
@@ -147,16 +165,35 @@ def evaluate(node):
     elif node.value == '/':
         return left_val / right_val
 
-result = evaluate(tree.root)  # 14
+result = evaluate(tree._root)  # 14
+print(f"Result: {result}")  # Result: 14
 ```
 
-## Example: Tree Height Calculation
+## Example: Tree Traversal
 
 ```python
-def max_depth(node):
-    if node is None:
-        return 0
-    return 1 + max(max_depth(node.left), max_depth(node.right))
+from py_ds import BinarySearchTree
 
-height = max_depth(tree.root)
+# Create a binary search tree
+tree = BinarySearchTree([5, 3, 7, 2, 4, 6, 8])
+
+# Print the tree structure
+print(tree)
+# Output:
+#      ┌── 8
+#  ┌── 7
+#  │   └── 6
+#  5
+#  │   ┌── 4
+#  └── 3
+#      └── 2
+
+# Get tree height
+print(tree.height)  # 2
+
+# Traverse in different orders
+print(list(tree.preorder()))   # [5, 3, 2, 4, 7, 6, 8]
+print(list(tree.inorder()))    # [2, 3, 4, 5, 6, 7, 8]
+print(list(tree.postorder()))  # [2, 4, 3, 6, 8, 7, 5]
+print(list(tree.level_order())) # [5, 3, 7, 2, 4, 6, 8]
 ```

@@ -9,6 +9,7 @@ The BinaryTree implementation in py-ds-academy provides a generic base class for
 ## Structure
 
 Each node contains:
+
 - `value` - The data stored in the node
 - `left` - Reference to the left child (or None)
 - `right` - Reference to the right child (or None)
@@ -63,13 +64,19 @@ for node in tree.level_order():
 ### Tree Height
 
 ```python
-height = tree.height()  # O(n)
+height = tree.height  # O(n)
 ```
 
 ### Tree Visualization
 
 ```python
-print(tree)  # Pretty-prints the tree structure
+# Print the tree structure (visual representation)
+print(tree)
+# Output:
+#     4
+# ┌── 3
+# 2
+# └── 1
 ```
 
 ## Time Complexity
@@ -113,6 +120,15 @@ tree.root.left = _BinaryNode('+')
 tree.root.right = _BinaryNode(2)
 tree.root.left.left = _BinaryNode(3)
 tree.root.left.right = _BinaryNode(4)
+
+# Print the tree structure
+print(tree)
+# Output:
+#  ┌── 2
+#  *
+#  │   ┌── 4
+#  └── +
+#      └── 3
 
 # Evaluate using postorder traversal
 def evaluate(node):

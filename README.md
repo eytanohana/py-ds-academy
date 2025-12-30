@@ -9,7 +9,7 @@ A small playground project for implementing classic data structures from scratch
 
 ## 📖 Documentation & Installation
 
-- **📚 Documentation**: [View on GitHub Pages](https://eytanohana.github.io/py-ds-academy/)
+- **📚 Documentation**: [View the Docs](https://py-ds-academy.eytanohana.com/)
 - **📦 PyPI Package**: [Install from PyPI](https://pypi.org/project/py-ds-academy/)
 
 ```bash

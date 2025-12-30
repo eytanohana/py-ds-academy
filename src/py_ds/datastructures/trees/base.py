@@ -176,7 +176,7 @@ class BinaryTree(ABC, Generic[T]):
             if node.right:
                 tree += build_tree_str(node.right, prefix + ('│   ' if is_left else '    '), False)
 
-            tree += prefix + ('┌── ' if not is_left else '└── ') + str(node.value) + '\n'
+            tree += prefix + ('└── ' if is_left else '┌── ') + str(node.value) + '\n'
 
             if node.left:
                 tree += build_tree_str(node.left, prefix + ('    ' if is_left else '│   '), True)

@@ -245,3 +245,16 @@ def test_clear_resets_tree(small_bst: BinarySearchTree[int]) -> None:
         small_bst.min()
     with pytest.raises(ValueError):
         small_bst.max()
+
+
+def test_str_tree(small_bst: BinarySearchTree[int]) -> None:
+    result = """
+    ┌── 8
+┌── 7
+│   └── 6
+5
+│   ┌── 4
+└── 3
+    └── 2
+"""[1:]
+    assert str(small_bst) == result

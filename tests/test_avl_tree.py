@@ -5,8 +5,6 @@ import pytest
 from py_ds.datastructures.trees.avl import AVLTree
 from py_ds.datastructures.trees.base import _BinaryNode
 
-# --- Helper Functions ---
-
 
 def get_height(node: _BinaryNode | None) -> int:
     if node is None:
@@ -109,14 +107,10 @@ def test_left_left_case():
     """
     Left-Left Case (Right Rotation)
           30
-         /
-       20
-      /
+         /             20
+       20      ->     /  \
+      /              10   30
     10
-    ->
-       20
-      /  \
-    10    30
     """
     tree = AVLTree[int]()
     tree.insert(30)
@@ -133,14 +127,10 @@ def test_right_right_case():
     """
     Right-Right Case (Left Rotation)
     10
-      \
-       20
-         \
+      \                   20
+       20       ->       /  \
+         \             10    30
           30
-    ->
-       20
-      /  \
-    10    30
     """
     tree = AVLTree[int]()
     tree.insert(10)
@@ -157,14 +147,10 @@ def test_left_right_case():
     """
     Left-Right Case (Left-Right Rotation)
        30
-      /
-    10
-      \
+      /                20
+    10        ->      /  \
+      \             10    30
        20
-    ->
-       20
-      /  \
-    10    30
     """
     tree = AVLTree[int]()
     tree.insert(30)
@@ -181,14 +167,10 @@ def test_right_left_case():
     """
     Right-Left Case (Right-Left Rotation)
     10
-      \
-       30
-      /
+      \               20
+       30    ->      /  \
+      /            10    30
     20
-    ->
-       20
-      /  \
-    10    30
     """
     tree = AVLTree[int]()
     tree.insert(10)

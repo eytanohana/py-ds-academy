@@ -1,9 +1,9 @@
 # py-ds-academy
 
-![PyPI - Version](https://img.shields.io/pypi/v/py-ds-academy)
-![PyPI - License](https://img.shields.io/pypi/l/py-ds-academy)
+[![PyPI - Version](https://img.shields.io/pypi/v/py-ds-academy)](https://pypi.org/project/py-ds-academy/)
+[![PyPI - License](https://img.shields.io/pypi/l/py-ds-academy)](https://github.com/eytanohana/py-ds-academy?tab=MIT-1-ov-file)
 [![CI status](https://github.com/eytanohana/py-ds-academy/actions/workflows/ci.yml/badge.svg)](https://github.com/eytanohana/py-ds-academy/actions/workflows/ci.yml)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/py-ds-academy)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/py-ds-academy)](https://pypi.org/project/py-ds-academy/)
 
 A small playground project for implementing classic data structures from scratch in Python.
 

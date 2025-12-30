@@ -3,7 +3,7 @@
 site_name: py-ds-academy
 site_description: Data structures implemented from scratch for learning and experimentation
 site_author: Eytan Ohana
-site_url: https://eytanohana.github.io/py-ds-academy/
+site_url: https://py-ds-academy.eytanohana.com/
 
 repo_name: eytanohana/py-ds-academy
 repo_url: https://github.com/eytanohana/py-ds-academy/

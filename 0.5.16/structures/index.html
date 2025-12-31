@@ -12,7 +12,7 @@
         <meta name="author" content="Eytan Ohana">
       
       
-        <link rel="canonical" href="https://eytanohana.github.io/py-ds-academy/0.5.16/structures/">
+        <link rel="canonical" href="https://py-ds-academy.eytanohana.com/0.5.16/structures/">
       
       
         <link rel="prev" href="../getting-started/quickstart/">
@@ -1792,66 +1792,84 @@
 <p>Linear data structures store elements in a sequential manner.</p>
 <h4 id="stack"><a href="stack/">Stack</a><a class="headerlink" href="#stack" title="Permanent link">&para;</a></h4>
 <p>A Last-In-First-Out (LIFO) data structure backed by a Python list.</p>
-<p><strong>Key Operations:</strong>
-- <code>push(item)</code> - O(1)
-- <code>pop()</code> - O(1)
-- <code>peek()</code> - O(1)</p>
+<p><strong>Key Operations:</strong></p>
+<ul>
+<li><code>push(item)</code> - O(1)</li>
+<li><code>pop()</code> - O(1)</li>
+<li><code>peek()</code> - O(1)</li>
+</ul>
 <p><strong>Use Cases:</strong> Expression evaluation, undo/redo functionality, backtracking algorithms</p>
 <h4 id="queue"><a href="queue/">Queue</a><a class="headerlink" href="#queue" title="Permanent link">&para;</a></h4>
 <p>A First-In-First-Out (FIFO) data structure backed by a Python list.</p>
-<p><strong>Key Operations:</strong>
-- <code>enqueue(item)</code> - O(1)
-- <code>dequeue()</code> - O(1)
-- <code>peek()</code> - O(1)</p>
+<p><strong>Key Operations:</strong></p>
+<ul>
+<li><code>enqueue(item)</code> - O(1)</li>
+<li><code>dequeue()</code> - O(1)</li>
+<li><code>peek()</code> - O(1)</li>
+</ul>
 <p><strong>Use Cases:</strong> Task scheduling, breadth-first search, buffering</p>
 <h4 id="linked-lists"><a href="linked-lists/">Linked Lists</a><a class="headerlink" href="#linked-lists" title="Permanent link">&para;</a></h4>
 <p>Dynamic data structures that store elements in nodes connected by pointers.</p>
-<p><strong>Types:</strong>
-- <strong>LinkedList</strong> - Nodes point to next only
-- <strong>DoublyLinkedList</strong> - Nodes point to both next and previous</p>
-<p><strong>Key Operations:</strong>
-- <code>append(item)</code> - O(1) for both (using tail pointer)
-- <code>prepend(item)</code> - O(1) for both
-- <code>insert(index, item)</code> - O(n)
-- <code>remove(item)</code> - O(n)</p>
+<p><strong>Types:</strong></p>
+<ul>
+<li><strong>LinkedList</strong> - Nodes point to next node only</li>
+<li><strong>DoublyLinkedList</strong> - Nodes point to both next and previous nodes</li>
+</ul>
+<p><strong>Key Operations:</strong></p>
+<ul>
+<li><code>append(item)</code> - O(1) for both (using tail pointer)</li>
+<li><code>prepend(item)</code> - O(1) for both</li>
+<li><code>insert(index, item)</code> - O(n)</li>
+<li><code>remove(item)</code> - O(n)</li>
+</ul>
 <p><strong>Use Cases:</strong> Dynamic memory allocation, implementing other data structures</p>
 <hr />
 <h3 id="trees">Trees<a class="headerlink" href="#trees" title="Permanent link">&para;</a></h3>
 <p>Hierarchical data structures with nodes connected by edges.</p>
 <h4 id="binary-tree"><a href="binary-tree/">Binary Tree</a><a class="headerlink" href="#binary-tree" title="Permanent link">&para;</a></h4>
 <p>A tree where each node has at most two children.</p>
-<p><strong>Traversals:</strong>
-- Preorder - O(n)
-- Inorder - O(n)
-- Postorder - O(n)
-- Level-order (BFS) - O(n)</p>
+<p><strong>Traversals:</strong></p>
+<ul>
+<li>Preorder - O(n)</li>
+<li>Inorder - O(n)</li>
+<li>Postorder - O(n)</li>
+<li>Level-order (BFS) - O(n)</li>
+</ul>
 <p><strong>Use Cases:</strong> Expression trees, hierarchical data representation</p>
 <h4 id="binary-search-tree"><a href="binary-search-tree/">Binary Search Tree</a><a class="headerlink" href="#binary-search-tree" title="Permanent link">&para;</a></h4>
 <p>A binary tree with ordering property: left &lt; node &lt; right.</p>
-<p><strong>Key Operations:</strong>
-- <code>insert(item)</code> - O(log n) average, O(n) worst
-- <code>remove(item)</code> - O(log n) average, O(n) worst
-- <code>search(item)</code> - O(log n) average, O(n) worst</p>
+<p><strong>Key Operations:</strong></p>
+<ul>
+<li><code>insert(item)</code> - O(log n) average, O(n) worst</li>
+<li><code>remove(item)</code> - O(log n) average, O(n) worst</li>
+<li><code>search(item)</code> - O(log n) average, O(n) worst</li>
+</ul>
 <p><strong>Use Cases:</strong> Searching, sorting, range queries</p>
 <h4 id="avl-tree"><a href="avl-tree/">AVL Tree</a><a class="headerlink" href="#avl-tree" title="Permanent link">&para;</a></h4>
 <p>A self-balancing binary search tree that maintains height balance.</p>
-<p><strong>Key Features:</strong>
-- Automatic rebalancing via rotations
-- Guaranteed O(log n) operations
-- Balance factor tracking</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Automatic rebalancing via rotations</li>
+<li>Guaranteed O(log n) operations</li>
+<li>Balance factor tracking</li>
+</ul>
 <p><strong>Use Cases:</strong> When guaranteed O(log n) performance is required</p>
 <hr />
 <h3 id="heaps">Heaps<a class="headerlink" href="#heaps" title="Permanent link">&para;</a></h3>
 <p>Complete binary trees that satisfy the heap property.</p>
 <h4 id="heaps_1"><a href="heaps/">Heaps</a><a class="headerlink" href="#heaps_1" title="Permanent link">&para;</a></h4>
 <p>Priority queue implementations using binary heaps.</p>
-<p><strong>Types:</strong>
-- <strong>MinHeap</strong> - Parent ≤ children
-- <strong>MaxHeap</strong> - Parent ≥ children</p>
-<p><strong>Key Operations:</strong>
-- <code>push(item)</code> - O(log n)
-- <code>pop()</code> - O(log n)
-- <code>peek()</code> - O(1)</p>
+<p><strong>Types:</strong></p>
+<ul>
+<li><strong>MinHeap</strong> - Parent ≤ children</li>
+<li><strong>MaxHeap</strong> - Parent ≥ children</li>
+</ul>
+<p><strong>Key Operations:</strong></p>
+<ul>
+<li><code>push(item)</code> - O(log n)</li>
+<li><code>pop()</code> - O(log n)</li>
+<li><code>peek()</code> - O(1)</li>
+</ul>
 <p><strong>Use Cases:</strong> Priority queues, heap sort, scheduling algorithms</p>
 <hr />
 <h2 id="complexity-comparison">🔍 Complexity Comparison<a class="headerlink" href="#complexity-comparison" title="Permanent link">&para;</a></h2>

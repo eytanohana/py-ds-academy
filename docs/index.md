@@ -72,7 +72,7 @@ uv run python
 
 - ✅ **BinaryTree** - Generic binary tree with multiple traversal methods
 - ✅ **BinarySearchTree** - Binary search tree with insert, remove, search
-- ✅ **AVLTree** - Self-balancing binary Search tree
+- ✅ **AVLTree** - Self-balancing binary search tree
 
 ### Heaps
 

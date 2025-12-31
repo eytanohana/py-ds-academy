@@ -12,6 +12,7 @@ Linear data structures store elements in a sequential manner.
 A Last-In-First-Out (LIFO) data structure backed by a Python list.
 
 **Key Operations:**
+
 - `push(item)` - O(1)
 - `pop()` - O(1)
 - `peek()` - O(1)
@@ -22,6 +23,7 @@ A Last-In-First-Out (LIFO) data structure backed by a Python list.
 A First-In-First-Out (FIFO) data structure backed by a Python list.
 
 **Key Operations:**
+
 - `enqueue(item)` - O(1)
 - `dequeue()` - O(1)
 - `peek()` - O(1)
@@ -32,10 +34,12 @@ A First-In-First-Out (FIFO) data structure backed by a Python list.
 Dynamic data structures that store elements in nodes connected by pointers.
 
 **Types:**
-- **LinkedList** - Nodes point to next only
-- **DoublyLinkedList** - Nodes point to both next and previous
+
+- **LinkedList** - Nodes point to next node only
+- **DoublyLinkedList** - Nodes point to both next and previous nodes
 
 **Key Operations:**
+
 - `append(item)` - O(1) for both (using tail pointer)
 - `prepend(item)` - O(1) for both
 - `insert(index, item)` - O(n)
@@ -53,6 +57,7 @@ Hierarchical data structures with nodes connected by edges.
 A tree where each node has at most two children.
 
 **Traversals:**
+
 - Preorder - O(n)
 - Inorder - O(n)
 - Postorder - O(n)
@@ -64,6 +69,7 @@ A tree where each node has at most two children.
 A binary tree with ordering property: left < node < right.
 
 **Key Operations:**
+
 - `insert(item)` - O(log n) average, O(n) worst
 - `remove(item)` - O(log n) average, O(n) worst
 - `search(item)` - O(log n) average, O(n) worst
@@ -74,6 +80,7 @@ A binary tree with ordering property: left < node < right.
 A self-balancing binary search tree that maintains height balance.
 
 **Key Features:**
+
 - Automatic rebalancing via rotations
 - Guaranteed O(log n) operations
 - Balance factor tracking
@@ -90,10 +97,12 @@ Complete binary trees that satisfy the heap property.
 Priority queue implementations using binary heaps.
 
 **Types:**
+
 - **MinHeap** - Parent ≤ children
 - **MaxHeap** - Parent ≥ children
 
 **Key Operations:**
+
 - `push(item)` - O(log n)
 - `pop()` - O(log n)
 - `peek()` - O(1)

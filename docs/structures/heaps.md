@@ -78,14 +78,15 @@ items = list(min_heap)  # O(n)
 
 ## Time Complexity
 
-| Operation | Time Complexity |
-|-----------|----------------|
-| `push(item)` | O(log n) |
-| `pop()` | O(log n) |
-| `peek()` | O(1) |
-| `is_empty()` | O(1) |
-| `__len__()` | O(1) |
-| Construction from iterable | O(n) |
+| Operation                  | Time Complexity |
+|----------------------------|-----------------|
+| `push(item)`               | O(log n)        |
+| `pop()`                    | O(log n)        |
+| `peek()`                   | O(1)            |
+| `is_empty()`               | O(1)            |
+| `__len__()`                | O(1)            |
+| `__list__()`               | O(n)            |
+| Construction from iterable | O(n)            |
 
 ## Space Complexity
 

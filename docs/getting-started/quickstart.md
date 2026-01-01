@@ -214,23 +214,34 @@ print(f'{expression} = {result}')
 ### Using Queues for BFS
 
 ```python
-def bfs_level_order(tree):
+from py_ds import Queue, BinarySearchTree
+
+
+def bfs_level_order(tree: BinarySearchTree):
     if not tree.root:
         return []
-    
+
     queue = Queue([tree.root])
     result = []
-    
+
     while not queue.is_empty():
         node = queue.dequeue()
         result.append(node.value)
-        
+
         if node.left:
             queue.enqueue(node.left)
         if node.right:
             queue.enqueue(node.right)
-    
+
     return result
+
+tree = BinarySearchTree[int]([5, 3, 4, 7])
+#   ┌── 7
+#   5
+#   │   ┌── 4
+#   └── 3
+
+print(bfs_level_order(tree))  # [5, 3, 7, 4]
 ```
 
 ### Using Heaps for Top-K Elements

@@ -54,7 +54,6 @@ uv add py-ds-academy
 ## Verify Installation
 
 ```python
-# Try importing
 import py_ds
 
 print(py_ds.__version__)

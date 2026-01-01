@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator
 from typing import Generic, TypeVar
 
 T = TypeVar('T')
@@ -198,7 +198,7 @@ class Heap(Generic[T], ABC):
         """
         return self._size > 0
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[T]:
         """Iterate over the heap elements in array order.
 
         Returns:

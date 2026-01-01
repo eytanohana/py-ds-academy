@@ -175,7 +175,7 @@ class AVLTree(BinarySearchTree[T]):
         Args:
             value: The value to remove from the tree.
         """
-        self._root, removed = self._remove_recursive(self._root, value)
+        self.root, removed = self._remove_recursive(self.root, value)
         if removed:
             self.size -= 1
 
@@ -188,5 +188,5 @@ class AVLTree(BinarySearchTree[T]):
         Args:
             value: The value to insert into the tree.
         """
-        self._root = self._insert_recursive(self._root, value)
+        self.root = self._insert_recursive(self.root, value)
         self.size += 1

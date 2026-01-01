@@ -34,7 +34,7 @@ class BinaryTree(ABC, Generic[T]):
             items: Optional iterable of items to insert into the tree. If None,
                 an empty tree is created.
         """
-        self._root: _BinaryNode[T] | None = None
+        self.root: _BinaryNode[T] | None = None
         self.size: int = 0
         items = items or []
         for item in items:
@@ -58,7 +58,7 @@ class BinaryTree(ABC, Generic[T]):
 
     def clear(self) -> None:
         """Remove all elements from the tree."""
-        self._root = None
+        self.root = None
         self.size = 0
 
     @property
@@ -86,7 +86,7 @@ class BinaryTree(ABC, Generic[T]):
             The height of the tree. Returns -1 for an empty tree, 0 for a tree
             with only a root node, and increases by 1 for each level below.
         """
-        if not self._root:
+        if not self.root:
             return -1
 
         def _height(node: _BinaryNode[T] | None):
@@ -94,7 +94,7 @@ class BinaryTree(ABC, Generic[T]):
                 return 0
             return 1 + max(_height(node.left), _height(node.right))
 
-        return _height(self._root)
+        return _height(self.root)
 
     def inorder(self) -> Iterator[T]:
         """Traverse the tree in inorder (left, root, right).
@@ -110,7 +110,7 @@ class BinaryTree(ABC, Generic[T]):
             yield node.value
             yield from _inorder(node.right)
 
-        yield from _inorder(self._root)
+        yield from _inorder(self.root)
 
     def preorder(self) -> Iterator[T]:
         """Traverse the tree in preorder (root, left, right).
@@ -126,7 +126,7 @@ class BinaryTree(ABC, Generic[T]):
             yield from _preorder(node.left)
             yield from _preorder(node.right)
 
-        yield from _preorder(self._root)
+        yield from _preorder(self.root)
 
     def postorder(self) -> Iterator[T]:
         """Traverse the tree in postorder (left, right, root).
@@ -142,7 +142,7 @@ class BinaryTree(ABC, Generic[T]):
             yield from _postorder(node.right)
             yield node.value
 
-        yield from _postorder(self._root)
+        yield from _postorder(self.root)
 
     def level_order(self) -> Iterator[T]:
         """Traverse the tree in level-order (breadth-first).
@@ -151,7 +151,7 @@ class BinaryTree(ABC, Generic[T]):
             Values from the tree in level-order traversal, from top to bottom
             and left to right at each level.
         """
-        visited = [self._root] if self._root else []
+        visited = [self.root] if self.root else []
         while visited:
             node = visited.pop(0)
             yield node.value
@@ -167,7 +167,7 @@ class BinaryTree(ABC, Generic[T]):
             A visual string representation of the tree structure. Returns 'EMPTY'
             if the tree is empty.
         """
-        if self._root is None:
+        if self.root is None:
             return 'EMPTY'
 
         def build_tree_str(node: _BinaryNode[T], prefix: str, is_left: bool) -> str:
@@ -183,14 +183,14 @@ class BinaryTree(ABC, Generic[T]):
             return tree
 
         result = ''
-        if self._root.right:
-            right_result = build_tree_str(self._root.right, '', False)
+        if self.root.right:
+            right_result = build_tree_str(self.root.right, '', False)
             result += right_result
 
-        result += f'{self._root.value}\n'
+        result += f'{self.root.value}\n'
 
-        if self._root.left:
-            left_result = build_tree_str(self._root.left, '', True)
+        if self.root.left:
+            left_result = build_tree_str(self.root.left, '', True)
             result += left_result
 
         return result

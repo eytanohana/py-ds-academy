@@ -14,10 +14,10 @@ class BinarySearchTree(BinaryTree[T]):
         """
         insert_node = _BinaryNode(value=value)
         self.size += 1
-        if self._root is None:
-            self._root = insert_node
+        if self.root is None:
+            self.root = insert_node
             return
-        curr = self._root
+        curr = self.root
         while True:
             if value <= curr.value:
                 if curr.left is None:
@@ -43,7 +43,7 @@ class BinarySearchTree(BinaryTree[T]):
                 to remove the child.
         """
         if not parent_node:
-            self._root = new_child
+            self.root = new_child
         elif parent_node.left is old_child:
             parent_node.left = new_child
         else:
@@ -59,7 +59,7 @@ class BinarySearchTree(BinaryTree[T]):
         """
         if self.is_empty:
             return
-        current = self._root
+        current = self.root
         parent: _BinaryNode[T] = None
         while current and current.value != value:
             parent, current = current, (current.left if value <= current.value else current.right)
@@ -120,7 +120,7 @@ class BinarySearchTree(BinaryTree[T]):
         """
         if self.is_empty:
             raise ValueError('Empty tree')
-        return self._get_min_node(self._root).value
+        return self._get_min_node(self.root).value
 
     def max(self) -> T:
         """Get the maximum value in the tree.
@@ -133,7 +133,7 @@ class BinarySearchTree(BinaryTree[T]):
         """
         if self.is_empty:
             raise ValueError('Empty tree')
-        return self._get_max_node(self._root).value
+        return self._get_max_node(self.root).value
 
     def __contains__(self, item: T) -> bool:
         """Check if a value is in the tree.
@@ -146,7 +146,7 @@ class BinarySearchTree(BinaryTree[T]):
         """
         if self.is_empty:
             return False
-        curr = self._root
+        curr = self.root
         while curr is not None:
             if item == curr.value:
                 return True

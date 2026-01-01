@@ -132,11 +132,11 @@ class ExpressionTree(BinaryTree):
 
 # Build the expression tree manually
 tree = ExpressionTree()
-tree._root = _BinaryNode('*')
-tree._root.left = _BinaryNode('+')
-tree._root.right = _BinaryNode(2)
-tree._root.left.left = _BinaryNode(3)
-tree._root.left.right = _BinaryNode(4)
+tree.root = _BinaryNode('*')
+tree.root.left = _BinaryNode('+')
+tree.root.right = _BinaryNode(2)
+tree.root.left.left = _BinaryNode(3)
+tree.root.left.right = _BinaryNode(4)
 tree.size = 5  # Update size manually
 
 # Print the tree structure
@@ -165,7 +165,7 @@ def evaluate(node):
     elif node.value == '/':
         return left_val / right_val
 
-result = evaluate(tree._root)  # 14
+result = evaluate(tree.root)  # 14
 print(f"Result: {result}")  # Result: 14
 ```
 

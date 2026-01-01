@@ -198,6 +198,24 @@ class Heap(Generic[T], ABC):
         """
         return self._size > 0
 
+    def __iter__(self):
+        """Iterate over the heap elements in array order.
+
+        Returns:
+            An iterator over the elements in the heap
+        """
+        return iter(self._items[: self._size])
+
+    def is_empty(self) -> bool:
+        """Check if the heap is empty.
+
+        Returns:
+            True if the heap has no elements, False otherwise.
+
+        Time complexity: O(1).
+        """
+        return self._size == 0
+
 
 class MinHeap(Heap):
     """A min-heap implementation.

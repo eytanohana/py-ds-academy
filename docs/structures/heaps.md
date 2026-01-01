@@ -12,12 +12,14 @@ py-ds-academy provides two heap implementations:
 ## Heap Property
 
 ### MinHeap Property
-For every node `i` (except root):
+For every node `i` (except the root):
+
 - `parent(i) ≤ node(i)`
 - Smallest element is always at the root
 
 ### MaxHeap Property
-For every node `i` (except root):
+For every node `i` (except the root):
+
 - `parent(i) ≥ node(i)`
 - Largest element is always at the root
 
@@ -71,20 +73,20 @@ is_empty = min_heap.is_empty()  # O(1)
 length = len(min_heap)  # O(1)
 
 # Convert to list (not sorted!)
-items = min_heap.to_list()  # O(n)
+items = list(min_heap)  # O(n)
 ```
 
 ## Time Complexity
 
-| Operation | Time Complexity |
-|-----------|----------------|
-| `push(item)` | O(log n) |
-| `pop()` | O(log n) |
-| `peek()` | O(1) |
-| `is_empty()` | O(1) |
-| `__len__()` | O(1) |
-| `to_list()` | O(n) |
-| Construction from iterable | O(n) |
+| Operation                  | Time Complexity |
+|----------------------------|-----------------|
+| `push(item)`               | O(log n)        |
+| `pop()`                    | O(log n)        |
+| `peek()`                   | O(1)            |
+| `is_empty()`               | O(1)            |
+| `__len__()`                | O(1)            |
+| `__list__()`               | O(n)            |
+| Construction from iterable | O(n)            |
 
 ## Space Complexity
 

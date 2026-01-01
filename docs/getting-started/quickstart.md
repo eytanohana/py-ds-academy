@@ -197,13 +197,12 @@ def evaluate_postfix(expression: str) -> tuple[str, int]:
             elif token == '^':
                 stack.push(a ** b)
             else:
-                raise Exception(f'unsupported operand {token}')
+                raise Exception(f'unsupported operand: {token}')
 
-            if not expression_str:
-                expression_str.push(f'({a} {token} {b})')
-            else:
+            if expression_str:
                 a = expression_str.pop()
-                expression_str.push(f'({a} {token} {b})')
+
+            expression_str.push(f'({a} {token} {b})')
     return expression_str.pop()[1:-1], stack.pop()
 
 

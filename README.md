@@ -133,7 +133,7 @@ uv run python
 
 **Queues** ✅
 - [x] `Queue` backed by Python list
-- [x] Operations: `enqueue`, `dequeue`, `peek`, `is_empty`, `__len__`, `clear`, `extend`, `to_list`
+- [x] Operations: `enqueue`, `dequeue`, `peek`, `is_empty`, `__len__`, `clear`, `extend`, `__list__`
 - [x] Iteration support (`__iter__`)
 
 **Linked Lists** ✅

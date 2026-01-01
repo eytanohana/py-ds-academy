@@ -440,10 +440,38 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#using-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using pip
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using pip">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#using-a-virtual-environment-recommended" class="md-nav__link">
     <span class="md-ellipsis">
       
         Using a Virtual Environment (Recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using uv
       
     </span>
   </a>
@@ -460,17 +488,6 @@
     <span class="md-ellipsis">
       
         Verify Installation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Upgrade
       
     </span>
   </a>
@@ -1693,10 +1710,38 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#using-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using pip
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using pip">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#using-a-virtual-environment-recommended" class="md-nav__link">
     <span class="md-ellipsis">
       
         Using a Virtual Environment (Recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using uv
       
     </span>
   </a>
@@ -1713,17 +1758,6 @@
     <span class="md-ellipsis">
       
         Verify Installation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Upgrade
       
     </span>
   </a>
@@ -1827,11 +1861,12 @@
 <li>pip (Python's package installer)</li>
 </ul>
 <h2 id="install-from-pypi">Install from PyPI<a class="headerlink" href="#install-from-pypi" title="Permanent link">&para;</a></h2>
+<h3 id="using-pip">Using pip<a class="headerlink" href="#using-pip" title="Permanent link">&para;</a></h3>
 <p>The easiest way to install <a href="https://pypi.org/project/py-ds-academy">py-ds-academy</a> is using pip:</p>
 <div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>py-ds-academy
 </code></pre></div>
-<h3 id="using-a-virtual-environment-recommended">Using a Virtual Environment (Recommended)<a class="headerlink" href="#using-a-virtual-environment-recommended" title="Permanent link">&para;</a></h3>
-<p>It's recommended to use a virtual environment to avoid conflicts with other packages:</p>
+<h4 id="using-a-virtual-environment-recommended">Using a Virtual Environment (Recommended)<a class="headerlink" href="#using-a-virtual-environment-recommended" title="Permanent link">&para;</a></h4>
+<p>Virtual environments help keep your project isolated and avoid conflicts with other packages installed on your system:</p>
 <div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Create a virtual environment</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
@@ -1841,15 +1876,24 @@
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Install py-ds-academy</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>pip<span class="w"> </span>install<span class="w"> </span>py-ds-academy
 </code></pre></div>
-<h2 id="verify-installation">Verify Installation<a class="headerlink" href="#verify-installation" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Try importing</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">py_ds</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">py_ds</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<h3 id="using-uv">Using uv<a class="headerlink" href="#using-uv" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/astral-sh/uv">uv</a> is a fast Python package installer and resolver written in Rust. It's great for both installing packages and managing development environments.</p>
+<p><strong>Install uv:</strong></p>
+<p>Follow the steps in <a href="https://docs.astral.sh/uv/getting-started/installation/">uv's installation guide</a> for your OS.</p>
+<p><strong>Install py-ds-academy:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># create a new project managed by uv</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>uv<span class="w"> </span>init<span class="w"> </span>my-project
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">cd</span><span class="w"> </span>my-project
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Install the package</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>uv<span class="w"> </span>add<span class="w"> </span>py-ds-academy
 </code></pre></div>
-<h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
-<p>To upgrade to the latest version:</p>
-<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>py-ds-academy
+<h2 id="verify-installation">Verify Installation<a class="headerlink" href="#verify-installation" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Try importing</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">py_ds</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">py_ds</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>

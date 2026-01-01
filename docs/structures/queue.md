@@ -54,7 +54,7 @@ length = len(queue)  # O(1)
 queue.clear()  # O(1)
 
 # Convert to list
-items = queue.to_list()  # O(n)
+items = list(queue)  # O(n)
 
 # Extend with multiple items
 queue.extend([5, 6, 7])  # O(k) where k is number of items
@@ -73,17 +73,17 @@ items = list(queue)
 
 ## Time Complexity
 
-| Operation | Time Complexity |
-|-----------|----------------|
-| `enqueue(item)` | O(1) |
-| `dequeue()` | O(1) |
-| `peek()` | O(1) |
-| `is_empty()` | O(1) |
-| `__len__()` | O(1) |
-| `clear()` | O(1) |
-| `to_list()` | O(n) |
-| `extend(items)` | O(k) |
-| `__iter__()` | O(n) |
+| Operation       | Time Complexity |
+|-----------------|-----------------|
+| `enqueue(item)` | O(1)            |
+| `dequeue()`     | O(1)            |
+| `peek()`        | O(1)            |
+| `is_empty()`    | O(1)            |
+| `__len__()`     | O(1)            |
+| `clear()`       | O(1)            |
+| `__list__()`    | O(n)            |
+| `extend(items)` | O(k)            |
+| `__iter__()`    | O(n)            |
 
 ## Space Complexity
 

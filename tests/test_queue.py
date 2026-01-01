@@ -14,7 +14,7 @@ def test_init_with_items():
     q = Queue([1, 2, 3])
     assert len(q) == 3
     assert q.peek() == 1  # front of the queue
-    assert q.to_list() == [1, 2, 3]
+    assert list(q) == [1, 2, 3]
 
 
 def test_enqueue_increases_size_and_changes_back():
@@ -24,7 +24,7 @@ def test_enqueue_increases_size_and_changes_back():
     q.enqueue(30)
     assert len(q) == 3
     assert q.peek() == 10  # front remains same
-    assert q.to_list() == [10, 20, 30]
+    assert list(q) == [10, 20, 30]
 
 
 def test_dequeue_returns_items_in_fifo_order():
@@ -45,7 +45,7 @@ def test_peek_does_not_remove():
     q = Queue([1, 2])
     assert q.peek() == 1
     assert len(q) == 2  # remains same
-    assert q.to_list() == [1, 2]
+    assert list(q) == [1, 2]
 
 
 def test_peek_on_empty_raises():
@@ -57,7 +57,7 @@ def test_peek_on_empty_raises():
 def test_extend_adds_items_in_order():
     q = Queue([1])
     q.extend([2, 3, 4])
-    assert q.to_list() == [1, 2, 3, 4]
+    assert list(q) == [1, 2, 3, 4]
     assert q.peek() == 1
     assert len(q) == 4
 
@@ -67,7 +67,7 @@ def test_clear_empties_queue():
     q.clear()
     assert q.is_empty() is True
     assert len(q) == 0
-    assert q.to_list() == []
+    assert list(q) == []
 
 
 def test_iteration_front_to_back():

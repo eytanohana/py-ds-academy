@@ -53,8 +53,8 @@ length = len(stack)  # O(1)
 # Clear all elements
 stack.clear()  # O(1)
 
-# Convert to list
-items = stack.to_list()  # O(n)
+# Convert to list in order of stack popping
+items = list(stack)  # O(n)
 
 # Extend with multiple items
 stack.extend([5, 6, 7])  # O(k) where k is number of items
@@ -73,17 +73,17 @@ items = list(stack)
 
 ## Time Complexity
 
-| Operation | Time Complexity |
-|-----------|----------------|
-| `push(item)` | O(1) |
-| `pop()` | O(1) |
-| `peek()` | O(1) |
-| `is_empty()` | O(1) |
-| `__len__()` | O(1) |
-| `clear()` | O(1) |
-| `to_list()` | O(n) |
-| `extend(items)` | O(k) |
-| `__iter__()` | O(n) |
+| Operation       | Time Complexity |
+|-----------------|-----------------|
+| `push(item)`    | O(1)            |
+| `pop()`         | O(1)            |
+| `peek()`        | O(1)            |
+| `is_empty()`    | O(1)            |
+| `__len__()`     | O(1)            |
+| `clear()`       | O(1)            |
+| `extend(items)` | O(k)            |
+| `__iter__()`    | O(n)            |
+| `__list__()`    | O(n)            |
 
 ## Space Complexity
 

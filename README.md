@@ -128,7 +128,7 @@ uv run python
 
 **Stacks** ✅
 - [x] `Stack` backed by Python list
-- [x] Operations: `push`, `pop`, `peek`, `is_empty`, `__len__`, `clear`, `extend`, `to_list`
+- [x] Operations: `push`, `pop`, `peek`, `is_empty`, `__len__`, `clear`, `extend`, `__list__`
 - [x] Iteration support (`__iter__`)
 
 **Queues** ✅

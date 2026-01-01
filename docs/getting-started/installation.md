@@ -41,10 +41,10 @@ Follow the steps in [uv's installation guide](https://docs.astral.sh/uv/getting-
 **Install py-ds-academy:**
 
 ```bash
-# create a new project managed by uv
+# Create a new project managed by uv
 uv init my-project
 
-# enter your project directory
+# Enter your project directory
 cd my-project
 
 # Install the package

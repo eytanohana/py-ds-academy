@@ -31,7 +31,7 @@ def validate_avl_tree(tree: AVLTree) -> None:
     assert values == sorted(values), 'Tree violates BST property (inorder not sorted)'
 
     # Check AVL balance property
-    assert is_balanced(tree._root), 'Tree is not balanced'
+    assert is_balanced(tree.root), 'Tree is not balanced'
 
 
 # --- Fixtures ---
@@ -118,9 +118,9 @@ def test_left_left_case():
     tree.insert(10)
 
     validate_avl_tree(tree)
-    assert tree._root.value == 20
-    assert tree._root.left.value == 10
-    assert tree._root.right.value == 30
+    assert tree.root.value == 20
+    assert tree.root.left.value == 10
+    assert tree.root.right.value == 30
 
 
 def test_right_right_case():
@@ -138,9 +138,9 @@ def test_right_right_case():
     tree.insert(30)
 
     validate_avl_tree(tree)
-    assert tree._root.value == 20
-    assert tree._root.left.value == 10
-    assert tree._root.right.value == 30
+    assert tree.root.value == 20
+    assert tree.root.left.value == 10
+    assert tree.root.right.value == 30
 
 
 def test_left_right_case():
@@ -158,9 +158,9 @@ def test_left_right_case():
     tree.insert(20)
 
     validate_avl_tree(tree)
-    assert tree._root.value == 20
-    assert tree._root.left.value == 10
-    assert tree._root.right.value == 30
+    assert tree.root.value == 20
+    assert tree.root.left.value == 10
+    assert tree.root.right.value == 30
 
 
 def test_right_left_case():
@@ -178,9 +178,9 @@ def test_right_left_case():
     tree.insert(20)
 
     validate_avl_tree(tree)
-    assert tree._root.value == 20
-    assert tree._root.left.value == 10
-    assert tree._root.right.value == 30
+    assert tree.root.value == 20
+    assert tree.root.left.value == 10
+    assert tree.root.right.value == 30
 
 
 def test_large_random_insertions():

@@ -173,8 +173,13 @@ print(avl.height)  # Tree height is kept minimal
 ### Using Stacks for Expression Evaluation
 
 ```python
-def evaluate_postfix(expression):
+from py_ds import Stack
+
+
+def evaluate_postfix(expression: str) -> tuple[str, int]:
     stack = Stack()
+    expression_str = Stack()
+
     for token in expression.split():
         if token.isdigit():
             stack.push(int(token))
@@ -189,9 +194,21 @@ def evaluate_postfix(expression):
                 stack.push(a * b)
             elif token == '/':
                 stack.push(a // b)
-    return stack.pop()
+            elif token == '^':
+                stack.push(a ** b)
+            else:
+                raise Exception(f'unsupported operand {token}')
 
-result = evaluate_postfix("3 4 + 2 *")  # (3+4)*2 = 14
+            if not expression_str:
+                expression_str.push(f'({a} {token} {b})')
+            else:
+                a = expression_str.pop()
+                expression_str.push(f'({a} {token} {b})')
+    return expression_str.pop()[1:-1], stack.pop()
+
+
+expression, result = evaluate_postfix("3 4 + 2 * 5 - 2 ^")  # (((3 + 4) * 2) - 5) ^ 2 = 81
+print(f'{expression} = {result}')
 ```
 
 ### Using Queues for BFS

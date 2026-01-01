@@ -29,16 +29,7 @@ This project serves as both a learning resource and a reference implementation f
 
 ## 🚀 Quick Start
 
-```bash
-# Install dependencies
-uv sync
-
-# Run tests
-uv run pytest
-
-# Try it out
-uv run python
-```
+Install the package using pip or uv. See the [Installation Guide](getting-started/installation.md) for detailed instructions.
 
 ```python
 >>> from py_ds import Stack, Queue, MinHeap, BinarySearchTree

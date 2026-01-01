@@ -7,15 +7,17 @@
 
 ## Install from PyPI
 
+### Using pip
+
 The easiest way to install [py-ds-academy](https://pypi.org/project/py-ds-academy) is using pip:
 
 ```bash
 pip install py-ds-academy
 ```
 
-### Using a Virtual Environment (Recommended)
+#### Using a Virtual Environment (Recommended)
 
-It's recommended to use a virtual environment to avoid conflicts with other packages:
+Virtual environments help keep your project isolated and avoid conflicts with other packages installed on your system:
 
 ```bash
 # Create a virtual environment
@@ -28,6 +30,26 @@ source venv/bin/activate
 pip install py-ds-academy
 ```
 
+### Using uv
+
+[uv](https://github.com/astral-sh/uv) is a fast Python package installer and resolver written in Rust. It's great for both installing packages and managing development environments.
+
+**Install uv:**
+
+Follow the steps in [uv's installation guide](https://docs.astral.sh/uv/getting-started/installation/) for your OS.
+
+**Install py-ds-academy:**
+
+```bash
+# create a new project managed by uv
+uv init my-project
+cd my-project
+
+
+# Install the package
+uv add py-ds-academy
+```
+
 ## Verify Installation
 
 ```python
@@ -35,14 +57,6 @@ pip install py-ds-academy
 import py_ds
 
 print(py_ds.__version__)
-```
-
-## Upgrade
-
-To upgrade to the latest version:
-
-```bash
-pip install --upgrade py-ds-academy
 ```
 
 ## Next Steps

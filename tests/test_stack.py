@@ -14,7 +14,7 @@ def test_init_with_items():
     s = Stack([1, 2, 3])
     assert len(s) == 3
     assert s.peek() == 3
-    assert s.to_list() == [1, 2, 3]
+    assert list(s) == [3, 2, 1]
 
 
 def test_push_increases_size_and_changes_top():
@@ -23,7 +23,7 @@ def test_push_increases_size_and_changes_top():
     s.push(20)
     assert len(s) == 2
     assert s.peek() == 20
-    assert s.to_list() == [10, 20]
+    assert list(s) == [20, 10]
 
 
 def test_pop_returns_items_in_lifo_order():
@@ -56,7 +56,7 @@ def test_extend_pushes_items_in_correct_order():
     s = Stack([1])
     s.extend([2, 3, 4])
     assert s.peek() == 4
-    assert s.to_list() == [1, 2, 3, 4]
+    assert list(s) == [4, 3, 2, 1]
 
 
 def test_clear_removes_all_items():
@@ -64,7 +64,7 @@ def test_clear_removes_all_items():
     s.clear()
     assert s.is_empty() is True
     assert len(s) == 0
-    assert s.to_list() == []
+    assert list(s) == []
 
 
 def test_iteration_bottom_to_top():

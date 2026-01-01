@@ -247,19 +247,24 @@ print(bfs_level_order(tree))  # [5, 3, 7, 4]
 ### Using Heaps for Top-K Elements
 
 ```python
+from py_ds import MinHeap
+
+
 def find_top_k(items, k):
     min_heap = MinHeap()
-    
+
     for item in items:
         if len(min_heap) < k:
             min_heap.push(item)
         elif item > min_heap.peek():
             min_heap.pop()
             min_heap.push(item)
-    
-    return sorted(min_heap.to_list(), reverse=True)
 
-top_3 = find_top_k([1, 5, 3, 9, 2, 7, 4, 8], 3)  # [9, 8, 7]
+    return sorted(list(min_heap), reverse=True)
+
+
+top_3 = find_top_k([1, 5, 3, 9, 2, 7, 4, 8], 3)
+print(top_3)  # [9, 8, 7]
 ```
 
 ## Type Hints

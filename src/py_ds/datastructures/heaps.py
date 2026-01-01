@@ -198,6 +198,14 @@ class Heap(Generic[T], ABC):
         """
         return self._size > 0
 
+    def __iter__(self):
+        """Iterate over the heap elements in array order.
+
+        Returns:
+            An iterator over the elements in the heap
+        """
+        return iter(self._items[: self._size])
+
 
 class MinHeap(Heap):
     """A min-heap implementation.

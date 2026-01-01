@@ -99,18 +99,7 @@ class Queue(Generic[T]):
 
         Time complexity: O(1).
         """
-        self._items = []
-
-    def to_list(self) -> list[T]:
-        """Convert the queue to a Python list.
-
-        Returns:
-            A shallow copy of the queue contents as a list, ordered from
-            front to back.
-
-        Time complexity: O(n).
-        """
-        return self._items[::]
+        self._items.clear()
 
     # -------------------------------------------------
     # Python protocol methods

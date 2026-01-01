@@ -106,17 +106,6 @@ class Stack(Generic[T]):
         for item in items:
             self.push(item)
 
-    def to_list(self) -> list[T]:
-        """Convert the stack to a Python list.
-
-        Returns:
-            A shallow copy of the stack contents as a list. The last element
-            of the returned list is the top of the stack.
-
-        Time complexity: O(n).
-        """
-        return self._items[::]
-
     # -------- Python protocol methods --------
 
     def __len__(self) -> int:
@@ -160,4 +149,4 @@ class Stack(Generic[T]):
         Example:
             Stack([1, 2, 3])
         """
-        return f'Stack({self.to_list()})'
+        return f'Stack({self._items})'

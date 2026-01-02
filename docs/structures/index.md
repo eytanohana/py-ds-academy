@@ -20,7 +20,7 @@ A Last-In-First-Out (LIFO) data structure backed by a Python list.
 **Use Cases:** Expression evaluation, undo/redo functionality, backtracking algorithms
 
 #### [Queue](queue.md)
-A First-In-First-Out (FIFO) data structure backed by a Python list.
+A First-In-First-Out (FIFO) data structure backed by a [Linked List](linked-lists.md).
 
 **Key Operations:**
 

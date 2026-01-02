@@ -4,7 +4,7 @@ A **Queue** is a First-In-First-Out (FIFO) data structure where elements are add
 
 ## Overview
 
-The Queue implementation in py-ds-academy is backed by a Python list, providing O(1) enqueue and dequeue operations.
+The Queue implementation in py-ds-academy is backed by a [linked list](linked-lists.md), providing O(1) enqueue and dequeue operations.
 
 ## Operations
 

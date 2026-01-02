@@ -3,6 +3,8 @@ from __future__ import annotations
 from collections.abc import Iterable, Iterator
 from typing import Generic, TypeVar
 
+from .linked_lists import LinkedList
+
 T = TypeVar('T')
 
 
@@ -19,7 +21,7 @@ class Queue(Generic[T]):
             items: Optional iterable of initial items.
                    The first item of the iterable becomes the front of the queue.
         """
-        self._items = list(items) if items else []
+        self._items = LinkedList(items)
 
     # -------------------------------------------------
     # Core queue operations
@@ -146,4 +148,4 @@ class Queue(Generic[T]):
         Example:
             Queue([1, 2, 3])
         """
-        return f'Queue({self._items})'
+        return f'{self.__class__.__name__}({list(self._items)})'

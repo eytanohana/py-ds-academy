@@ -55,7 +55,7 @@ Install the package using pip or uv. See the [Installation Guide](getting-starte
 ### Linear Structures
 
 - ✅ **Stack** - LIFO stack with list backing
-- ✅ **Queue** - FIFO queue with list backing
+- ✅ **Queue** - FIFO queue with linked-list backing
 - ✅ **LinkedList** - Single-direction linked list
 - ✅ **DoublyLinkedList** - Double-direction linked list
 

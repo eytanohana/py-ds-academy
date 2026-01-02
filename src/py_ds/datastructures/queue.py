@@ -148,4 +148,4 @@ class Queue(Generic[T]):
         Example:
             Queue([1, 2, 3])
         """
-        return f'Queue({list(self._items)})'
+        return f'{self.__class__.__name__}({list(self._items)})'
